@@ -2,56 +2,77 @@
 
 import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { twMerge } from "tailwind-merge";
+import { useLenis } from "lenis/dist/lenis-react";
 import Image from "next/image";
 
 import HeroImage1 from "@/assets/images/hero1.webp";
 import HeroImage2 from "@/assets/images/hero2.webp";
 import HeroImage3 from "@/assets/images/hero3.webp";
 import HeroImage4 from "@/assets/images/hero4.webp";
-import HeroImage5 from "@/assets/images/hero5.webp";
-import HeroImage6 from "@/assets/images/hero6.webp";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const HeroImageList = [
   {
-    image: HeroImage1,
-    position: "50% 10%",
-  },
-  {
     image: HeroImage2,
-    position: "50% 50%",
+    position: "70% 70%",
   },
   {
     image: HeroImage3,
     position: "60% 50%",
   },
   {
+    image: HeroImage1,
+    position: "40% 60%",
+  },
+  {
     image: HeroImage4,
-    position: "50% 50%",
-  },
-  {
-    image: HeroImage5,
-    position: "50% 50%",
-  },
-  {
-    image: HeroImage6,
     position: "50% 50%",
   },
 ];
 
 const Hero = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(null);
+
+  const Lenis = useLenis();
 
   useEffect(() => {
+    if (isOpen === null) return;
+
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      Lenis.stop();
     } else {
-      document.body.style.overflow = "auto";
+      Lenis.start("");
     }
   }, [isOpen]);
 
   useGSAP(() => {
+    gsap.to("#hero-container", {
+      ease: "power2.inOut",
+      borderBottomLeftRadius: "3em",
+      borderBottomRightRadius: "3em",
+      scrollTrigger: {
+        trigger: "#hero-container",
+        scrub: true,
+        start: "center center",
+        end: "bottom top",
+      },
+    });
+
+    gsap.to(".div-image", {
+      ease: "power2.inOut",
+      top: "10%",
+      scrollTrigger: {
+        trigger: "#hero-container",
+        scrub: true,
+        start: "center center",
+        end: "bottom top",
+      },
+    });
+
     let tl = gsap.timeline({
       repeat: -1,
       repeatDelay: 2,
@@ -60,13 +81,16 @@ const Hero = () => {
       },
     });
 
-    const heroIds = ["#hero-1", "#hero-2", "#hero-3", "#hero-4", "#hero-5"];
+    const heroIds = ["#hero-1", "#hero-2", "#hero-3", "#hero-4"];
 
     heroIds.forEach((id, index) => {
       tl.fromTo(
         id,
         { opacity: 0, scale: 1.2 },
-        { opacity: 1, scale: 1 },
+        {
+          opacity: 1,
+          scale: 1,
+        },
         index === 0 ? 0 : ">2"
       );
     });
@@ -82,9 +106,9 @@ const Hero = () => {
       return;
     }
 
-    gsap.from("#hero-text", {
-      y: -20,
-      opacity: 0,
+    gsap.to("#hero-text", {
+      y: 0,
+      opacity: 1,
       duration: 1,
       ease: "power2.out",
       delay: 0.5,
@@ -138,22 +162,22 @@ const Hero = () => {
     <>
       <section
         id="hero-container"
-        className="relative w-screen h-dvh overflow-hidden bg-white"
+        className="relative w-screen h-dvh overflow-hidden"
       >
-        <div className="relative w-full h-full">
+        <div className="div-image relative w-full h-full">
           {HeroImageList.map((item, index) => (
             <Image
               key={index}
-              id={`hero-${index}`}
+              id={`hero-${index + 1}`}
               src={item.image}
-              width={1280}
-              height={720}
+              width={1920}
+              height={1280}
               className="absolute top-0 left-0 w-full h-full object-cover opacity-0"
               style={{ objectPosition: item.position }}
               alt={`${index + 1} Imagen Principal`}
             />
           ))}
-          <div className="absolute top-0 left-0 w-full h-full bg-black/20 z-10" />
+          <div className="absolute top-0 left-0 w-full h-full bg-black/25 z-10" />
         </div>
 
         <div
@@ -179,9 +203,9 @@ const Hero = () => {
 
         <div
           id="hero-text"
-          className="absolute bottom-0 left-0 w-full h-auto overflow-hidden rounded-b-lg flex flex-col items-start py-[2em] px-[2em]"
+          className="absolute bottom-0 left-0 opacity-0 translate-[-20px] w-full h-auto overflow-hidden text-white rounded-b-lg flex flex-col items-start py-[2em] px-[2em] lg:py-[4em] lg:px-[4em] z-30"
         >
-          <h1 className="text-[2.2em] md:text-[2.9em] lg:text-[3.7em] text-white font-bold italic leading-[1.2] z-0">
+          <h1 className="text-[2.3em] md:text-[2.9em] lg:text-[3.7em] z-30 font-bold italic leading-[1.2] text-white">
             Es nuestro Alberti <br /> Tierra de Trabajo
           </h1>
         </div>
@@ -194,7 +218,12 @@ const Hero = () => {
             : "opacity-0 pointer-events-none"
         )}
       >
-        <div className="absolute block top-5 right-5 pointer-events-auto">
+        <div
+          className={twMerge(
+            "absolute top-5 right-5 pointer-events-auto",
+            isOpen ? "block" : "hidden"
+          )}
+        >
           <button
             className="relative bg-blue border border-blue text-white rounded-md p-1 md:p-1.5 hover:bg-transparent hover:border-white transition-colors duration-300 hover:cursor-pointer z-[10000]"
             onClick={(e) => {
@@ -218,6 +247,7 @@ const Hero = () => {
           className="w-full h-full object-contain"
           controls
           loop
+          autoPlay
           playsInline
         />
       </div>

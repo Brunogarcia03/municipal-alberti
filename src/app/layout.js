@@ -2,6 +2,7 @@ import { Lato } from "next/font/google";
 import "./globals.css";
 
 import Header from "@/components/Header";
+import LenisScrollProvider from "@/providers/lenis-provider";
 
 const lato = Lato({
   style: ["normal", "italic"],
@@ -18,10 +19,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body
-        className={`${lato.className} antialiased text-white overflow-x-hidden`}
+        className={`${lato.className} antialiased text-white overflow-x-hidden bg-white`}
       >
-        <Header />
-        {children}
+        <LenisScrollProvider>
+          <Header />
+          {children}
+        </LenisScrollProvider>
       </body>
     </html>
   );

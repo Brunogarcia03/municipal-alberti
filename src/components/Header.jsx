@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useLenis } from "lenis/dist/lenis-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,18 +12,24 @@ import { useWindowScroll } from "@reactuses/core";
 import { NavList, categories, socials } from "@/utils/constants/constants";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(null);
   const [lastScrollY, setLastScrollY] = useState(0);
+
+  const lenis = useLenis();
 
   const { y: scrollY } = useWindowScroll();
 
   useGSAP(() => {
+    if (isOpen === null) return;
+
     const tl = gsap.timeline({
       clearProps: "all",
     });
 
     if (isOpen) {
-      tl.add(() => (document.body.style.overflow = "hidden"))
+      tl.add(() => {
+        lenis.stop();
+      })
         .to("#menu-wrapper", {
           duration: 0.8,
           height: "auto",
@@ -73,7 +80,9 @@ const Header = () => {
           duration: 0.4,
           ease: "power2.inOut",
         })
-        .add(() => (document.body.style.overflow = "auto"));
+        .add(() => {
+          lenis.start();
+        });
     }
   }, [isOpen]);
 
@@ -87,34 +96,23 @@ const Header = () => {
   }, []);
 
   useGSAP(() => {
-    if (scrollY === 0) {
+    if (scrollY < 88) {
       gsap.to("header", {
         y: 0,
         opacity: 1,
-        duration: 0.2,
+        duration: 0.5,
       });
-
-      gsap.to("#header-fixed", {
-        backgroundColor: "rgba(33, 33, 33, 0)",
-        backdropFilter: "blur(0px)",
-        duration: 0.3,
-      });
-    } else if (scrollY > lastScrollY) {
+    } else if (scrollY > lastScrollY + 10) {
       gsap.to("header", {
         y: -100,
         opacity: 0,
-        duration: 0.2,
+        duration: 0.5,
       });
     } else if (scrollY < lastScrollY) {
       gsap.to("header", {
         y: 0,
         opacity: 1,
-        duration: 0.2,
-      });
-      gsap.to("#header-fixed", {
-        backgroundColor: "rgba(33, 33, 33, 0.2)",
-        backdropFilter: "blur(40px)",
-        duration: 0.2,
+        duration: 0.5,
       });
     }
 
@@ -125,7 +123,7 @@ const Header = () => {
     <header className="fixed flex w-full inset-0 z-[9999] min-h-[88px] max-h-[88px]">
       <div
         id="header-fixed"
-        className="flex items-center justify-between translate-y-[-100%] opacity-0 w-full h-full mx-auto py-[1em] px-[2rem] bg-black/0 z-10"
+        className="flex items-center justify-between bg-black/10 backdrop-blur-2xl translate-y-[-100%] opacity-0 w-full h-full mx-auto py-[1em] px-[2rem] z-10"
       >
         <Link href="/" className="flex items-center">
           <Image
@@ -135,7 +133,10 @@ const Header = () => {
             width={32}
             height={32}
           />
-          <h1 className="text-white font-bold text-[1.2rem] leading-[1] ml-2">
+          <h1
+            id="text-icon"
+            className="text-white font-bold text-[1.2rem] leading-[1] ml-2"
+          >
             Municipalidad <br />
             de Alberti
           </h1>
@@ -145,12 +146,12 @@ const Header = () => {
           onClick={() => setIsOpen(!isOpen)}
         >
           <div
-            className={`absolute h-0.5 w-8 md:w-10 bg-white transition-all duration-300 group-hover:w-5 md:group-hover:w-8 origin-center ${
+            className={`absolute h-0.5 w-8 md:w-10 bg-white menu-line transition-all duration-300 group-hover:w-5 md:group-hover:w-8 origin-center ${
               isOpen ? "rotate-45" : "-translate-y-1 "
             }`}
           />
           <div
-            className={`absolute h-0.5 w-8 md:w-10 bg-white transition-all duration-300 group-hover:w-5 md:group-hover:w-8 origin-center ${
+            className={`absolute h-0.5 w-8 md:w-10 bg-white menu-line transition-all duration-300 group-hover:w-5 md:group-hover:w-8 origin-center ${
               isOpen ? "-rotate-45" : "translate-y-1 "
             }`}
           />
