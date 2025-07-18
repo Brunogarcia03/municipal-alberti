@@ -2,6 +2,8 @@ import GridBento from "./grid-bento/GridBento";
 import Link from "next/link";
 
 import MACROLogo from "@/assets/images/MACROLogo.png";
+import MACROIcon from "@/assets/images/MACROIcon.png";
+import Button from "./ui/Button";
 
 const boletinItems = [
   {
@@ -23,10 +25,10 @@ const boletinItems = [
     ),
   },
   {
-    id: "marco-legal",
-    title: "Marco Legal",
+    id: "publicaciones-de-ley",
+    title: "Publicaciones de Ley",
     description: "Leyes provinciales y nacionales que afectan al municipio.",
-    href: "/boletin/marco-legal",
+    href: "/boletin/publicaciones-de-ley",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -136,9 +138,7 @@ const Bulletin = () => {
                 <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-blue z-10">
-              Consulta Tributaria
-            </h3>
+            <h3 className="text-2xl font-bold text-blue z-10">Rentas</h3>
           </div>
           <p className="text-black font-bold mb-3">
             Puede abonar sus impuestos municipales de forma rápida y <br />
@@ -195,16 +195,24 @@ const Bulletin = () => {
               href="https://pagos.macroclickpago.com.ar/SearchDeuda/796282"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-blue-800 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-md w-full lg:w-auto transition-colors duration-300"
+              className="inline-flex justify-center items-center gap-3 bg-blue-800 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-md w-full lg:w-auto transition-colors duration-300"
             >
               <img
                 src={MACROLogo.src}
                 alt="Logo MACRO Click de pago"
-                className="min-w-[150px] max-w-[150px] h-auto bg-white rounded-md"
+                className="hidden md:block min-w-[150px] max-w-[150px] h-auto bg-white rounded-md"
+              />
+              <img
+                src={MACROIcon.src}
+                alt="Icono MACRO Click de pago"
+                className="block md:hidden min-w-[50px] max-w-[50px] h-[50px] bg-white rounded-md"
               />
               <span className="text-lg text-nowrap">Consultar Deuda</span>
             </Link>
           </div>
+        </div>
+        <div className="py-10">
+          <Button className={""}>HOlA MUNDO</Button>
         </div>
       </section>
     </>
