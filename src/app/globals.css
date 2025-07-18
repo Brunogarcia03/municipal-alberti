@@ -17,3 +17,11 @@ body {
   scrollbar-color: #00438b #f3f1ed;
   scrollbar-width: thin;
 }
+
+#text-icon.header--light {
+  color: #212121;
+}
+
+.menu-line.header--light {
+  background-color: #212121;
+}

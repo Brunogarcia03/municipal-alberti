@@ -7,13 +7,17 @@ import Link from "next/link";
 
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useWindowScroll } from "@reactuses/core";
 
 import { NavList, categories, socials } from "@/utils/constants/constants";
+import Button from "./ui/Button";
+import { useParams } from "next/navigation";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(null);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const params = useParams();
 
   const lenis = useLenis();
 
@@ -29,6 +33,12 @@ const Header = () => {
     if (isOpen) {
       tl.add(() => {
         lenis.stop();
+
+        const textIcon = document.querySelector("#text-icon");
+        const menuLines = document.querySelectorAll(".menu-line");
+
+        textIcon?.classList.remove("header--light");
+        menuLines?.forEach((el) => el.classList.remove("header--light"));
       })
         .to("#menu-wrapper", {
           duration: 0.8,
@@ -82,6 +92,18 @@ const Header = () => {
         })
         .add(() => {
           lenis.start();
+
+          gsap.utils.toArray(".white-container").forEach((section) => {
+            ScrollTrigger.create({
+              trigger: section,
+              start: "top top",
+              end: "bottom top",
+              toggleClass: {
+                targets: ["#text-icon", ".menu-line"],
+                className: "header--light",
+              },
+            });
+          });
         });
     }
   }, [isOpen]);
@@ -91,7 +113,19 @@ const Header = () => {
       y: 0,
       opacity: 1,
       duration: 1,
-      delay: 0.5,
+      delay: Object.keys(params).length === 0 ? 5 : 0.2,
+    });
+
+    gsap.utils.toArray(".white-container").forEach((section) => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: "bottom top",
+        toggleClass: {
+          targets: ["#text-icon", ".menu-line"],
+          className: "header--light",
+        },
+      });
     });
   }, []);
 
@@ -120,22 +154,28 @@ const Header = () => {
   }, [scrollY]);
 
   return (
-    <header className="fixed flex w-full inset-0 z-[9999] min-h-[88px] max-h-[88px]">
+    <header className="fixed flex w-full inset-0 z-[999] min-h-[88px] max-h-[88px] bg-black/10 backdrop-blur-2xl translate-y-[-100%]">
       <div
         id="header-fixed"
-        className="flex items-center justify-between bg-black/10 backdrop-blur-2xl translate-y-[-100%] opacity-0 w-full h-full mx-auto py-[1em] px-[2rem] z-10"
+        className="flex items-center justify-between opacity-0 w-full h-full mx-auto py-[1em] px-[2rem] z-10"
       >
-        <Link href="/" className="flex items-center">
+        <Link
+          href="/"
+          className="flex items-center"
+          onClick={() => setIsOpen(false)}
+        >
           <Image
             src="/ICON.png"
             priority
             alt="Logo Municipalidad de Alberti"
             width={32}
             height={32}
+            style={{ height: "auto" }}
           />
+
           <h1
             id="text-icon"
-            className="text-white font-bold text-[1.2rem] leading-[1] ml-2"
+            className="text-white font-bold text-[1.2rem] leading-[1] ml-2 transition-colors duration-300"
           >
             Municipalidad <br />
             de Alberti
@@ -157,10 +197,14 @@ const Header = () => {
           />
         </button>
 
-        <Link href="/" className="hidden md:flex items-center justify-end">
-          <button className="bg-blue text-white border border-blue rounded-md py-2 px-3">
+        <Link
+          href="/contacto"
+          className="hidden md:flex items-center justify-end"
+          onClick={() => setIsOpen(false)}
+        >
+          <Button className="bg-blue text-white border border-blue rounded-md py-2 px-6">
             Contacto
-          </button>
+          </Button>
         </Link>
       </div>
       <div
@@ -245,6 +289,7 @@ const Header = () => {
                     <Link
                       href={`prensa/categorias/${item.toLowerCase()}`}
                       className="text-white font-light transition-colors duration-200 hover:text-blue"
+                      onClick={() => setIsOpen(false)}
                     >
                       {item}
                     </Link>
@@ -276,6 +321,7 @@ const Header = () => {
                       rel="noopener noreferrer"
                       aria-label={social.name}
                       className="text-white font-light transition-colors duration-200 hover:text-blue"
+                      onClick={() => setIsOpen(false)}
                     >
                       {social.icon}
                     </Link>
@@ -289,12 +335,13 @@ const Header = () => {
           </div>
           <Link
             id="contact-button"
-            href="/"
+            href="/contacto"
             className="flex md:hidden items-center justify-start mt-4 w-full"
+            onClick={() => setIsOpen(false)}
           >
-            <button className="bg-blue text-white border border-blue rounded-md py-2 px-5 w-full">
+            <Button className="bg-blue text-white border border-blue rounded-md py-2 px-5 w-full">
               Contacto
-            </button>
+            </Button>
           </Link>
         </div>
       </div>

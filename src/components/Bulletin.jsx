@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import MACROLogo from "@/assets/images/MACROLogo.png";
 import MACROIcon from "@/assets/images/MACROIcon.png";
-import Button from "./ui/Button";
 
 const boletinItems = [
   {
@@ -102,7 +101,7 @@ const Bulletin = () => {
     <>
       <section
         id="bulletin-container"
-        className="relative flex flex-col justify-center min-h-screen w-full py-16 md:py-24"
+        className="relative flex flex-col justify-center min-h-screen w-full py-16 md:py-24 white-container"
       >
         <div className="px-8 text-center">
           <h3 className="text-[1.3em] md:text-[1.9em] lg:text-[2.7em] text-blue font-bold italic leading-[1.2] z-0">
@@ -124,7 +123,7 @@ const Bulletin = () => {
           .
         </p>
       </section>
-      <section className="relative flex flex-col min-h-screen w-full pb-16 pt-4 md:pt-8 md:pb-24 px-6 md:px-24">
+      <section className="relative flex flex-col min-h-screen w-full pb-16 pt-4 md:pt-8 md:pb-24 px-6 md:px-24 white-container">
         <div className="relative overflow-hidden bg-white max-w-5xl w-full mx-auto rounded-md md:col-span-2 md:row-span-3 row-start-4 p-6 flex flex-col shadow-sm shadow-blue group">
           <div className="flex items-center overflow-hidden">
             <div className="flex flex-none items-center justify-center w-0 group-hover:w-10 translate-0 overflow-hidden h-10 transition-discrete duration-300 font-bold">
@@ -195,12 +194,12 @@ const Bulletin = () => {
               href="https://pagos.macroclickpago.com.ar/SearchDeuda/796282"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex justify-center items-center gap-3 bg-blue-800 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-md w-full lg:w-auto transition-colors duration-300"
+              className="inline-flex justify-center items-center gap-3 group shadow shadow-blue bg-blue hover:bg-white text-white hover:text-black font-semibold py-3 px-6 rounded-md w-full lg:w-auto transition-colors duration-300"
             >
               <img
                 src={MACROLogo.src}
                 alt="Logo MACRO Click de pago"
-                className="hidden md:block min-w-[150px] max-w-[150px] h-auto bg-white rounded-md"
+                className="hidden md:block min-w-[150px] max-w-[150px] h-auto bg-white group-hover:border border-black rounded-md"
               />
               <img
                 src={MACROIcon.src}
@@ -210,9 +209,6 @@ const Bulletin = () => {
               <span className="text-lg text-nowrap">Consultar Deuda</span>
             </Link>
           </div>
-        </div>
-        <div className="py-10">
-          <Button className={""}>HOlA MUNDO</Button>
         </div>
       </section>
     </>

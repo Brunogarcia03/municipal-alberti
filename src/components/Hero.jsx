@@ -95,24 +95,25 @@ const Hero = () => {
       );
     });
 
+    gsap.to("#hero-text", {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out",
+      delay: 5,
+    });
+
     if (window.innerWidth < 768) {
       gsap.to("#button-hero", {
         scale: 1,
         opacity: 1,
         duration: 0.3,
         ease: "power2.out",
+        delay: 5.2,
       });
 
       return;
     }
-
-    gsap.to("#hero-text", {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power2.out",
-      delay: 0.5,
-    });
 
     const container = document.querySelector("#hero-container");
 
@@ -205,7 +206,7 @@ const Hero = () => {
           id="hero-text"
           className="absolute bottom-0 left-0 opacity-0 translate-[-20px] w-full h-auto overflow-hidden text-white rounded-b-lg flex flex-col items-start py-[2em] px-[2em] lg:py-[4em] lg:px-[4em] z-30"
         >
-          <h1 className="text-[2.3em] md:text-[2.9em] lg:text-[3.7em] z-30 font-bold italic leading-[1.2] text-white">
+          <h1 className="text-[2.3em] md:text-[2.9em] lg:text-[3.7em] z-40 font-bold italic leading-[1.2] text-white">
             Es nuestro Alberti <br /> Tierra de Trabajo
           </h1>
         </div>

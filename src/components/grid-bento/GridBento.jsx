@@ -1,10 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 
 const GridBento = ({ itemsList }) => {
   return (
     <div className="flex items-center justify-center w-full py-12">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full lg:max-w-7xl px-5 md:px-[2rem] lg:mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:max-w-5xl w-full mx-auto px-5 md:px-0 lg:mx-auto">
         <Link
           href={itemsList[0].href}
           className="relative bg-white rounded-md md:col-span-2 md:row-span-3 lg:h-[300px] p-6 flex flex-col justify-between shadow-sm shadow-blue group"

@@ -3,6 +3,7 @@ import "./globals.css";
 
 import Header from "@/components/Header";
 import LenisScrollProvider from "@/providers/lenis-provider";
+import Intro from "@/components/ui/Intro";
 
 const lato = Lato({
   style: ["normal", "italic"],
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
         className={`${lato.className} antialiased text-white overflow-x-hidden bg-white`}
       >
         <LenisScrollProvider>
+          <Intro />
           <Header />
           {children}
         </LenisScrollProvider>
