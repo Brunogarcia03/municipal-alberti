@@ -1,4 +1,4 @@
-import GridBento from "./grid-bento/GridBento";
+import GridBento from "./resources/GridBento";
 import Link from "next/link";
 
 import MACROLogo from "@/assets/images/MACROLogo.png";

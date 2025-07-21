@@ -14,6 +14,8 @@ import { NavList, categories, socials } from "@/utils/constants/constants";
 import Button from "./ui/Button";
 import { useParams } from "next/navigation";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(null);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -116,7 +118,13 @@ const Header = () => {
       delay: Object.keys(params).length === 0 ? 5 : 0.2,
     });
 
-    gsap.utils.toArray(".white-container").forEach((section) => {
+    if (typeof window === "undefined") return;
+
+    const sections = gsap.utils.toArray(".white-container");
+
+    if (sections.length === 0) return;
+
+    sections.forEach((section) => {
       ScrollTrigger.create({
         trigger: section,
         start: "top top",
@@ -127,6 +135,10 @@ const Header = () => {
         },
       });
     });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
 
   useGSAP(() => {
@@ -154,10 +166,10 @@ const Header = () => {
   }, [scrollY]);
 
   return (
-    <header className="fixed flex w-full inset-0 z-[999] min-h-[88px] max-h-[88px] bg-black/10 backdrop-blur-2xl translate-y-[-100%]">
-      <div
+    <header className="fixed flex justify-center w-dvw inset-0 z-[999] min-h-[88px] max-h-[88px] bg-black/10 backdrop-blur-2xl translate-y-[-100%]">
+      <nav
         id="header-fixed"
-        className="flex items-center justify-between opacity-0 w-full h-full mx-auto py-[1em] px-[2rem] z-10"
+        className="relative flex items-center justify-between opacity-0 w-full h-full mx-auto py-[1em] px-[2rem] z-10"
       >
         <Link
           href="/"
@@ -182,7 +194,7 @@ const Header = () => {
           </h1>
         </Link>
         <button
-          className="relative flex flex-col items-center justify-center size-[48px] cursor-pointer group"
+          className="md:absolute md:left-1/2 md:top-1/2 md:-translate-y-1/2 md:-translate-x-1/2 flex flex-col items-center justify-center size-[48px] cursor-pointer group"
           onClick={() => setIsOpen(!isOpen)}
         >
           <div
@@ -202,11 +214,11 @@ const Header = () => {
           className="hidden md:flex items-center justify-end"
           onClick={() => setIsOpen(false)}
         >
-          <Button className="bg-blue text-white border border-blue rounded-md py-2 px-6">
+          <Button className="px-6 py-3 bg-blue rounded-md text-white text-base sm:text-lg md:text-[1rem] leading-[1.3]">
             Contacto
           </Button>
         </Link>
-      </div>
+      </nav>
       <div
         id="menu-wrapper"
         className="absolute top-0 left-0 w-full h-0 overflow-hidden text-white bg-black rounded-b-lg flex flex-col items-start pt-[4em] px-[2em] pb-[1em] translate-y-[-88px]"
@@ -240,7 +252,7 @@ const Header = () => {
                 <img
                   src={item.src}
                   alt={item.name}
-                  className="absolute inset-0 scale-105 group-hover:scale-100 transition-transform duration-300 object-cover"
+                  className="absolute inset-0 scale-110 group-hover:scale-105 transition-transform duration-300 object-cover"
                 />
               </div>
             </Link>
@@ -276,7 +288,7 @@ const Header = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between w-full">
           <div
             id="categories"
-            className="flex flex-col items-start w-[50%] md:w-[25%] overflow-hidden mb-4 md:mb-0"
+            className="flex flex-col items-start w-full sm:w-[50%] md:w-[25%] overflow-hidden mb-4 md:mb-0"
           >
             <p className="text-[1rem] leading-[1.4] font-normal">Categorias</p>
             <address className="mt-1">
@@ -320,14 +332,11 @@ const Header = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.name}
-                      className="text-white font-light transition-colors duration-200 hover:text-blue"
+                      className="flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group border-white p-2 transition-colors duration-200 hover:border-transparent"
                       onClick={() => setIsOpen(false)}
                     >
                       {social.icon}
                     </Link>
-                    {index !== socials.length - 1 && (
-                      <span className="text-blue font-bold">&nbsp;/ </span>
-                    )}
                   </div>
                 ))}
               </div>

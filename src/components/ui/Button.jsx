@@ -4,7 +4,12 @@ import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { twMerge } from "tailwind-merge";
 
-const Button = ({ children = "Get GSAP", className, classnameFlair }) => {
+const Button = ({
+  children = "Get GSAP",
+  className,
+  classnameFlair,
+  onClick = () => {},
+}) => {
   const buttonRef = useRef(null);
   const flairRef = useRef(null);
 
@@ -83,22 +88,27 @@ const Button = ({ children = "Get GSAP", className, classnameFlair }) => {
     <button
       ref={buttonRef}
       className={twMerge(
-        "relative inline-flex items-center justify-center overflow-hidden rounded-full border-2 border-white bg-black px-6 py-3 font-semibold text-white hover:text-black transition-colors duration-150",
+        "relative inline-flex items-center justify-center rounded-full border-2 border-white bg-black px-6 py-3 font-semibold text-white hover:text-black hover:border-black transition-colors duration-150",
         className
       )}
+      onClick={onClick}
     >
-      <span
-        ref={flairRef}
-        className="absolute inset-0 scale-0 pointer-events-none"
-      >
+      {/* Flair contenido y recortado */}
+      <span className="absolute inset-0 overflow-hidden rounded-md pointer-events-none">
         <span
-          className={twMerge(
-            "absolute left-0 top-0 w-[200%] aspect-square rounded-full bg-white -translate-x-1/2 -translate-y-1/2",
-            classnameFlair
-          )}
-        />
+          ref={flairRef}
+          className="absolute inset-0 scale-0 pointer-events-none"
+        >
+          <span
+            className={twMerge(
+              "absolute left-0 top-0 w-[200%] aspect-square rounded-full bg-white -translate-x-1/2 -translate-y-1/2",
+              classnameFlair
+            )}
+          />
+        </span>
       </span>
-      <span className="relative z-10">{children}</span>
+      {/* Children siempre visible */}
+      <span className="relative z-10 text-nowrap">{children}</span>
     </button>
   );
 };

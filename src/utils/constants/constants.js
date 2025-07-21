@@ -1,8 +1,10 @@
+import Contactos from "@/assets/header/contactos-page.png";
+
 const NavList = [
   {
     name: "Gobierno",
     href: "/gobierno",
-    src: "https://cdn.prod.website-files.com/64269b49e1e55d66099de3ab/6465ef5add8cbdcadc9b5bb9_projects%20page%20preview.webp",
+    src: Contactos.src,
   },
   {
     name: "Ciudad",

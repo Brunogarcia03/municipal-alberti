@@ -5,13 +5,16 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
+import { useParams } from "next/navigation";
 
 const Intro = () => {
   const [hidden, setHidden] = useState(false);
   const Lenis = useLenis();
+  const params = useParams();
 
   useGSAP(() => {
     if (!Lenis) return;
+    if (Object.keys(params).length >= 1) return;
 
     let counterElement = document.getElementById("counter");
     let currentValue = 0;
