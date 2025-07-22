@@ -1,11 +1,11 @@
-import { Lato } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
 
 import Header from "@/components/Header";
 import LenisScrollProvider from "@/providers/lenis-provider";
 import Intro from "@/components/ui/Intro";
 
-const lato = Lato({
+const openSans = Open_Sans({
   style: ["normal", "italic"],
   subsets: ["latin"],
   weight: ["300", "400", "700"],
@@ -20,10 +20,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body
-        className={`${lato.className} antialiased text-white overflow-x-hidden bg-white`}
+        className={`${openSans.className} antialiased text-white overflow-x-hidden bg-white`}
       >
         <LenisScrollProvider>
-          <Intro />
+          {/* <Intro /> */}
           <Header />
           {children}
         </LenisScrollProvider>

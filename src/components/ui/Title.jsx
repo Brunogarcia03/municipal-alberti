@@ -2,20 +2,25 @@ import React from "react";
 
 const Title = ({ title1, title2, subTitle }) => {
   return (
-    <section className="h-full mx-auto overflow-hidden select-none">
-      <div className="h-[15rem]" />
-      <div className="flex flex-col items-center justify-center">
-        <h1 className="text-[3.3em] md:text-[4.9em] lg:text-[6.25rem] z-40 text-center leading-[1.1] font-bold text-white">
-          <span className="pb-[0.1em]">{title1}</span>
-          <span className="block my-4 px-4 bg-gray text-blue rounded-2xl mx-[5vw]">
-            {title2}
+    <section className="pt-[7.5rem] md:pt-[10rem] w-[95vw] md:max-w-[1560px] mx-auto">
+      <div className="flex flex-col items-center justify-center w-full h-full">
+        <h1
+          className="font-bold leading-[1.15] text-center relative text-2xl md:text-4xl lg:text-5xl"
+          style={{
+            lineHeight: "1.15",
+            fontWeight: 700,
+            textWrap: "balance",
+          }}
+        >
+          <span className="md:block w-full text-3xl md:text-5xl lg:text-6xl leading-[] uppercase text-blue">
+            {title1}
           </span>
+          <span className="text-gray">{title2}</span>
         </h1>
-        <p className="text-[1.25rem] md:text-[1.75rem] leading-[1.1] tracking-[-1px] font-light text-center max-w-2xl mx-[5vw] mt-4 md:mt-8">
+        <p className="leading-[1.1] text-base md:text-lg lg:text-xl max-w-3xl text-center mt-4">
           {subTitle}
         </p>
       </div>
-      <div className="h-[7.5rem]"></div>
     </section>
   );
 };
