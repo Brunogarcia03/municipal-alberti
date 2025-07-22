@@ -14,12 +14,21 @@ const CardPerson = () => {
   const Lenis = useLenis();
 
   useEffect(() => {
-    if (open === null) return;
+    const html = document.documentElement;
+    const body = document.body;
 
     if (open) {
-      Lenis.stop();
+      // Agregar clases que bloquean el scroll
+      html.classList.add("lenis-stopped", "-no-scroll");
+      body.style.overflow = "hidden";
+
+      Lenis?.stop();
     } else {
-      Lenis.start("");
+      // Remover las clases y restaurar scroll
+      html.classList.remove("lenis-stopped", "-no-scroll");
+      body.style.overflow = "";
+
+      Lenis?.start();
     }
   }, [open]);
 
@@ -62,12 +71,18 @@ const CardPerson = () => {
       </div>
       {open && (
         <section
-          className={twMerge(
-            "fixed top-0 left-0 flex items-center justify-center w-full h-full z-[999] transition-all duration-500 p-[2.5vw]",
-            open ? "opacity-100 scale-100" : "opacity-0 scale-90"
-          )}
+          className={
+            "fixed top-0 left-0 flex items-center justify-center w-full h-full z-[999] transition-all duration-500 p-[2.5vw]"
+          }
         >
-          <div className="relative w-full max-h-[95vh] rounded-md bg-black p-[5vw] overflow-y-auto overscroll-y-auto">
+          <div
+            id="scroller-modal"
+            data-lenis-prevent
+            className={twMerge(
+              "relative w-full max-h-[95vh] rounded-md bg-black p-[5vw] overflow-y-auto overscroll-y-auto",
+              open ? "opacity-100 scale-100" : "opacity-0 scale-90"
+            )}
+          >
             {/* Header modal */}
             <div className="grid grid-cols-3 items-center justify-between w-full border-b pb-[5vw] border-white">
               <div className="flex gap-1">
@@ -141,7 +156,7 @@ const CardPerson = () => {
                   width={1000}
                   height={500}
                   alt="Imagen de: "
-                  className="w-full h-auto object-cover rounded-md md:grayscale-75 group-hover:grayscale-0 transition-discrete duration-500"
+                  className="w-full h-auto object-cover rounded-md grayscale-0 transition-discrete duration-500"
                 />
               </picture>
               <div className="flex md:hidden items-end justify-start w-full gap-2.5">

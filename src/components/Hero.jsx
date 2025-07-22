@@ -86,7 +86,7 @@ const Hero = () => {
     heroIds.forEach((id, index) => {
       tl.fromTo(
         id,
-        { opacity: 0, scale: 1.2 },
+        { opacity: 0, scale: 1.1 },
         {
           opacity: 1,
           scale: 1,
@@ -163,7 +163,7 @@ const Hero = () => {
     <>
       <section
         id="hero-container"
-        className="relative w-screen h-dvh overflow-hidden"
+        className="relative w-screen h-dvh transition-all duration-1000 overflow-hidden"
       >
         <div className="div-image relative w-full h-full">
           {HeroImageList.map((item, index) => (
@@ -173,12 +173,12 @@ const Hero = () => {
               src={item.image}
               width={1920}
               height={1280}
-              className="absolute top-0 left-0 w-full h-full object-cover opacity-0"
+              className="absolute top-0 left-0 w-full h-dvh object-cover opacity-0"
               style={{ objectPosition: item.position }}
               alt={`${index + 1} Imagen Principal`}
             />
           ))}
-          <div className="absolute top-0 left-0 w-full h-full bg-black/25 z-10" />
+          <div className="absolute top-0 left-0 w-full h-dvh bg-black/25 z-10" />
         </div>
 
         <div
@@ -206,7 +206,7 @@ const Hero = () => {
           id="hero-text"
           className="absolute bottom-0 left-0 opacity-0 translate-[-20px] w-full h-auto overflow-hidden text-white rounded-b-lg flex flex-col items-start py-[2em] px-[2em] lg:py-[4em] lg:px-[4em] z-30"
         >
-          <h1 className="text-[2.3em] md:text-[2.9em] lg:text-[3.7em] z-40 font-bold italic leading-[1.2] text-white">
+          <h1 className="text-[1.5em] sm:text-[2.3em] md:text-[2.9em] lg:text-[3.7em] z-40 font-bold italic leading-[1.2] text-white">
             Es nuestro Alberti <br /> Tierra de Trabajo
           </h1>
         </div>
@@ -245,7 +245,7 @@ const Hero = () => {
         </div>
         <video
           src="/media/hero-alberti.mp4"
-          className="w-full h-full object-contain"
+          className="w-full h-dvh object-contain"
           controls
           loop
           autoPlay

@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
         className={`${openSans.className} antialiased text-white overflow-x-hidden bg-white`}
       >
         <LenisScrollProvider>
-          {/* <Intro /> */}
+          <Intro />
           <Header />
           {children}
         </LenisScrollProvider>

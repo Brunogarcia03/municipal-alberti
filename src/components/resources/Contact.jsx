@@ -76,12 +76,12 @@ const Contact = () => {
         <div className="flex flex-col gap-5 md:flex-row items-start justify-between px-5">
           {navContact.map((item, i) => (
             <div key={i} className="flex flex-col gap-1">
-              <div className="flex items-center gap-2 font-bold text-gray-700 text-[1.13rem] md:text-[1.375rem] leading-[1.4]">
+              <div className="flex items-center gap-2 font-bold text-gray-700 text-[1.1rem] sm:text-[1.25rem] md:text-[1.75rem] leading-[1.4]">
                 <span>{item.icon}</span>
                 <span className="">{item.text}</span>
               </div>
 
-              <span className="font-light text-[1.5rem] md:text-[2.25rem] leading-[1.1] tracking-[-0.5px] uppercase">
+              <span className="font-light text-[1.1rem] sm:text-[1.25rem] md:text-[1.75rem] leading-[1.1] tracking-[-0.5px] uppercase">
                 <b>{item.data}</b>
               </span>
             </div>

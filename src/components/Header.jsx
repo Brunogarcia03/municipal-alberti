@@ -166,7 +166,7 @@ const Header = () => {
   }, [scrollY]);
 
   return (
-    <header className="fixed flex justify-center w-dvw inset-0 z-[999] min-h-[88px] max-h-[88px] bg-black/10 backdrop-blur-2xl translate-y-[-100%]">
+    <header className="fixed flex justify-center w-dvw inset-0 z-[999] min-h-[88px] max-h-[88px] bg-black/10 backdrop-blur-xs sm:backdrop-blur-sm md:backdrop-blur-2xl translate-y-[-100%]">
       <nav
         id="header-fixed"
         className="relative flex items-center justify-between opacity-0 w-full h-full mx-auto py-[1em] px-[2rem] z-10"
@@ -187,7 +187,7 @@ const Header = () => {
 
           <h1
             id="text-icon"
-            className="text-white font-bold text-[1.2rem] leading-[1] ml-2 transition-colors duration-300"
+            className="text-white font-bold text-[1rem] sm:text-[1.2rem] leading-[1] ml-2 transition-colors duration-300"
           >
             Municipalidad <br />
             de Alberti

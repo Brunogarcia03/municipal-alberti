@@ -23,25 +23,16 @@ const page = () => {
 
   return (
     <main className="flex flex-col items-center justify-center w-full h-full overflow-hidden bg-white text-black white-container">
-      <section className="pt-[10rem] md:pt-[13rem] w-[95vw] md:max-w-[1560px] mx-auto">
+      <section className="pt-[10rem] md:pt-[13rem] w-[90vw] sm:w-[95vw] md:max-w-[1560px] mx-auto">
         <div className="flex flex-col items-center justify-center w-full h-full">
-          <h1
-            className="font-bold leading-[1.15] text-center relative text-2xl md:text-4xl lg:text-5xl"
-            style={{
-              lineHeight: "1.15",
-              fontWeight: 700,
-              textWrap: "balance",
-            }}
-          >
-            <span className="md:block w-full text-3xl md:text-5xl lg:text-6xl leading-[] uppercase text-blue">
-              Noticias y Actualidad
+          <h1 className="font-bold leading-[1.15] text-center relative">
+            <span className="md:block w-full text-3xl md:text-5xl lg:text-6xl uppercase text-blue">
+              Alberti al Día
             </span>
-            <span className="text-gray"></span>
           </h1>
-          <p className="leading-[1.1] text-base md:text-lg lg:text-xl max-w-3xl text-center mt-4">
+          <p className="leading-[1.1] text-base md:text-base lg:text-lg max-w-2xl text-center mt-4">
             Enterate de las últimas novedades, comunicados oficiales, eventos y
-            acciones del gobierno local. Toda la información al alcance de la
-            comunidad.
+            acciones del gobierno local.
           </p>
         </div>
       </section>
