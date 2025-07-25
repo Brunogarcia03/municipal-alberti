@@ -3,7 +3,7 @@
 import CardPerson from "@/components/resources/CardPerson";
 import Footer from "@/components/resources/Footer";
 import Button from "@/components/ui/Button";
-import Title from "@/components/ui/Title";
+
 import { useState } from "react";
 
 const page = () => {
@@ -13,7 +13,7 @@ const page = () => {
       <section className="pt-[10rem] md:pt-[13rem] w-[95vw] md:max-w-[1560px] mx-auto">
         <div className="flex flex-col items-center justify-center w-full h-full">
           <h1 className="font-bold leading-[1.15] text-center relative">
-            <span className="md:block w-full text-3xl md:text-5xl lg:text-6xl uppercase text-blue">
+            <span className="md:block w-full text-3xl md:text-5xl lg:text-6xl italic uppercase text-blue">
               Nuestro gobierno
             </span>
           </h1>
@@ -26,7 +26,7 @@ const page = () => {
         <div className="relative">
           <div className="flex items-center gap-3 pb-1 relative overflow-x-scroll sm:overflow-hidden overflow-y-hidden">
             <Button
-              className={`text-base sm:text-lg md:text-[1.75rem] leading-[1.3] px-2 py-1 rounded-md ${
+              className={`text-base sm:text-lg md:text-[1.5rem] leading-[1.3] px-2 py-1 rounded-md ${
                 selected === 0 && "bg-white text-black border-black"
               }`}
               onClick={() => setSelected(0)}
@@ -34,7 +34,7 @@ const page = () => {
               Todos
             </Button>
             <Button
-              className={`text-base sm:text-lg md:text-[1.75rem] leading-[1.3] px-2 py-1 rounded-md ${
+              className={`text-base sm:text-lg md:text-[1.5rem] leading-[1.3] px-2 py-1 rounded-md ${
                 selected === 1 && "bg-white text-black border-black"
               }`}
               onClick={() => setSelected(1)}
@@ -42,7 +42,7 @@ const page = () => {
               Secretarías
             </Button>
             <Button
-              className={`text-base sm:text-lg md:text-[1.75rem] leading-[1.3] px-2 py-1 rounded-md ${
+              className={`text-base sm:text-lg md:text-[1.5rem] leading-[1.3] px-2 py-1 rounded-md ${
                 selected === 2 && "bg-white text-black border-black"
               }`}
               onClick={() => setSelected(2)}

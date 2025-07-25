@@ -9,7 +9,7 @@ const page = () => {
       <section className="pt-[10rem] md:pt-[13rem] w-[95vw] md:max-w-[1560px] mx-auto">
         <div className="flex flex-col items-center justify-center w-full h-full">
           <h1 className="font-bold leading-[1.15] text-center relative">
-            <span className="md:block w-full text-3xl md:text-5xl lg:text-6xl uppercase text-blue">
+            <span className="md:block w-full text-3xl md:text-5xl lg:text-6xl italic uppercase text-blue">
               Contanos Algo
             </span>
           </h1>

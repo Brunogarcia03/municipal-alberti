@@ -9,19 +9,17 @@ import { useLenis } from "lenis/dist/lenis-react";
 import Image from "next/image";
 
 import HeroImage1 from "@/assets/images/hero1.webp";
-import HeroImage2 from "@/assets/images/hero2.webp";
-import HeroImage3 from "@/assets/images/hero3.webp";
 import HeroImage4 from "@/assets/images/hero4.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroImageList = [
   {
-    image: HeroImage2,
+    image: HeroImage1,
     position: "70% 70%",
   },
   {
-    image: HeroImage3,
+    image: HeroImage4,
     position: "60% 50%",
   },
   {

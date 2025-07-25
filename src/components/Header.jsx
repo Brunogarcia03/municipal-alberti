@@ -187,7 +187,7 @@ const Header = () => {
 
           <h1
             id="text-icon"
-            className="text-white font-bold text-[1rem] sm:text-[1.2rem] leading-[1] ml-2 transition-colors duration-300"
+            className="text-white font-bold text-[1rem] sm:text-[1.1rem] leading-[1] ml-2 transition-colors duration-300"
           >
             Municipalidad <br />
             de Alberti
@@ -221,7 +221,7 @@ const Header = () => {
       </nav>
       <div
         id="menu-wrapper"
-        className="absolute top-0 left-0 w-full h-0 overflow-hidden text-white bg-black rounded-b-lg flex flex-col items-start pt-[4em] px-[2em] pb-[1em] translate-y-[-88px]"
+        className="absolute top-0 left-0 w-full h-0 overflow-hidden text-white bg-black rounded-b-lg flex flex-col items-start pt-[3em] md:pt-[4em] px-[2em] pb-[1em] translate-y-[-88px]"
       >
         <div className="overscroll-contain flex flex-col md:flex-row items-center justify-between overflow-hidden w-full mt-[4em]">
           {NavList.map((item, index) => (
@@ -262,11 +262,11 @@ const Header = () => {
               id="menu-item"
               key={index}
               href={item.href}
-              className="inline-block md:hidden group w-full mb-2"
+              className="inline-block md:hidden group w-full mb-1.5"
               onClick={() => setIsOpen(false)}
             >
               <div className="flex items-center overflow-hidden">
-                <div className="flex flex-none items-center justify-center w-0 group-hover:w-10 mr-2 translate-0 overflow-hidden h-10 transition-discrete duration-300 font-bold">
+                <div className="flex flex-none items-center justify-center w-0 group-hover:w-10 translate-0 overflow-hidden h-10 transition-discrete duration-300 font-bold">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="40px"
@@ -277,7 +277,7 @@ const Header = () => {
                     <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
                   </svg>
                 </div>
-                <h1 className="flex items-center overflow-hidden text-[calc(1rem+5vw)] leading-[1.3] font-bold">
+                <h1 className="flex items-center overflow-hidden text-[calc(1rem+3vw)] leading-[1.3] font-bold">
                   {item.name}
                 </h1>
               </div>

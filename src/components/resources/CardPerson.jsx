@@ -72,38 +72,38 @@ const CardPerson = () => {
       {open && (
         <section
           className={
-            "fixed top-0 left-0 flex items-center justify-center w-full h-full z-[999] transition-all duration-500 p-[2.5vw]"
+            "fixed top-0 left-0 flex items-center justify-center md:justify-end w-full h-full z-[999] transition-all duration-500 p-[2.5vw] md:p-2"
           }
         >
           <div
             id="scroller-modal"
             data-lenis-prevent
             className={twMerge(
-              "relative w-full max-h-[95vh] rounded-md bg-black p-[5vw] overflow-y-auto overscroll-y-auto",
+              "relative w-full max-h-[95vh] md:w-[65vw] lg:w-[50vw] rounded-md bg-black p-[5vw] md:p-[2vw] overflow-y-auto overscroll-y-auto",
               open ? "opacity-100 scale-100" : "opacity-0 scale-90"
             )}
           >
             {/* Header modal */}
-            <div className="grid grid-cols-3 items-center justify-between w-full border-b pb-[5vw] border-white">
+            <div className="grid grid-cols-3 items-center justify-between w-full border-b pb-[5vw] md:pb-[2vw] border-white z-10">
               <div className="flex gap-1">
-                <button className="p-2 border-2 border-white group-hover:bg-white transition-colors duration-300 rounded-md">
+                <button className="p-2 border-2 border-white group hover:bg-white   transition-colors duration-300 rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
                     viewBox="0 -960 960 960"
                     width="24px"
-                    className="fill-white group-hover:fill-black transition-colors duration-300"
+                    className="fill-white group-hover:fill-black"
                   >
                     <path d="M400-240 160-480l240-240 56 58-142 142h486v80H314l142 142-56 58Z" />
                   </svg>
                 </button>
-                <button className="p-2 border-2 border-white group-hover:bg-white transition-colors duration-300 rounded-md">
+                <button className="p-2 border-2 border-white group hover:bg-white transition-colors duration-300 rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
                     viewBox="0 -960 960 960"
                     width="24px"
-                    className="fill-white group-hover:fill-black transition-colors duration-300"
+                    className="fill-white group-hover:fill-black"
                   >
                     <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z" />
                   </svg>
@@ -112,7 +112,7 @@ const CardPerson = () => {
               <span className="text-center font-bold w-full">03 - 04</span>
               <div className="flex items-center justify-end w-full">
                 <button
-                  className="p-2 border-2 border-white group-hover:bg-white transition-colors duration-300 rounded-md"
+                  className="p-2 border-2 border-white group hover:bg-white transition-colors duration-300 rounded-md"
                   onClick={() => setOpen(false)}
                 >
                   <svg
@@ -120,7 +120,7 @@ const CardPerson = () => {
                     height="24px"
                     viewBox="0 -960 960 960"
                     width="24px"
-                    fill="#f3f1ed"
+                    className="fill-white group-hover:fill-black"
                   >
                     <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                   </svg>
@@ -129,34 +129,34 @@ const CardPerson = () => {
             </div>
 
             {/* Hero modal */}
-            <div className="flex flex-col gap-[10vw] my-[10vw] pb-[5vw] border-b border-white overflow-hidden">
-              <div className="flex flex-col items-center justify-between">
-                <h4 className="text-[10vw] font-bold leading-[1.1]">
+            <div className="flex flex-col md:flex-row gap-[10vw] md:gap-[2vw] my-[10vw] md:my-[2.5vw] pb-[2vw] border-b border-white overflow-hidden">
+              <div className="flex flex-col items-center justify-between md:gap-y-[5vw]">
+                <h4 className="text-[10vw] md:text-[2.5vw] font-bold leading-[1.1]">
                   Andres Norambuena
                 </h4>
-                <div className="hidden md:flex items-end justify-start w-full gap-2.5">
+                <div className="hidden md:flex items-end justify-start h-full gap-2.5">
                   <Link
                     href={"#"}
-                    className="inline-flex items-center justify-center uppercase border border-white rounded-md px-3 py-1 bg-transparent hover:text-black hover:bg-white transition-colors duration-300"
+                    className="inline-flex items-center justify-center uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
                   >
                     Instagram
                   </Link>
                   <Link
                     href={"#"}
-                    className="inline-flex items-center justify-center uppercase border border-white rounded-md px-3 py-1 bg-transparent hover:text-black hover:bg-white transition-colors duration-300"
+                    className="inline-flex items-center justify-center uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
                   >
                     Email
                   </Link>
                 </div>
               </div>
 
-              <picture className="flex flex-col items-center justify-center w-full">
+              <picture className="flex flex-col items-center justify-center w-full h-full">
                 <Image
                   src={Person}
                   width={1000}
                   height={500}
                   alt="Imagen de: "
-                  className="w-full h-auto object-cover rounded-md grayscale-0 transition-discrete duration-500"
+                  className="w-full h-full object-cover rounded-md grayscale-0 transition-discrete duration-500"
                 />
               </picture>
               <div className="flex md:hidden items-end justify-start w-full gap-2.5">
