@@ -101,7 +101,7 @@ const Bulletin = () => {
     <>
       <section
         id="bulletin-container"
-        className="relative flex flex-col justify-center min-h-screen w-full py-16 md:py-24 white-container"
+        className="relative flex flex-col justify-center min-h-screen w-full pt-16 md:pt-24 white-container"
       >
         <div className="px-8 text-center">
           <h3 className="text-[1.3em] md:text-[1.9em] lg:text-[2.7em] text-blue font-bold italic leading-[1.2] z-0">
@@ -123,7 +123,7 @@ const Bulletin = () => {
           .
         </p>
       </section>
-      <section className="relative flex flex-col min-h-screen w-full pb-16 pt-4 md:pt-8 md:pb-24 px-6 md:px-24 white-container">
+      <section className="relative flex flex-col w-full pt-4 md:pt-8 px-6 md:px-24 white-container">
         <div className="relative overflow-hidden bg-white max-w-5xl w-full mx-auto rounded-md md:col-span-2 md:row-span-3 row-start-4 p-6 flex flex-col shadow-sm shadow-blue group">
           <div className="flex items-center overflow-hidden">
             <div className="flex flex-none items-center justify-center w-0 group-hover:w-10 translate-0 overflow-hidden h-10 transition-discrete duration-300 font-bold">

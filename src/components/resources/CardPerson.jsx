@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import { useLenis } from "lenis/dist/lenis-react";
 
-import Person from "@/assets/images/Person.webp";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
+import { renderContent } from "@/utils/tools";
 
-const CardPerson = () => {
+const CardPerson = ({ official, meta, index }) => {
   const [open, setOpen] = useState(null);
 
   const Lenis = useLenis();
@@ -40,7 +40,7 @@ const CardPerson = () => {
           onClick={() => setOpen(true)}
         >
           <Image
-            src={Person}
+            src={process.env.NEXT_PUBLIC_BACKEND_URL + official.imagen.url}
             width={1000}
             height={500}
             alt="Imagen de: "
@@ -49,11 +49,9 @@ const CardPerson = () => {
           <div className="mt-[1vw] flex items-center justify-between">
             <div>
               <h6 className="font-bold text-base md:text-[1.25rem] leading-[1.3]">
-                Andres Norambuena
+                {official.nombre}
               </h6>
-              <span className="uppercase text-sm md:text-base">
-                Ceo - partner
-              </span>
+              <span className="uppercase text-sm">{official.cargo}</span>
             </div>
             <span className="p-2 border-2 border-white group-hover:bg-white transition-colors duration-300 rounded-md">
               <svg
@@ -74,45 +72,38 @@ const CardPerson = () => {
           className={
             "fixed top-0 left-0 flex items-center justify-center md:justify-end w-full h-full z-[999] transition-all duration-500 p-[2.5vw] md:p-2"
           }
+          onClick={() => setOpen(false)}
         >
           <div
             id="scroller-modal"
             data-lenis-prevent
+            onClick={(e) => e.stopPropagation()}
             className={twMerge(
-              "relative w-full max-h-[95vh] md:w-[65vw] lg:w-[50vw] rounded-md bg-black p-[5vw] md:p-[2vw] overflow-y-auto overscroll-y-auto",
+              "relative w-full max-h-[95vh] md:w-[65vw] lg:w-[50vw] rounded-md bg-black p-[5vw] md:p-[2vw] overflow-y-auto overscroll-y-auto z-[1000]",
               open ? "opacity-100 scale-100" : "opacity-0 scale-90"
             )}
           >
             {/* Header modal */}
             <div className="grid grid-cols-3 items-center justify-between w-full border-b pb-[5vw] md:pb-[2vw] border-white z-10">
               <div className="flex gap-1">
-                <button className="p-2 border-2 border-white group hover:bg-white   transition-colors duration-300 rounded-md">
+                <button className="p-2 border-2 border-white rounded-md">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
                     viewBox="0 -960 960 960"
                     width="24px"
-                    className="fill-white group-hover:fill-black"
+                    fill="#e3e3e3"
                   >
-                    <path d="M400-240 160-480l240-240 56 58-142 142h486v80H314l142 142-56 58Z" />
-                  </svg>
-                </button>
-                <button className="p-2 border-2 border-white group hover:bg-white transition-colors duration-300 rounded-md">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    className="fill-white group-hover:fill-black"
-                  >
-                    <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z" />
+                    <path d="M480-200 240-440l56-56 184 183 184-183 56 56-240 240Zm0-240L240-680l56-56 184 183 184-183 56 56-240 240Z" />
                   </svg>
                 </button>
               </div>
-              <span className="text-center font-bold w-full">03 - 04</span>
+              <span className="text-center font-bold w-full">
+                {index + 1} - {meta.pagination.total}
+              </span>
               <div className="flex items-center justify-end w-full">
                 <button
-                  className="p-2 border-2 border-white group hover:bg-white transition-colors duration-300 rounded-md"
+                  className="p-2 border-2 border-white group hover:bg-white transition-colors duration-300 rounded-md cursor-pointer"
                   onClick={() => setOpen(false)}
                 >
                   <svg
@@ -130,29 +121,35 @@ const CardPerson = () => {
 
             {/* Hero modal */}
             <div className="flex flex-col md:flex-row gap-[10vw] md:gap-[2vw] my-[10vw] md:my-[2.5vw] pb-[2vw] border-b border-white overflow-hidden">
-              <div className="flex flex-col items-center justify-between md:gap-y-[5vw]">
-                <h4 className="text-[10vw] md:text-[2.5vw] font-bold leading-[1.1]">
-                  Andres Norambuena
+              <div className="flex flex-col items-center justify-between md:gap-y-[5vw] md:w-1/2">
+                <h4 className="text-[10vw] md:text-[2.5vw] text-center md:text-start w-full font-bold leading-[1.1]">
+                  {official.nombre}
                 </h4>
                 <div className="hidden md:flex items-end justify-start h-full gap-2.5">
-                  <Link
-                    href={"#"}
-                    className="inline-flex items-center justify-center uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
-                  >
-                    Instagram
-                  </Link>
-                  <Link
-                    href={"#"}
-                    className="inline-flex items-center justify-center uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
-                  >
-                    Email
-                  </Link>
+                  {official.instagram && (
+                    <Link
+                      href={official.instagram}
+                      className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
+                    >
+                      Instagram
+                    </Link>
+                  )}
+                  {official.email && (
+                    <Link
+                      href={official.email}
+                      className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
+                    >
+                      Email
+                    </Link>
+                  )}
                 </div>
               </div>
 
               <picture className="flex flex-col items-center justify-center w-full h-full">
                 <Image
-                  src={Person}
+                  src={
+                    process.env.NEXT_PUBLIC_BACKEND_URL + official.imagen.url
+                  }
                   width={1000}
                   height={500}
                   alt="Imagen de: "
@@ -160,41 +157,41 @@ const CardPerson = () => {
                 />
               </picture>
               <div className="flex md:hidden items-end justify-start w-full gap-2.5">
-                <Link
-                  href={"#"}
-                  className="inline-flex items-center justify-center uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:border-white hover:bg-transparent transition-colors duration-300"
-                >
-                  Instagram
-                </Link>
-                <Link
-                  href={"#"}
-                  className="inline-flex items-center justify-center uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:border-white hover:bg-transparent transition-colors duration-300"
-                >
-                  Email
-                </Link>
+                {official.instagram && (
+                  <Link
+                    href={official.instagram}
+                    className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
+                  >
+                    Instagram
+                  </Link>
+                )}
+                {official.email && (
+                  <Link
+                    href={official.email}
+                    className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
+                  >
+                    Email
+                  </Link>
+                )}
               </div>
             </div>
 
             {/* Body modal */}
-            <div className="text-[1em] leading-[1.3] w-full">
-              <p>
-                With almost 30 years of experience in the sound studios and
-                post-production industry, Andres Norambuena is a human leader
-                who thrives on creating a collaborative environment founded on
-                his personal values. Honesty, trust, own your expertise, and
-                enjoy the journey of achieving success, collectively as a team.
-              </p>
-              <p className="mt-[1em]">
-                A true visionary, Andres successfully transformed BoogieSound
-                studio, a sound studio, into BLVD-MTL, multidisciplinary,
-                one-stop-shop studio that housed Sound, Post-Prod Video,
-                Filming, and Multimedia installation under one roof, growing
-                business by 400% in sales from its beginnings to its sale in
-                2021. A charismatic leader, Andres has built core executive
-                teams, led employees with various expertise, and grew his
-                workforce of niche experts to feed the growing demands of
-                hundreds of clients with projects all over North America.
-              </p>
+            <div className="text-[1em] leading-[1.5] w-full">
+              <h2 className="text-xl font-bold mt-4 mb-2">{official.cargo}</h2>
+              {renderContent(official.contenido)}
+            </div>
+
+            <div className="mt-[1em] text-[1em] leading-[1.3] w-full">
+              <Link
+                href={
+                  process.env.NEXT_PUBLIC_BACKEND_URL + official.declaracion.url
+                }
+                target="_blank"
+                className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
+              >
+                Declaración Jurada
+              </Link>
             </div>
           </div>
         </section>

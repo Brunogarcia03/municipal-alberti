@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { twMerge } from "tailwind-merge";
+import Button from "../ui/Button";
 
 const Footer = ({ dark = false }) => {
   return (
@@ -13,7 +14,7 @@ const Footer = ({ dark = false }) => {
       )}
     >
       <div className="flex flex-col items-start w-full">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row gap-3 w-full items-start md:items-center justify-between">
           <Link href="/" className="flex items-center">
             <Image
               src="/ICON.png"
@@ -29,6 +30,12 @@ const Footer = ({ dark = false }) => {
               de Alberti
             </h1>
           </Link>
+          <Button
+            children="Contactanos"
+            className={
+              "text-base sm:text-lg md:text-[1.5rem] leading-[1.3] px-3 py-2 md:px-5 md:py-3 rounded-md bg-blue"
+            }
+          />
         </div>
         <div
           className={`w-full h-[1px] my-[1.5em] ${

@@ -12,14 +12,12 @@ import { useWindowScroll } from "@reactuses/core";
 
 import { NavList, categories, socials } from "@/utils/constants/constants";
 import Button from "./ui/Button";
-import { useParams } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(null);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const params = useParams();
 
   const lenis = useLenis();
 
@@ -115,7 +113,7 @@ const Header = () => {
       y: 0,
       opacity: 1,
       duration: 1,
-      delay: Object.keys(params).length === 0 ? 5 : 0.2,
+      delay: 0.2,
     });
 
     if (typeof window === "undefined") return;
