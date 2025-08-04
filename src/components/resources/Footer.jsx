@@ -30,12 +30,14 @@ const Footer = ({ dark = false }) => {
               de Alberti
             </h1>
           </Link>
-          <Button
-            children="Contactanos"
-            className={
-              "text-base sm:text-lg md:text-[1.5rem] leading-[1.3] px-3 py-2 md:px-5 md:py-3 rounded-md bg-blue"
-            }
-          />
+          <Link href={"/contacto"} className="cursor-pointer">
+            <Button
+              children="Contactanos"
+              className={
+                "text-base sm:text-lg md:text-[1.5rem] leading-[1.3] px-3 py-2 md:px-5 md:py-3 rounded-md bg-blue cursor-pointer"
+              }
+            />
+          </Link>
         </div>
         <div
           className={`w-full h-[1px] my-[1.5em] ${

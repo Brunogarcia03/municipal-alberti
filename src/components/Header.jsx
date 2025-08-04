@@ -231,7 +231,7 @@ const Header = () => {
               onClick={() => setIsOpen(false)}
             >
               <div className="flex items-center overflow-hidden">
-                <div className="flex flex-none items-center justify-center w-0 group-hover:w-6 mr-2 translate-0 overflow-hidden h-4 transition-discrete duration-300 font-bold">
+                <div className="flex flex-none items-center justify-center w-0 group-hover:w-6 mr-2 translate-0 overflow-hidden h-4 transition-discrete duration-150 font-bold">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -264,7 +264,7 @@ const Header = () => {
               onClick={() => setIsOpen(false)}
             >
               <div className="flex items-center overflow-hidden">
-                <div className="flex flex-none items-center justify-center w-0 group-hover:w-10 translate-0 overflow-hidden h-10 transition-discrete duration-300 font-bold">
+                <div className="flex flex-none items-center justify-center w-0 group-hover:w-10 translate-0 overflow-hidden h-10 transition-discrete duration-150 font-bold">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="40px"

@@ -105,25 +105,25 @@ const Contact = () => {
               </div>
               <div className="w-full md:w-[55%]">
                 <input
-                  className="border-[1.5px] border-gray rounded-md w-full min-h-[80px] text-black mb-[16px] px-[16px] md:px-[40px] text-[22px] bg-transparent relative transition-colors duration-300 hover:border-black"
+                  className="border-[1.5px] border-gray rounded-md w-full min-h-[80px] text-black mb-[16px] px-[16px] md:px-[40px] text-base md:text-[22px] bg-transparent relative transition-colors duration-300 hover:border-black"
                   type="text"
                   required
                   placeholder="Correo Electrónico"
                 />
                 <input
-                  className="border-[1.5px] border-gray rounded-md w-full min-h-[80px] text-black mb-[16px] px-[16px] md:px-[40px] text-[22px] bg-transparent relative transition-colors duration-300 hover:border-black"
+                  className="border-[1.5px] border-gray rounded-md w-full min-h-[80px] text-black mb-[16px] px-[16px] md:px-[40px] text-base md:text-[22px] bg-transparent relative transition-colors duration-300 hover:border-black"
                   type="text"
                   required
                   placeholder="Nombre y Apellido"
                 />
                 <input
-                  className="border-[1.5px] border-gray rounded-md w-full min-h-[80px] text-black mb-[16px] px-[16px] md:px-[40px] text-[22px] bg-transparent relative transition-colors duration-300 hover:border-black"
+                  className="border-[1.5px] border-gray rounded-md w-full min-h-[80px] text-black mb-[16px] px-[16px] md:px-[40px] text-base md:text-[22px] bg-transparent relative transition-colors duration-300 hover:border-black"
                   type="text"
                   required
                   placeholder="Asunto"
                 />
                 <textarea
-                  className="border-[1.5px] border-gray rounded-md w-full min-h-[300px] md:min-h-[400px] text-black mb-[16px] py-[24px] px-[16px] md:px-[40px] text-[22px] bg-transparent relative transition-colors duration-300 hover:border-black"
+                  className="border-[1.5px] border-gray rounded-md w-full min-h-[300px] md:min-h-[400px] text-black mb-[16px] py-[24px] px-[16px] md:px-[40px] text-base md:text-[22px] bg-transparent relative transition-colors duration-300 hover:border-black"
                   type="text"
                   required
                   placeholder="Mensaje"

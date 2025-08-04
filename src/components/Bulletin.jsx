@@ -10,7 +10,7 @@ const boletinItems = [
     title: "Ordenanzas",
     description:
       "Normativas locales sancionadas por el Honorable Concejo Deliberante.",
-    href: "/boletin/ordenanzas",
+    href: "/boletin#ordenanzas",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -24,10 +24,11 @@ const boletinItems = [
     ),
   },
   {
-    id: "publicaciones-de-ley",
-    title: "Publicaciones de Ley",
-    description: "Leyes provinciales y nacionales que afectan al municipio.",
-    href: "/boletin/publicaciones-de-ley",
+    id: "decretos",
+    title: "Decretos",
+    description:
+      "Disposiciones ejecutivas del Departamento Ejecutivo Municipal.",
+    href: "/boletin#decretos",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -36,10 +37,11 @@ const boletinItems = [
         width="40px"
         fill="#00438b"
       >
-        <path d="M160-120v-66.67h480V-120H160Zm223.33-206L160-549.33 234.67-626 460-402.67 383.33-326Zm254-254L414-805.33 490.67-880 714-656.67 637.33-580Zm196 420L302-691.33 348.67-738 880-206.67 833.33-160Z" />
+        <path d="M80-120v-66.67h366.67v-471.66q-26-9-46-29t-29-46H223.33l123.34 294.66Q346-392 307.33-359.33q-38.66 32.66-94 32.66-55.33 0-94-32.66Q80.67-392 80-438.67l123.33-294.66H120V-800h251.67q12-35 41.66-57.5Q443-880 480-880t66.67 22.5q29.66 22.5 41.66 57.5H840v66.67h-83.33L880-438.67q-.67 46.67-39.33 79.34-38.67 32.66-94 32.66-55.34 0-94-32.66Q614-392 613.33-438.67l123.34-294.66H588.33q-9 26-29 46t-46 29v471.66H880V-120H80Zm591.67-320h150l-75-180.67-75 180.67Zm-533.34 0h150l-75-180.67-75 180.67ZM480-720q19.67 0 33.17-13.83 13.5-13.84 13.5-32.84 0-19.66-13.5-33.16-13.5-13.5-33.17-13.5-19 0-32.83 13.5-13.84 13.5-13.84 33.16 0 19 13.84 32.84Q461-720 480-720Z" />
       </svg>
     ),
   },
+
   {
     id: "sibom",
     title: "SIBOM",
@@ -59,11 +61,10 @@ const boletinItems = [
     ),
   },
   {
-    id: "decretos",
-    title: "Decretos",
-    description:
-      "Disposiciones ejecutivas del Departamento Ejecutivo Municipal.",
-    href: "/boletin/decretos",
+    id: "publicaciones-de-ley",
+    title: "Publicaciones de Ley",
+    description: "Leyes provinciales y nacionales que afectan al municipio.",
+    href: "/boletin#publicaciones-de-ley",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +73,7 @@ const boletinItems = [
         width="40px"
         fill="#00438b"
       >
-        <path d="M80-120v-66.67h366.67v-471.66q-26-9-46-29t-29-46H223.33l123.34 294.66Q346-392 307.33-359.33q-38.66 32.66-94 32.66-55.33 0-94-32.66Q80.67-392 80-438.67l123.33-294.66H120V-800h251.67q12-35 41.66-57.5Q443-880 480-880t66.67 22.5q29.66 22.5 41.66 57.5H840v66.67h-83.33L880-438.67q-.67 46.67-39.33 79.34-38.67 32.66-94 32.66-55.34 0-94-32.66Q614-392 613.33-438.67l123.34-294.66H588.33q-9 26-29 46t-46 29v471.66H880V-120H80Zm591.67-320h150l-75-180.67-75 180.67Zm-533.34 0h150l-75-180.67-75 180.67ZM480-720q19.67 0 33.17-13.83 13.5-13.84 13.5-32.84 0-19.66-13.5-33.16-13.5-13.5-33.17-13.5-19 0-32.83 13.5-13.84 13.5-13.84 33.16 0 19 13.84 32.84Q461-720 480-720Z" />
+        <path d="M160-120v-66.67h480V-120H160Zm223.33-206L160-549.33 234.67-626 460-402.67 383.33-326Zm254-254L414-805.33 490.67-880 714-656.67 637.33-580Zm196 420L302-691.33 348.67-738 880-206.67 833.33-160Z" />
       </svg>
     ),
   },
@@ -81,7 +82,7 @@ const boletinItems = [
     title: "DDJJ Funcionarios",
     description:
       "Declaraciones juradas patrimoniales de funcionarios públicos.",
-    href: "/boletin/ddjj",
+    href: "/boletin#ddjj",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +115,7 @@ const Bulletin = () => {
           </p>
         </div>
         <GridBento itemsList={boletinItems} />
-        <p className="text-center text-base md:text-lg lg:text-xl text-black w-full max-w-none md:max-w-3xl mx-auto mt-4 opacity-70">
+        <p className="text-center text-base md:text-lg lg:text-xl text-black w-full max-w-full md:max-w-3xl p-2 md:mx-auto my-4 opacity-70">
           Este boletín se actualiza periódicamente. <br />
           Para consultas específicas, contactanos a través de nuestra sección de{" "}
           <Link href="/contacto" className="underline text-blue">
