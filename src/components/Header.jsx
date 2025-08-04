@@ -297,7 +297,7 @@ const Header = () => {
                     className="flex items-center text-[1rem] pr-1.5"
                   >
                     <Link
-                      href={`prensa/categorias/${item.toLowerCase()}`}
+                      href={`/prensa`}
                       className="text-white font-light transition-colors duration-200 hover:text-blue"
                       onClick={() => setIsOpen(false)}
                     >
