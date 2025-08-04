@@ -98,7 +98,7 @@ const Hero = () => {
       opacity: 1,
       duration: 1,
       ease: "power2.out",
-      delay: 5,
+      delay: 1,
     });
 
     if (window.innerWidth < 768) {
@@ -107,7 +107,7 @@ const Hero = () => {
         opacity: 1,
         duration: 0.3,
         ease: "power2.out",
-        delay: 5.2,
+        delay: 1,
       });
 
       return;
