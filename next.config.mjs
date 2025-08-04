@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [{ protocol: "http", hostname: "127.0.0.1" }],
+    remotePatterns: [
+      { protocol: "https", hostname: process.env.NEXT_PUBLIC_URL_IMAGES },
+    ],
   },
 };
 
