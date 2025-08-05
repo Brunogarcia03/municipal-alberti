@@ -1,5 +1,6 @@
 import Contact from "@/components/resources/Contact";
 import Footer from "@/components/resources/Footer";
+import Lines from "@/components/ui/anim/Lines";
 import Words from "@/components/ui/anim/Words";
 import React from "react";
 
