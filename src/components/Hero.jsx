@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -10,6 +10,7 @@ import Image from "next/image";
 
 import HeroImage1 from "@/assets/images/hero1.webp";
 import HeroImage4 from "@/assets/images/hero4.webp";
+import { wordsAnimation } from "@/utils/constants/animations";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,6 +35,8 @@ const HeroImageList = [
 
 const Hero = () => {
   const [isOpen, setIsOpen] = useState(null);
+
+  const titleRef = useRef(null);
 
   const Lenis = useLenis();
 
@@ -93,14 +96,6 @@ const Hero = () => {
       );
     });
 
-    gsap.to("#hero-text", {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power2.out",
-      delay: 1,
-    });
-
     if (window.innerWidth < 768) {
       gsap.to("#button-hero", {
         scale: 1,
@@ -157,6 +152,8 @@ const Hero = () => {
     };
   }, []);
 
+  wordsAnimation(titleRef, 200, 1);
+
   return (
     <>
       <section
@@ -200,12 +197,13 @@ const Hero = () => {
           </button>
         </div>
 
-        <div
-          id="hero-text"
-          className="absolute bottom-0 left-0 opacity-0 translate-[-20px] w-full h-auto overflow-hidden text-white rounded-b-lg flex flex-col items-start py-[2em] px-[2em] lg:py-[4em] lg:px-[4em] z-30"
-        >
-          <h1 className="text-[1.5em] sm:text-[2.3em] md:text-[2.9em] lg:text-[3.7em] z-40 font-bold italic leading-[1.2] text-white">
-            Es nuestro Alberti <br /> Tierra de Trabajo
+        <div className="absolute bottom-0 left-0 w-full h-auto overflow-hidden text-white rounded-b-lg flex flex-col items-start py-[2em] px-[2em] lg:py-[4em] lg:px-[4em] z-30">
+          <h1
+            ref={titleRef}
+            className="text-[1.5em] sm:text-[2.3em] md:text-[2.9em] lg:text-[3.7em] z-0 font-bold italic leading-[1.2] pr-2 text-white overflow-hidden"
+          >
+            Es nuestro Alberti
+            <br /> Tierra de Trabajo
           </h1>
         </div>
       </section>

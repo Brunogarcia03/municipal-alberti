@@ -26,3 +26,11 @@ body {
 .menu-line.header--light {
   background-color: #212121;
 }
+
+.split-text {
+  overflow: hidden;
+}
+
+.split-text div {
+  overflow: hidden;
+}

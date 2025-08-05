@@ -48,7 +48,11 @@ export const getOneNews = async (slug) => {
 };
 
 export const getAllOfficials = async () => {
-  const res = await axiosClient.get("/funcionarios?populate=*");
+  const res = await axiosClient.get(
+    "/funcionarios?populate=imagen&populate=declaracion_jurada.archivo"
+  );
+
+  console.log(res.data.data);
 
   return { data: res.data.data, meta: res.data.meta };
 };

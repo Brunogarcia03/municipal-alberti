@@ -4,6 +4,9 @@ import Link from "next/link";
 import MACROLogo from "@/assets/images/MACROLogo.png";
 import MACROIcon from "@/assets/images/MACROIcon.png";
 
+import Words from "./ui/anim/Words";
+import Lines from "./ui/anim/Lines";
+
 const boletinItems = [
   {
     id: "ordenanzas",
@@ -105,14 +108,18 @@ const Bulletin = () => {
         className="relative flex flex-col justify-center min-h-screen w-full pt-16 md:pt-24 white-container"
       >
         <div className="px-8 text-center">
-          <h3 className="text-[1.3em] md:text-[1.9em] lg:text-[2.7em] text-blue font-bold italic leading-[1.2] z-0">
-            Boletín Oficial Municipal
-          </h3>
-          <p className="text-base md:text-lg lg:text-xl text-black w-full max-w-none md:max-w-3xl mx-auto mt-4">
-            Aquí podés acceder de forma rápida a todas las publicaciones
-            oficiales de la Municipalidad de Alberti. Para que siempre estés al
-            día con la normativa y la gestión pública.
-          </p>
+          <Words>
+            <h3 className="text-[1.3em] md:text-[1.9em] lg:text-[2.7em] text-blue font-bold italic leading-[1.2] z-0 split-text">
+              Boletín Oficial Municipal
+            </h3>
+          </Words>
+          <Lines delay={0.5} yPercent={300}>
+            <p className="text-base md:text-lg lg:text-xl text-black w-full max-w-none md:max-w-3xl mx-auto mt-4 split-text">
+              Aquí podés acceder de forma rápida a todas las publicaciones
+              oficiales de la Municipalidad de Alberti. Para que siempre estés
+              al día con la normativa y la gestión pública.
+            </p>
+          </Lines>
         </div>
         <GridBento itemsList={boletinItems} />
         <p className="text-center text-base md:text-lg lg:text-xl text-black w-full max-w-full md:max-w-3xl p-2 md:mx-auto my-4 opacity-70">

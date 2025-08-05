@@ -1,4 +1,6 @@
 import Footer from "@/components/resources/Footer";
+import Lines from "@/components/ui/anim/Lines";
+import Words from "@/components/ui/anim/Words";
 import CardTransparency from "@/components/ui/CardTransparency";
 
 const itemsTrasparency = [
@@ -65,15 +67,20 @@ const page = () => {
     <main className="flex flex-col items-center justify-center w-full h-full overflow-hidden bg-black/90">
       <section className="pt-[10rem] md:pt-[13rem] w-[95vw] md:max-w-[1560px] mx-auto">
         <div className="flex flex-col items-center justify-center w-full h-full">
-          <h1 className="font-bold leading-[1.15] text-center relative">
-            <span className="md:block w-full text-3xl md:text-5xl lg:text-6xl italic uppercase text-blue">
-              Transparencia
-            </span>
-          </h1>
-          <p className="leading-[1.1] text-base md:text-base lg:text-lg max-w-2xl text-center mt-4">
-            Divulgación completa de toda la información fiscal relevante de
-            manera oportuna y sistemática
-          </p>
+          <Words yPercent={110}>
+            <h1 className="font-bold leading-[1.15] text-center relative overflow-hidden">
+              <span className="md:block w-full text-3xl md:text-5xl lg:text-6xl italic uppercase text-blue">
+                Transparencia
+              </span>
+            </h1>
+          </Words>
+
+          <Lines yPercent={300}>
+            <p className="leading-[1.1] text-base md:text-base lg:text-lg max-w-2xl text-center mt-4 overflow-hidden">
+              Divulgación completa de toda la información fiscal relevante de
+              manera oportuna y sistemática
+            </p>
+          </Lines>
         </div>
         <div className="h-[7.5rem]"></div>
       </section>
