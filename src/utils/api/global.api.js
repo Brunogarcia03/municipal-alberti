@@ -52,7 +52,29 @@ export const getAllOfficials = async () => {
     "/funcionarios?populate=imagen&populate=declaracion_jurada.archivo"
   );
 
-  console.log(res.data.data);
-
   return { data: res.data.data, meta: res.data.meta };
+};
+
+export const getAllDDJJ = async () => {
+  const res = await axiosClient.get("/declaraciones-juradas?populate=*");
+
+  return res.data.data;
+};
+
+export const getAllOrdinances = async () => {
+  const res = await axiosClient.get("/ordenanzas?populate=*");
+
+  return res.data.data;
+};
+
+export const getAllDecrees = async () => {
+  const res = await axiosClient.get("/decretos?populate=*");
+
+  return res.data.data;
+};
+
+export const getAllPublication = async () => {
+  const res = await axiosClient.get("/publicacion-de-leys?populate=*");
+
+  return res.data.data;
 };

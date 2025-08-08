@@ -133,7 +133,7 @@ const Contact = () => {
             <div className="w-full h-[1px] bg-black my-[2.5rem] md:my-[5rem]" />
             <div className="flex flex-col md:flex-row items-stretch sm:items-start justify-between w-full">
               <div className="w-full md:w-[30%] mb-[1.5em]">
-                <h5 className="text-nowrap text-[18px] md:text-[1.75rem] leading-[1.3]">
+                <h5 className="sm:text-nowrap text-[18px] md:text-[1.75rem] leading-[1.3]">
                   Contactanos cuando lo necesites
                 </h5>
               </div>

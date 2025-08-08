@@ -50,7 +50,7 @@ const boletinItems = [
     title: "SIBOM",
     description:
       "Sistema de Boletines Oficiales Municipales. Acceso centralizado.",
-    href: "https://sibom.senado-ba.gov.ar",
+    href: "https://sibom.slyt.gba.gob.ar/",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -212,7 +212,7 @@ const Bulletin = () => {
               <img
                 src={MACROIcon.src}
                 alt="Icono MACRO Click de pago"
-                className="block md:hidden min-w-[50px] max-w-[50px] h-[50px] bg-white rounded-md"
+                className="block md:hidden min-w-[35px] max-w-[35px] h-[35px] sm:min-w-[50px] sm:max-w-[50px] sm:h-[50px] bg-white rounded-md"
               />
               <span className="text-lg text-nowrap">Consultar Deuda</span>
             </Link>

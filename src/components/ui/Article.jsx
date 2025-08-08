@@ -33,6 +33,7 @@ function Article({ news = "" }) {
             <Image
               width={1000}
               height={667}
+              priority
               src={getFullUrl(news.imagen.url)}
               alt="Imagen de ejemplo"
               className="w-full h-full md:scale-105 group-hover:scale-100 transition-discrete duration-500 object-cover"

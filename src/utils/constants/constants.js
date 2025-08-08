@@ -24,11 +24,26 @@ const NavList = [
 ];
 
 const categories = [
-  "Obras Publicas",
-  "Educación",
-  "Salud",
-  "Cultura",
-  "Deportes",
+  {
+    title: "Obras Públicas",
+    url: "obras-publicas",
+  },
+  {
+    title: "Educación",
+    url: "educacion",
+  },
+  {
+    title: "Salud",
+    url: "salud",
+  },
+  {
+    title: "Cultura",
+    url: "cultura",
+  },
+  {
+    title: "Deportes",
+    url: "deportes",
+  },
 ];
 
 const socials = [

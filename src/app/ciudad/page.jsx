@@ -7,7 +7,7 @@ import Words from "@/components/ui/anim/Words";
 export default function page() {
   return (
     <main className="flex flex-col items-center w-full h-full overflow-hidden bg-white text-black white-container -mt-10">
-      <section className="pt-[calc(10rem+40px)] md:pt-[calc(13rem+40px)] w-[90vw] sm:w-[95vw] md:max-w-[1560px] mx-auto">
+      <section className="pt-[calc(10rem+40px)] md:pt-[calc(13rem+40px)] w-[90vw] sm:w-[95vw] md:max-w-[1560px] mx-auto white-container">
         <div className="flex flex-col items-center justify-center w-full h-full">
           <Words yPercent={110}>
             <h1 className="font-bold leading-[1.15] text-center relative overflow-hidden">
@@ -28,7 +28,7 @@ export default function page() {
         </div>
       </section>
 
-      <section className="relative flex flex-col items-center justify-start gap-8 mt-[8vh] md:mt-[10vh] py-[5vh] before:absolute before:left-[10%] md:before:left-[calc(50%-1px)] before:top-0 before:content-[''] before:w-0.5 before:bg-black/50 before:rounded-md before:h-full before:z-0">
+      <section className="relative flex flex-col items-center justify-start gap-8 mt-[8vh] md:mt-[10vh] py-[5vh] before:absolute before:left-[10%] md:before:left-[calc(50%-1px)] before:top-0 before:content-[''] before:w-0.5 before:bg-black/50 before:rounded-md before:h-full before:z-0 white-container">
         <div className="ml-[18%] md:ml-[52%] mr-[5vw] md:mr-[1vw] lg:mr-[8vw]">
           <BlurOut delay={1}>
             <p className="text-black/80 leading-[1.3] md:leading-[1.5] lg:leading-[1.6] text-base md:text-xl lg:text-2xl">
