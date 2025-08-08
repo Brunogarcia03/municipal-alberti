@@ -26,7 +26,7 @@ const FilterProvider = ({ news = [], categories = [] }) => {
         }
       }
     }
-  }, [categories, window.location.hash]);
+  }, [categories]);
 
   useEffect(() => {
     const fetchPaginatedNews = async () => {
