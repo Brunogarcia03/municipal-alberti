@@ -34,7 +34,7 @@ const Footer = ({ dark = false }) => {
             <Button
               children="Contactanos"
               className={
-                "text-base sm:text-lg md:text-[1.5rem] leading-[1.3] px-3 py-2 md:px-5 md:py-3 rounded-md bg-blue cursor-pointer"
+                "text-base sm:text-lg md:text-[1.5rem] leading-[1.3] px-3 py-2 md:px-5 md:py-3 rounded-md bg-blue cursor-pointer z-0"
               }
             />
           </Link>

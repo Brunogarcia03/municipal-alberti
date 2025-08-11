@@ -1,12 +1,15 @@
 import Footer from "@/components/resources/Footer";
 import HistoryCard from "@/components/resources/HistoryCard";
-import BlurOut from "@/components/ui/anim/BlurOut";
 import Lines from "@/components/ui/anim/Lines";
 import Words from "@/components/ui/anim/Words";
 
-export default function page() {
+import { getAllHeritage } from "@/utils/api/global.api";
+
+export default async function page() {
+  const patrimonies = await getAllHeritage();
+
   return (
-    <main className="flex flex-col items-center w-full h-full overflow-hidden bg-white text-black white-container -mt-10">
+    <main className="flex flex-col items-center w-full h-full bg-white text-black white-container -mt-10">
       <section className="pt-[calc(10rem+40px)] md:pt-[calc(13rem+40px)] w-[90vw] sm:w-[95vw] md:max-w-[1560px] mx-auto white-container">
         <div className="flex flex-col items-center justify-center w-full h-full">
           <Words yPercent={110}>
@@ -28,23 +31,16 @@ export default function page() {
         </div>
       </section>
 
-      <section className="relative flex flex-col items-center justify-start gap-8 mt-[8vh] md:mt-[10vh] py-[5vh] before:absolute before:left-[10%] md:before:left-[calc(50%-1px)] before:top-0 before:content-[''] before:w-0.5 before:bg-black/50 before:rounded-md before:h-full before:z-0 white-container">
-        <div className="ml-[18%] md:ml-[52%] mr-[5vw] md:mr-[1vw] lg:mr-[8vw]">
-          <BlurOut delay={1}>
-            <p className="text-black/80 leading-[1.3] md:leading-[1.5] lg:leading-[1.6] text-base md:text-xl lg:text-2xl">
-              According to survivors, vestiges of life before the Holocaust are
-              hard to find. The few carefully guarded objects, documents, and
-              photographs that were smuggled out or narrowly escaped destruction
-              represent some of the most personal of memories: their origins.
-              Family, particularly parents who were lost, occupy a special place
-              among those memories. Their homelands, their houses, and their
-              villages are also at the heart of cherished recollections.
-            </p>
-          </BlurOut>
-        </div>
+      <section className="relative flex flex-col justify-start gap-8 mt-[8vh] md:mt-[10vh] py-[5vh] before:absolute before:left-[10%] md:before:left-[calc(50%-1px)] before:top-0 before:content-[''] before:w-0.5 before:bg-black/50 before:rounded-md before:h-full before:z-0 white-container">
+        <div className="py-8 md:py-24" />
         <div className="flex flex-col gap-y-5 px-5 items-center z-10">
-          <HistoryCard left />
-          <HistoryCard />
+          {patrimonies.map((patrimony, index) => (
+            <HistoryCard
+              key={index}
+              left={index % 2 === 0 ? false : true}
+              data={patrimony}
+            />
+          ))}
         </div>
       </section>
       <Footer dark />

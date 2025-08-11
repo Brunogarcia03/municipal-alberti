@@ -4,8 +4,32 @@ import { useEffect, useState } from "react";
 import Button from "../ui/Button";
 
 const Contact = () => {
+  const [message, setMessage] = useState({
+    email: "",
+    name: "",
+    subject: "",
+    content: "",
+  });
   const [mounted, setMounted] = useState(false);
   const [time, setTime] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/send`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(message),
+      }
+    );
+
+    const result = await res.json();
+    console.log(result);
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -90,7 +114,10 @@ const Contact = () => {
       </div>
       <div className="relative max-w-7xl mx-auto w-full py-[3.5rem] md:py-[7.5rem] white-container">
         <div className="px-[1.5rem] md:px-[3rem] max-w-7xl mx-auto w-full">
-          <form className="flex flex-col items-start justify-between">
+          <form
+            className="flex flex-col items-start justify-between"
+            onSubmit={handleSubmit}
+          >
             <h2 className="font-bold text-[1.3em] md:text-[2.25rem] leading-[1.1] tracking-[-.5px]">
               Nuestro formulario está las 24 horas disponible. Las ideas y
               consultas no tienen horario. Escribinos cuando lo necesites:
@@ -103,30 +130,50 @@ const Contact = () => {
                   ¿En qué podemos ayudarte?
                 </h5>
               </div>
-              <div className="w-full md:w-[55%]">
+              <div className="w-full md:w-[45%]">
                 <input
-                  className="border-[1.5px] border-gray rounded-md w-full min-h-[80px] text-black mb-[16px] px-[16px] md:px-[40px] text-base md:text-[22px] bg-transparent relative transition-colors duration-300 hover:border-black"
+                  className="border-[1.5px] border-gray rounded-md w-full min-h-[80px] text-black mb-[16px] px-[16px] md:px-[40px] text-base md:text-[20px] bg-transparent relative transition-colors duration-300 hover:border-black"
+                  name="email"
                   type="text"
                   required
                   placeholder="Correo Electrónico"
+                  value={message.email}
+                  onChange={(e) =>
+                    setMessage((prev) => ({ ...prev, email: e.target.value }))
+                  }
                 />
                 <input
-                  className="border-[1.5px] border-gray rounded-md w-full min-h-[80px] text-black mb-[16px] px-[16px] md:px-[40px] text-base md:text-[22px] bg-transparent relative transition-colors duration-300 hover:border-black"
+                  className="border-[1.5px] border-gray rounded-md w-full min-h-[80px] text-black mb-[16px] px-[16px] md:px-[40px] text-base md:text-[20px] bg-transparent relative transition-colors duration-300 hover:border-black"
+                  name="name"
                   type="text"
                   required
                   placeholder="Nombre y Apellido"
+                  value={message.name}
+                  onChange={(e) =>
+                    setMessage((prev) => ({ ...prev, name: e.target.value }))
+                  }
                 />
                 <input
-                  className="border-[1.5px] border-gray rounded-md w-full min-h-[80px] text-black mb-[16px] px-[16px] md:px-[40px] text-base md:text-[22px] bg-transparent relative transition-colors duration-300 hover:border-black"
+                  className="border-[1.5px] border-gray rounded-md w-full min-h-[80px] text-black mb-[16px] px-[16px] md:px-[40px] text-base md:text-[20px] bg-transparent relative transition-colors duration-300 hover:border-black"
+                  name="subject"
                   type="text"
                   required
                   placeholder="Asunto"
+                  value={message.subject}
+                  onChange={(e) =>
+                    setMessage((prev) => ({ ...prev, subject: e.target.value }))
+                  }
                 />
                 <textarea
-                  className="border-[1.5px] border-gray rounded-md w-full min-h-[300px] md:min-h-[400px] text-black mb-[16px] py-[24px] px-[16px] md:px-[40px] text-base md:text-[22px] bg-transparent relative transition-colors duration-300 hover:border-black"
+                  className="border-[1.5px] border-gray rounded-md w-full min-h-[300px] md:min-h-[400px] text-black mb-[16px] py-[24px] px-[16px] md:px-[40px] text-base md:text-[20px] bg-transparent relative transition-colors duration-300 hover:border-black"
+                  name="content"
                   type="text"
                   required
                   placeholder="Mensaje"
+                  value={message.content}
+                  onChange={(e) =>
+                    setMessage((prev) => ({ ...prev, content: e.target.value }))
+                  }
                 />
               </div>
             </div>
@@ -137,9 +184,9 @@ const Contact = () => {
                   Contactanos cuando lo necesites
                 </h5>
               </div>
-              <div className="w-full md:w-[55%]">
+              <div className="w-full md:w-[45%]">
                 <Button
-                  className="flex items-center justify-center w-full py-4 md:py-6 px-10 bg-blue text-white rounded-md text-[1.3em] md:text-[2.3em] italic"
+                  className="flex items-center justify-center w-full py-4 md:py-6 px-10 bg-blue text-white rounded-md text-[1em] md:text-[1.7em] italic"
                   type="summit"
                 >
                   Enviar mensaje
@@ -149,7 +196,7 @@ const Contact = () => {
           </form>
         </div>
         <div className="absolute top-[-20%] right-[7%] md:top-[-0.5%] md:right-[4%] size-[9em] md:size-[10.75em]">
-          <div className="w-full h-full font-bold text-[1.1rem] md:text-[1.35rem] leading-[1.4] rounded-full flex justify-center items-center text-center bg-blue/50 text-white">
+          <div className="w-full h-full font-bold text-[1em] md:text-[1.3em] leading-[1.4] rounded-full flex justify-center items-center text-center bg-blue/50 text-white">
             Atención
             <br />
             al Vecino
