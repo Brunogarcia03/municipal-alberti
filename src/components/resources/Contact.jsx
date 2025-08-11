@@ -14,21 +14,19 @@ const Contact = () => {
   const [time, setTime] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    return alert("Adíos");
+    // e.preventDefault();
 
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/send`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(message),
-      }
-    );
-
-    const result = await res.json();
-    console.log(result);
+    // const res = await fetch(
+    //   `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/send`,
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(message),
+    //   }
+    // );
   };
 
   useEffect(() => {
