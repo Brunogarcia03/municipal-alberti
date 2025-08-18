@@ -1,25 +1,28 @@
-import Contactos from "@/assets/header/contactos-page.png";
+import header_1 from "@/assets/header/header_1.jpeg";
+import header_2 from "@/assets/header/header_2.jpeg";
+import header_3 from "@/assets/header/header_3.jpeg";
+import header_4 from "@/assets/header/header_4.jpeg";
 
 const NavList = [
   {
     name: "Gobierno",
     href: "/gobierno",
-    src: Contactos.src,
+    src: header_1.src,
   },
   {
     name: "Ciudad",
     href: "/ciudad",
-    src: "https://cdn.prod.website-files.com/64269b49e1e55d66099de3ab/6470641e326a69169644a9cc_agency%20preview-p-800.webp",
+    src: header_2.src,
   },
   {
     name: "Prensa",
     href: "/prensa",
-    src: "https://cdn.prod.website-files.com/64269b49e1e55d66099de3ab/646f89c506e29483174c8ffd_Journal%20page%20preview-p-800.webp",
+    src: header_3.src,
   },
   {
     name: "Transparencia",
     href: "/transparencia",
-    src: "https://cdn.prod.website-files.com/64269b49e1e55d66099de3ab/6465ef5a9bb93a5288400940_Contacts%20page%20preview-p-800.webp",
+    src: header_4.src,
   },
 ];
 

@@ -83,13 +83,21 @@ const FilterProvider = ({ news = [], categories = [] }) => {
       )}
 
       <div className="flex items-center justify-center gap-x-2 mt-[1.56em]">
-        <Button onClick={handlePrevious} disabled={indexPag <= 1}>
+        <Button
+          className="rounded-md cursor-pointer px-3 py-2"
+          onClick={handlePrevious}
+          disabled={indexPag <= 1}
+        >
           Anterior
         </Button>
         <span>
           {indexPag} / {pageCount}
         </span>
-        <Button onClick={handleNext} disabled={indexPag >= pageCount}>
+        <Button
+          className="rounded-md cursor-pointer px-3 py-2"
+          onClick={handleNext}
+          disabled={indexPag >= pageCount}
+        >
           Siguiente
         </Button>
       </div>

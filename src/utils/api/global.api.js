@@ -82,7 +82,5 @@ export const getAllPublication = async () => {
 export const getAllHeritage = async () => {
   const res = await axiosClient.get("/patrimonios?populate=*");
 
-  console.log(res.data.data);
-
   return res.data.data;
 };
