@@ -26,13 +26,13 @@ export default async function Page({ params }) {
             </h1>
           </Words>
           <picture className="w-full object-contain">
-            <div className="w-full max-h-[calc(0.25rem*140)] rounded-md mt-3">
+            <div className="w-full rounded-md mt-3">
               <Image
                 src={process.env.NEXT_PUBLIC_BACKEND_URL + news[0].imagen.url}
                 alt={`Imagen principal de la noticia ${news[0].titulo}`}
                 width={news[0].imagen.width}
                 height={news[0].imagen.height}
-                className="w-auto max-h-[calc(0.25rem*140)] h-full mx-auto rounded-md"
+                className="w-auto max-h-[calc(0.25rem*140)] min-h-[calc(0.25rem*140)] h-full mx-auto rounded-md"
               />
             </div>
           </picture>
