@@ -9,7 +9,11 @@ import { useLenis } from "lenis/dist/lenis-react";
 import Image from "next/image";
 
 import HeroImage1 from "@/assets/images/hero1.webp";
+import HeroImage2 from "@/assets/images/hero2.webp";
+import HeroImage3 from "@/assets/images/hero3.webp";
 import HeroImage4 from "@/assets/images/hero4.webp";
+import HeroImage5 from "@/assets/images/hero5.webp";
+
 import { wordsAnimation } from "@/utils/constants/animations";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,16 +24,20 @@ const HeroImageList = [
     position: "70% 70%",
   },
   {
-    image: HeroImage4,
-    position: "60% 50%",
+    image: HeroImage2,
+    position: "50% 95%",
   },
   {
-    image: HeroImage1,
-    position: "40% 60%",
+    image: HeroImage3,
+    position: "40% 100%",
   },
   {
     image: HeroImage4,
     position: "50% 50%",
+  },
+  {
+    image: HeroImage5,
+    position: "50% 60%",
   },
 ];
 

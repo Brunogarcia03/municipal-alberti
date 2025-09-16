@@ -29,7 +29,7 @@ export default function NewsContentRenderer({ content }) {
             width={image.width}
             height={image.height}
             alt={image.caption || image.hash}
-            className="max-w-[500px] h-auto rounded-md"
+            className="inline-flex max-w-[45%] w-full h-auto rounded-md mx-5"
           />
         ),
       }}

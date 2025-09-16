@@ -1,8 +1,7 @@
 import GridBento from "./resources/GridBento";
 import Link from "next/link";
 
-import MACROLogo from "@/assets/images/MACROLogo.png";
-import MACROIcon from "@/assets/images/MACROIcon.png";
+import NetPagosLogo from "@/assets/svgs/netpagos.svg";
 
 import Words from "./ui/anim/Words";
 import Lines from "./ui/anim/Lines";
@@ -133,7 +132,10 @@ const Bulletin = () => {
       </section>
       <section className="relative flex flex-col w-full pt-4 md:pt-8 px-6 md:px-24 white-container">
         <div className="relative overflow-hidden bg-white max-w-5xl w-full mx-auto rounded-md md:col-span-2 md:row-span-3 row-start-4 p-6 flex flex-col shadow-sm shadow-blue group">
-          <div className="flex items-center overflow-hidden">
+          <Link
+            href="/rentas"
+            className="flex items-center overflow-hidden cursor-pointer"
+          >
             <div className="flex flex-none items-center justify-center w-0 group-hover:w-10 translate-0 overflow-hidden h-10 transition-discrete duration-300 font-bold">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +148,7 @@ const Bulletin = () => {
               </svg>
             </div>
             <h3 className="text-2xl font-bold text-blue z-10">Rentas</h3>
-          </div>
+          </Link>
           <p className="text-black font-bold mb-3">
             Puede abonar sus impuestos municipales de forma rápida y <br />
             segura a través de los siguientes medios:
@@ -199,22 +201,15 @@ const Bulletin = () => {
             </div>
 
             <Link
-              href="https://pagos.macroclickpago.com.ar/SearchDeuda/796282"
-              target="_blank"
+              href="/rentas"
               rel="noopener noreferrer"
-              className="inline-flex justify-center items-center gap-3 group shadow shadow-blue bg-blue hover:bg-white text-white hover:text-black font-semibold py-3 px-6 rounded-md w-full lg:w-auto transition-colors duration-300"
+              className="inline-flex justify-center items-center gap-3 group shadow-[0px_4px_4px_0px_rgba(0,_0,_0,_0.1)] shadow-black bg-[#3D658A] text-white font-semibold py-3 px-[10vw] rounded-md w-full lg:w-auto transition-discrete duration-300 hover:scale-[1.02]"
             >
               <img
-                src={MACROLogo.src}
-                alt="Logo MACRO Click de pago"
-                className="hidden md:block min-w-[150px] max-w-[150px] h-auto bg-white group-hover:border border-black rounded-md"
+                src={NetPagosLogo.src}
+                alt="Logo Net Pagos"
+                className="min-w-[150px] max-w-[150px] h-auto"
               />
-              <img
-                src={MACROIcon.src}
-                alt="Icono MACRO Click de pago"
-                className="block md:hidden min-w-[35px] max-w-[35px] h-[35px] sm:min-w-[50px] sm:max-w-[50px] sm:h-[50px] bg-white rounded-md"
-              />
-              <span className="text-lg text-nowrap">Consultar Deuda</span>
             </Link>
           </div>
         </div>
