@@ -44,7 +44,7 @@ const HistoryCard = ({ left = false, data }) => {
           <img
             className="absolute inset-0 w-full h-full object-cover rounded-md border border-black cursor-pointer"
             alt={data.titulo}
-            src={process.env.NEXT_PUBLIC_BACKEND_URL + data.imagen.url}
+            src={data.imagen.url}
           />
           <div className="absolute flex items-center justify-center top-0 left-0 w-full h-full object-cover rounded-md opacity-0 group-hover:opacity-100 transition-all duration-500 border border-black bg-white cursor-pointer">
             <p className="italic font-light text-center">{data.fuente}</p>
@@ -106,7 +106,7 @@ const HistoryCard = ({ left = false, data }) => {
               <Image
                 className="w-auto mx-auto h-full max-h-[50%] md:max-h-[70%] lg:hidden rounded-md object-cover mt-[5vw] md:mt-[2vw] lg:mt-0"
                 alt={data.titulo}
-                src={process.env.NEXT_PUBLIC_BACKEND_URL + data.imagen.url}
+                src={data.imagen.url}
                 width={data.imagen.width}
                 height={data.imagen.height}
               />
@@ -128,7 +128,7 @@ const HistoryCard = ({ left = false, data }) => {
             <Image
               className="hidden lg:block w-auto h-full rounded-md object-contain mt-[5vw] md:mt-[2vw] lg:mt-0"
               alt={data.titulo}
-              src={process.env.NEXT_PUBLIC_BACKEND_URL + data.imagen.url}
+              src={data.imagen.url}
               width={data.imagen.width}
               height={data.imagen.height}
             />

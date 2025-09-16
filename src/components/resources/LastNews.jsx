@@ -43,7 +43,7 @@ const LastNews = async ({ currentSlug }) => {
               >
                 <picture className="relative w-full aspect-[16/9] rounded-md overflow-hidden mb-2">
                   <Image
-                    src={process.env.NEXT_PUBLIC_BACKEND_URL + item.imagen.url}
+                    src={item.imagen.url}
                     alt={`Imagen principal de la noticia ${item.titulo}`}
                     width={item.imagen.width}
                     height={item.imagen.height}
@@ -69,7 +69,7 @@ const LastNews = async ({ currentSlug }) => {
                   <p className="text-gray text-[.8rem]">
                     {formatDate(item.createdAt)}
                   </p>
-                  <p className="text-black">{item.categorias[0]?.nombre}</p>
+                  <p className="text-black">{item.categoria.nombre}</p>
                 </div>
               </Link>
             </BlurOut>

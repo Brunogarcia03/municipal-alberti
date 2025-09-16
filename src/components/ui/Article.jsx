@@ -7,7 +7,7 @@ import BlurOut from "./anim/BlurOut";
 function Article({ news = "" }) {
   const tiempoLectura = getReadingTime(news.contenido);
   const fecha = formatDate(news.createdAt);
-  const categoria = news.categorias[0]?.nombre || "Sin categoría";
+  const categoria = news.categoria.nombre || "Sin categoría";
 
   return (
     <BlurOut>
@@ -34,7 +34,7 @@ function Article({ news = "" }) {
               width={1000}
               height={667}
               priority
-              src={getFullUrl(news.imagen.url)}
+              src={news.imagen.url}
               alt="Imagen de ejemplo"
               className="w-full h-full md:scale-105 group-hover:scale-100 transition-discrete duration-500 object-cover"
             />

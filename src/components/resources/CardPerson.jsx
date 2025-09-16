@@ -40,7 +40,7 @@ const CardPerson = ({ official, meta, index }) => {
           onClick={() => setOpen(true)}
         >
           <Image
-            src={process.env.NEXT_PUBLIC_BACKEND_URL + official.imagen.url}
+            src={official.imagen.url}
             width={1000}
             height={500}
             alt="Imagen de: "
@@ -147,9 +147,7 @@ const CardPerson = ({ official, meta, index }) => {
 
               <picture className="flex flex-col items-center justify-center w-full h-full">
                 <Image
-                  src={
-                    process.env.NEXT_PUBLIC_BACKEND_URL + official.imagen.url
-                  }
+                  src={official.imagen.url}
                   width={1000}
                   height={500}
                   alt="Imagen de: "
@@ -184,10 +182,7 @@ const CardPerson = ({ official, meta, index }) => {
 
             <div className="mt-[1em] text-[1em] leading-[1.3] w-full">
               <Link
-                href={
-                  process.env.NEXT_PUBLIC_BACKEND_URL +
-                  official.declaracion_jurada.archivo.url
-                }
+                href={official.declaracion_jurada.archivo.url}
                 target="_blank"
                 className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
               >

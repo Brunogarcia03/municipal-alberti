@@ -28,7 +28,7 @@ export default async function Page({ params }) {
           <picture className="w-full object-contain">
             <div className="w-full rounded-md mt-3">
               <Image
-                src={process.env.NEXT_PUBLIC_BACKEND_URL + news[0].imagen.url}
+                src={news[0].imagen.url}
                 alt={`Imagen principal de la noticia ${news[0].titulo}`}
                 width={news[0].imagen.width}
                 height={news[0].imagen.height}

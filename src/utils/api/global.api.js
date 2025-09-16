@@ -9,7 +9,7 @@ const axiosClient = axios.create({
 export const getAllNews = async (page = 1) => {
   try {
     const res = await axiosClient.get(
-      `/noticias?populate[imagen]=true&populate[categorias]=true&pagination[page]=${page}&pagination[pageSize]=8`
+      `/noticias?populate=*&pagination[page]=${page}&pagination[pageSize]=8`
     );
 
     return {
@@ -23,14 +23,19 @@ export const getAllNews = async (page = 1) => {
 };
 
 export const getAllNewsByCategory = async (page = 1, categoryId) => {
-  const res = await axiosClient.get(
-    `/noticias?populate=*&pagination[page]=${page}&pagination[pageSize]=8&filters[categorias][id][$eq]=${categoryId}`
-  );
+  try {
+    const res = await axiosClient.get(
+      `/noticias?populate=*&pagination[page]=${page}&pagination[pageSize]=8&filters[categoria][id][$eq]=${categoryId}`
+    );
 
-  return {
-    data: res.data.data,
-    pagination: res.data.meta.pagination,
-  };
+    return {
+      data: res.data.data,
+      pagination: res.data.meta.pagination,
+    };
+  } catch (error) {
+    console.error("Error al obtener noticias paginadas:", error);
+    return { data: [], pagination: { page: 1, pageCount: 1 } };
+  }
 };
 
 export const getAllCategories = async () => {
