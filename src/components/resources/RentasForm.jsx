@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "../ui/Button";
+import NavRentas from "../ui/NavRentas";
 
 const navContact = [
   {
@@ -16,6 +17,7 @@ const navContact = [
       </svg>
     ),
     text: "Pago Electrónico e Informe",
+    id: "pago-electronico",
   },
   {
     icon: (
@@ -30,6 +32,7 @@ const navContact = [
       </svg>
     ),
     text: "Descargue su boleta",
+    id: "descargue-su-boleta",
   },
   {
     icon: (
@@ -44,6 +47,7 @@ const navContact = [
       </svg>
     ),
     text: "Adhesión Boleta Electrónica",
+    id: "adhesion-boleta-electronica",
   },
 ];
 
@@ -53,13 +57,7 @@ const RentasForm = () => {
       <div className="max-w-6xl mx-auto w-full py-[3.5rem] md:py-[7.5rem] white-container">
         <div className="flex flex-wrap gap-5 md:flex-row items-center justify-center md:justify-between px-5">
           {navContact.map((item, i) => (
-            <div
-              key={i}
-              className="flex flex-col items-center gap-2 font-bold text-gray-700 text-[1rem] md:text-[1.25rem] leading-[1.4] hover:scale-105 transition-transform duration-300"
-            >
-              <span className="bg-blue rounded-full p-8">{item.icon}</span>
-              <span className="text-center max-w-sm">{item.text}</span>
-            </div>
+            <NavRentas key={i} item={item} />
           ))}
         </div>
       </div>
@@ -96,7 +94,7 @@ const RentasForm = () => {
                 <input
                   className="border-[1.5px] border-gray rounded-md w-full min-h-[80px] text-black mb-[16px] px-[16px] md:px-[40px] text-base md:text-[20px] bg-transparent relative transition-colors duration-300 hover:border-black"
                   name="subject"
-                  type="text"
+                  type="number"
                   required
                   placeholder="Documento de Identidad"
                 />
@@ -106,7 +104,7 @@ const RentasForm = () => {
             <div className="flex flex-col md:flex-row items-stretch sm:items-start justify-between w-full">
               <div className="w-full md:w-[30%] mb-[1.5em]">
                 <h5 className="sm:text-nowrap text-[18px] md:text-[1.75rem] leading-[1.3]">
-                  Contactanos cuando lo necesites
+                  Adherite a Debito Automático
                 </h5>
               </div>
               <div className="w-full md:w-[45%]">

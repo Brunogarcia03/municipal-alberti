@@ -67,7 +67,7 @@ const SliderDraggable = ({
             </h6>
             <Link
               className="w-full mt-auto"
-              href={process.env.NEXT_PUBLIC_BACKEND_URL + d.archivo.url}
+              href={d.archivo.url}
               target="_blank"
             >
               <Button
