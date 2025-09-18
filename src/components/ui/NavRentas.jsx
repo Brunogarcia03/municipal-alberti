@@ -1,44 +1,62 @@
 "use client";
 
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLenis } from "lenis/dist/lenis-react";
 import { twMerge } from "tailwind-merge";
 import Button from "./Button";
 
 const tasasList = [
-  { value: "010", label: "SERVICIOS URBANOS" },
-  { value: "120", label: "SERVICIOS RURALES" },
-  { value: "040", label: "TASAS COMERCIALES" },
-  { value: "145", label: "PATENTE DE AUTOMOTOR" },
-  { value: "140", label: "PATENTES DE RODADOS" },
-  { value: "060", label: "JUEGOS PERMITIDOS" },
-  { value: "070", label: "PAVIMENTO" },
-  { value: "080", label: "BOVEDAS Y NICHERAS" },
-  { value: "090", label: "ESPACIOS AEREOS" },
-  { value: "500", label: "PLAN VIVIENDA" },
-  { value: "510", label: "RED DE CLOACAS" },
-  { value: "520", label: "SERVICIOS AGUA POTABLE" },
-  { value: "530", label: "AMP. RED DE AGUA" },
-  { value: "540", label: "AMP. RED DE GAS" },
-  { value: "550", label: "CORDON CUNETA" },
-  { value: "560", label: "CARPETA ASFALTICA" },
-  { value: "150", label: "TAXIS" },
-  { value: "101", label: "ESP. PÚBLICOS" },
-  { value: "051", label: "PROP.C/ CARTELES" },
-  { value: "160", label: "PRESTAMOS" },
-  { value: "111", label: "ORDENANZA 3784/09" },
-  { value: "165", label: "INSP. ANTENAS" },
-  { value: "050", label: "DCHO. PUBLICIDAD Y PROPAGANDA" },
-  { value: "011", label: "DCHO. DE CONST. URBANO" },
-  { value: "121", label: "DCHO. DE CONST. RURAL" },
-  { value: "00A", label: "VARIOS" },
-  { value: "155", label: "ATRAQUES" },
-  { value: "015", label: "SERV. ESPECIALES DE LIMP. E HIGIENE" },
+  { value: "01", label: "Alum/Bar/Limp/Cvp" },
+  { value: "02", label: "Red Vial" },
+  { value: "03", label: "Servicios Sanitarios" },
+  { value: "05", label: "Seguridad e Higiene" },
+  { value: "09", label: "FONDO MPAL.VIVIENDA" },
+  { value: "10", label: "Patente de Rodados" },
+  { value: "11", label: "Automotores" },
+  { value: "12", label: "Carnet de Conductor" },
+  { value: "13", label: "Inspección de Antenas" },
+  { value: "20", label: "Pavimento Nvo." },
+  { value: "50", label: "Ing.Varios Urbano" },
+  { value: "51", label: "Pavimento" },
+  { value: "52", label: "Moratorias" },
+  { value: "53", label: "Limp. terr. veredas" },
+  { value: "54", label: "Obra Agua Cte." },
+  { value: "55", label: "Red Cloacal" },
+  { value: "56", label: "Der. Construcción" },
+  { value: "57", label: "Limp. Vereda" },
+  { value: "58", label: "Pavimento 2" },
+  { value: "59", label: "Plan Redes" },
+  { value: "60", label: "Limp. Bald./Veredas" },
+  { value: "61", label: "Limp. terreno-1" },
+  { value: "62", label: "Limp. terreno-2" },
+  { value: "63", label: "Limp. Terreno 3" },
+  { value: "99", label: "Plan de Pago" },
 ];
 
 const NavRentas = ({ item }) => {
   const [openModal, setOpenModal] = useState(false);
   const [tasaSelected, setTasaSelected] = useState(tasasList[0].value);
+  const [partida, setPartida] = useState("");
+  const [boletas, setBoletas] = useState([]);
+  const [error, setError] = useState("");
+
+  async function handleBuscar() {
+    try {
+      setError("");
+      const resp = await axios.get("/api/rentas/boletas", {
+        params: { tasa: tasaSelected, partida },
+      });
+
+      if (resp.data.ReqRta === "true") {
+        setBoletas(resp.data.Boletas);
+      } else {
+        setError(resp.data.ReqMje || "No se encontraron boletas");
+      }
+    } catch (e) {
+      setError("Error al conectar con el servicio");
+    }
+  }
 
   const Lenis = useLenis();
 
@@ -64,7 +82,9 @@ const NavRentas = ({ item }) => {
     <>
       <div
         onClick={
-          item.id === "pago-electronico" ? () => setOpenModal(true) : null
+          item.id === "pago-electronico"
+            ? () => setOpenModal(true)
+            : async () => alert("Proximamente")
         }
         className="flex flex-col items-center gap-2 font-bold text-gray-700 text-[1rem] md:text-[1.25rem] leading-[1.4] hover:scale-105 transition-transform duration-300 cursor-pointer"
       >
@@ -73,16 +93,16 @@ const NavRentas = ({ item }) => {
       </div>
       {openModal && (
         <section
-          className="fixed top-0 left-0 flex items-start lg:items-center justify-center w-[100vw] h-[100vh] z-[1000] transition-all duration-500 p-[2.5vw] md:p-2"
+          className="fixed top-0 left-0 flex items-center justify-center w-[100vw] h-[100vh] z-[1000] transition-all duration-500 p-[2.5vw] md:p-2"
           onClick={() => setOpenModal(false)}
         >
-          <div className="absolute inset-0  h-full bg-black/50 backdrop-blur-sm z-[999]" />
+          <div className="absolute inset-0  h-[100vh] bg-black/50 backdrop-blur-sm z-[999]" />
           <div
             id="scroller-modal"
             data-lenis-prevent
             onClick={(e) => e.stopPropagation()}
             className={twMerge(
-              "relative flex flex-col gap-5 justify-between w-full md:w-[75%] h-full rounded-md bg-black pl-[4vw] py-[4vw] md:pl-[2vw] pr-[1vw] md:py-[2vw] z-[1001]",
+              "relative flex flex-col gap-5 justify-between w-full md:w-[50%] h-2/3 rounded-md bg-black pl-[4vw] py-[4vw] md:pl-[2vw] pr-[1vw] md:py-[2vw] z-[1001]",
               openModal ? "opacity-100 scale-100" : "opacity-0 scale-90"
             )}
           >
@@ -128,6 +148,8 @@ const NavRentas = ({ item }) => {
                     type="number"
                     name="partida"
                     id="partida"
+                    value={partida}
+                    onChange={(e) => setPartida(e.target.value)}
                     className="border-2 border-white rounded-md w-full min-h-[40px] text-white mb-[16px] px-[16px] md:px-[40px] text-base md:text-[20px] bg-transparent relative transition-colors duration-300 hover:border-gray"
                   />
                 </div>
@@ -147,13 +169,15 @@ const NavRentas = ({ item }) => {
                         value={tasa.value}
                         className="bg-black text-white"
                       >
-                        {tasa.label}
+                        {tasa.label} - {tasa.value}
                       </option>
                     ))}
                   </select>
                 </div>
+                <div className="h-full w-full" />
 
                 <Button
+                  onClick={handleBuscar}
                   className="flex items-center gap-2 w-full py-3 md:py-4 px-10 mt-[16px] bg-blue text-white rounded-md text-[1em] md:text-[1.7em] italic border-2 border-white group hover:bg-white transition-colors duration-300 cursor-pointer"
                   type="submit"
                 >
