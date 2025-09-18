@@ -48,6 +48,8 @@ const NavRentas = ({ item }) => {
         params: { tasa: tasaSelected, partida },
       });
 
+      console.log(resp.data);
+
       if (resp.data.ReqRta === "true") {
         setBoletas(resp.data.Boletas);
       } else {
