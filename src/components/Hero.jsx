@@ -176,12 +176,12 @@ const Hero = () => {
               src={item.image}
               width={1920}
               height={1280}
-              className="absolute top-0 left-0 w-full h-dvh object-cover opacity-0"
+              className="absolute top-0 left-0 w-full h-screen md:h-dvh object-cover opacity-0"
               style={{ objectPosition: item.position }}
               alt={`${index + 1} Imagen Principal`}
             />
           ))}
-          <div className="absolute top-0 left-0 w-full h-dvh bg-black/25 z-10" />
+          <div className="absolute top-0 left-0 w-full h-screen md:h-dvh bg-black/25 z-10" />
         </div>
 
         <div
