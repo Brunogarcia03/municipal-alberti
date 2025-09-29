@@ -32,7 +32,7 @@ export default async function Page({ params }) {
                 alt={`Imagen principal de la noticia ${news[0].titulo}`}
                 width={news[0].imagen.width}
                 height={news[0].imagen.height}
-                className="w-auto max-h-[calc(0.25rem*60)] min-h-[calc(0.25rem*60)] md:max-h-[calc(0.25rem*140)] md:min-h-[calc(0.25rem*140)] h-full mx-auto md:mx-5 rounded-md"
+                className="w-auto max-h-[calc(0.25rem*60)] min-h-[calc(0.25rem*60)] md:max-h-[calc(0.25rem*140)] md:min-h-[calc(0.25rem*140)] h-full mx-auto rounded-md"
               />
             </div>
           </picture>
