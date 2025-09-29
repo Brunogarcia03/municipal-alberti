@@ -92,7 +92,7 @@ const page = () => {
               className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-8"
             >
               <div className="flex flex-col gap-8 items-start w-full">
-                <h2 className="text-[3.25rem] leading-[1] tracking-[-1px] font-bold">
+                <h2 className="text-[2rem] md:text-[3.25rem] leading-[1] tracking-[-1px] font-bold">
                   Año {item.fecha}
                 </h2>
                 <CardTransparency
