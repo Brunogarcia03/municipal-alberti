@@ -166,7 +166,7 @@ const Hero = () => {
     <>
       <section
         id="hero-container"
-        className="relative w-screen h-dvh transition-all duration-1000 overflow-hidden"
+        className="relative w-screen h-screen md:h-dvh transition-all duration-1000 overflow-hidden"
       >
         <div className="div-image relative w-full h-full">
           {HeroImageList.map((item, index) => (
