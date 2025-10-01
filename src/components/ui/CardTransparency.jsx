@@ -91,12 +91,13 @@ const CardTransparency = ({ item, title = "Documento", icon = "" }) => {
             <div className="flex justify-start">
               <Button
                 as="a"
-                href={item}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs sm:text-sm md:text-base leading-[1.3] rounded-md bg-blue cursor-pointer"
               >
-                Ver documento
+                <Link href={item} target="_blank">
+                  Ver documento
+                </Link>
               </Button>
             </div>
           ) : (
