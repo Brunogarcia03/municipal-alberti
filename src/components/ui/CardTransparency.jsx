@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import gsap from "gsap";
 import Button from "@/components/ui/Button";
+import Link from "next/link";
 
 const CardTransparency = ({ item, title = "Documento", icon = "" }) => {
   const [openCard, setOpenCard] = useState(false);
@@ -12,7 +13,6 @@ const CardTransparency = ({ item, title = "Documento", icon = "" }) => {
   useEffect(() => {
     if (contentRef.current) {
       if (openCard) {
-        // Set height to auto before animating
         gsap.set(contentRef.current, { height: "auto" });
         gsap.fromTo(
           contentRef.current,
@@ -20,7 +20,7 @@ const CardTransparency = ({ item, title = "Documento", icon = "" }) => {
           {
             height: contentRef.current.scrollHeight,
             autoAlpha: 1,
-            duration: 0.1,
+            duration: 0.2,
             ease: "power1.out",
           }
         );
@@ -28,22 +28,41 @@ const CardTransparency = ({ item, title = "Documento", icon = "" }) => {
         gsap.to(contentRef.current, {
           height: 0,
           autoAlpha: 0,
-          duration: 0.1,
+          duration: 0.2,
           ease: "power1.in",
         });
       }
     }
   }, [openCard]);
 
-  // Determinar si es un PDF único (string) o un bloque trimestral (object)
   const isSingleFile = typeof item === "string";
 
   return (
     <div className="h-auto w-full rounded-md relative overflow-hidden bg-white mx-auto p-6 flex flex-col justify-stretch gap-5 shadow-sm shadow-blue group">
+      <svg
+        id="visual"
+        viewBox="0 0 200 200"
+        width="300"
+        height="300"
+        xmlns="http://www.w3.org/2000/svg"
+        xlinkHref="http://www.w3.org/1999/xlink"
+        version="1.1"
+        className="absolute top-0 right-0 opacity-20"
+      >
+        <g transform="translate(191.18197466001104 -20.149037667176174)">
+          <path
+            d="M72.4 -67.2C95.7 -49 117.8 -24.5 121.3 3.4C124.7 31.3 109.4 62.7 86 91.9C62.7 121 31.3 148 5.4 142.7C-20.6 137.3 -41.3 99.6 -59.9 70.4C-78.6 41.3 -95.3 20.6 -101.5 -6.2C-107.7 -33 -103.3 -66 -84.7 -84.2C-66 -102.3 -33 -105.7 -4.2 -101.4C24.5 -97.2 49 -85.4 72.4 -67.2"
+            fill="#00438b"
+          ></path>
+        </g>
+      </svg>
       <div className="flex items-center justify-between w-full h-full">
         <div className="size-8 md:size-12">{icon}</div>
 
-        <button onClick={() => setOpenCard((prev) => !prev)}>
+        <button
+          className="z-10 cursor-pointer transition-all duration-300 ease-in-out p-3 rounded-full bg-white shadow-md hover:shadow-lg hover:scale-105"
+          onClick={() => setOpenCard((prev) => !prev)}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -75,35 +94,27 @@ const CardTransparency = ({ item, title = "Documento", icon = "" }) => {
                 href={item}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={
-                  "text-xs sm:text-sm md:text-base leading-[1.3] rounded-md bg-blue cursor-pointer"
-                }
+                className="text-xs sm:text-sm md:text-base leading-[1.3] rounded-md bg-blue cursor-pointer"
               >
                 Ver documento
               </Button>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {Object.entries(item).map(([key, value]) => {
-                const trimestreLabel = key
-                  .replace("_", " ")
-                  .replace(/^\w/, (l) => l.toUpperCase());
-
-                return (
+              {Object.entries(item)
+                .filter(([_, url]) => url)
+                .map(([key, url]) => (
                   <Button
                     key={key}
                     as="a"
-                    href={value.url}
-                    target="_blank"
                     rel="noopener noreferrer"
-                    className={
-                      "text-xs sm:text-sm md:text-base leading-[1.3] rounded-md bg-blue cursor-pointer"
-                    }
+                    className="text-xs sm:text-sm md:text-base leading-[1.3] rounded-md bg-blue cursor-pointer"
                   >
-                    {trimestreLabel}
+                    <Link href={url} target="_blank">
+                      {key.replace("_", " ")}{" "}
+                    </Link>
                   </Button>
-                );
-              })}
+                ))}
             </div>
           )}
         </div>

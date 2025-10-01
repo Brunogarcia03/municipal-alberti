@@ -86,7 +86,7 @@ const Contact = () => {
         </svg>
       ),
       text: "Teléfono",
-      data: "(02346) 473001",
+      data: "(02346) 470215",
     },
   ];
 
