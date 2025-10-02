@@ -1,4 +1,5 @@
 import Footer from "@/components/resources/Footer";
+import PublicacionesLey from "@/components/resources/PublicacionesLey";
 import SliderDraggable from "@/components/resources/SliderDraggable";
 import Lines from "@/components/ui/anim/Lines";
 import Words from "@/components/ui/anim/Words";
@@ -95,55 +96,7 @@ const page = async ({ params }) => {
         />
       </section>
 
-      <section className="relative w-[95vw] md:w-[90vw] max-w-full md:max-w-[1560px] mt-[1.5rem] md:mt-[5.5rem] mx-auto overflow-hidden">
-        <Words>
-          <h3 className="text-base sm:text-lg md:text-[1.5rem] font-bold leading-[1.3] px-2 py-1 overflow-hidden">
-            Publicaciones de Ley
-          </h3>
-        </Words>
-        <div className="w-full h-[1px] bg-gray" />
-        <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center mt-[1.56em] pb-2 gap-4 w-full px-2 sm:px-4">
-          {publication.map((p, index) => (
-            <div
-              key={index}
-              className="relative flex flex-col p-[1.5em] sm:p-[2.5em] items-start gap-4 h-full bg-white rounded-md shadow-sm shadow-blue group w-full"
-            >
-              <div className="flex items-center justify-between w-full mb-[1.5em]">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="32px"
-                  viewBox="0 -960 960 960"
-                  width="32px"
-                  fill="#00438b"
-                >
-                  <path d="M160-120v-66.67h480V-120H160Zm223.33-206L160-549.33 234.67-626 460-402.67 383.33-326Zm254-254L414-805.33 490.67-880 714-656.67 637.33-580Zm196 420L302-691.33 348.67-738 880-206.67 833.33-160Z" />
-                </svg>
-                <p className="italic text-xs md:text-sm lg:text-base">
-                  {formatDate(p.fecha)}
-                </p>
-              </div>
-              <h6 className="text-base sm:text-lg md:text-[1.25rem] font-bold mb-[1em] w-full">
-                {p.titulo}
-              </h6>
-              <div className="flex flex-col gap-y-1 w-full md:max-w-[90%]">
-                {renderContent(p.contenido)}
-              </div>
-              {p.archivo && (
-                <Link
-                  className="w-full mt-4"
-                  href={process.env.NEXT_PUBLIC_BACKEND_URL + p.archivo.url}
-                  target="_blank"
-                >
-                  <Button
-                    className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
-                    children="Ver archivo"
-                  />
-                </Link>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
+      <PublicacionesLey />
 
       <Footer dark />
     </main>
