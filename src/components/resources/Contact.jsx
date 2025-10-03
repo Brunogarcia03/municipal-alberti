@@ -11,22 +11,32 @@ const Contact = () => {
     content: "",
   });
   const [mounted, setMounted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [send, setSend] = useState(null);
   const [time, setTime] = useState("");
 
   const handleSubmit = async (e) => {
-    return alert("Adíos");
-    // e.preventDefault();
+    setLoading(true);
+    e.preventDefault();
 
-    // const res = await fetch(
-    //   `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/send`,
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(message),
-    //   }
-    // );
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/send`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(message),
+      }
+    );
+
+    if (res.ok) {
+      setSend(true);
+    } else {
+      setSend(false);
+    }
+
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -163,7 +173,7 @@ const Contact = () => {
                   }
                 />
                 <textarea
-                  className="border-[1.5px] border-gray rounded-md w-full min-h-[300px] md:min-h-[400px] text-black mb-[16px] py-[24px] px-[16px] md:px-[40px] text-base md:text-[20px] bg-transparent relative transition-colors duration-300 hover:border-black"
+                  className="border-[1.5px] border-gray rounded-md w-full min-h-[200px] md:min-h-[300px] text-black mb-[16px] py-[24px] px-[16px] md:px-[40px] text-base md:text-[20px] bg-transparent relative transition-colors duration-300 hover:border-black"
                   name="content"
                   type="text"
                   required
@@ -184,10 +194,23 @@ const Contact = () => {
               </div>
               <div className="w-full md:w-[45%]">
                 <Button
-                  className="flex items-center justify-center w-full py-4 md:py-6 px-10 bg-blue text-white rounded-md text-[1em] md:text-[1.7em] italic"
+                  className={`flex items-center justify-center w-full py-4 md:py-6 px-10 bg-blue text-white rounded-md text-[1em] md:text-[1.7em] italic ${
+                    send === null
+                      ? ""
+                      : send === true
+                        ? "bg-green-600 hover:bg-green-700"
+                        : "bg-red-600 hover:bg-red-700"
+                  } transition-colors duration-300`}
                   type="summit"
+                  disabled={loading}
                 >
-                  Enviar mensaje
+                  {loading
+                    ? "Enviando..."
+                    : send === true
+                      ? "Mensaje Enviado!"
+                      : send === false
+                        ? "Error, intente nuevamente"
+                        : "Enviar mensaje"}
                 </Button>
               </div>
             </div>
