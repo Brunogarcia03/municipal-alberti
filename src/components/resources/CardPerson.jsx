@@ -44,7 +44,7 @@ const CardPerson = ({ official, meta, index }) => {
             width={1000}
             height={500}
             alt="Imagen de: "
-            className="w-full h-full object-cover rounded-md md:grayscale-75 group-hover:grayscale-0 transition-discrete duration-500"
+            className="w-full h-full object-cover rounded-md md:grayscale-75 group-hover:grayscale-0 transition-discrete duration-500 md:min-h-[200px] lg:min-h-[300px]"
           />
           <div className="mt-[1vw] flex items-center justify-between">
             <div>
@@ -139,7 +139,7 @@ const CardPerson = ({ official, meta, index }) => {
                       href={official.email}
                       className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
                     >
-                      Email
+                      Facebook
                     </Link>
                   )}
                 </div>
@@ -158,7 +158,7 @@ const CardPerson = ({ official, meta, index }) => {
                 {official.instagram && (
                   <Link
                     href={official.instagram}
-                    className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
+                    className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-1 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
                   >
                     Instagram
                   </Link>
@@ -166,9 +166,9 @@ const CardPerson = ({ official, meta, index }) => {
                 {official.email && (
                   <Link
                     href={official.email}
-                    className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
+                    className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-1 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
                   >
-                    Email
+                    Facebook
                   </Link>
                 )}
               </div>
