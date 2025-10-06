@@ -4,7 +4,7 @@ const baseURL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api`;
 
 const axiosClient = axios.create({
   baseURL,
-  timeout: 10000, // 10s timeout por si Strapi no responde
+  timeout: 10000,
 });
 
 // ✅ Utilidad para manejar errores de Axios
@@ -28,8 +28,8 @@ export const getAllNews = async (page = 1) => {
     );
 
     return {
-      data: res.data?.data ?? [],
-      pagination: res.data?.meta?.pagination ?? { page: 1, pageCount: 1 },
+      data: res.data.data,
+      pagination: res.data.meta.pagination,
     };
   } catch (error) {
     handleError(error, "Error al obtener noticias paginadas");
@@ -49,8 +49,8 @@ export const getAllNewsByCategory = async (page = 1, categoryId) => {
     );
 
     return {
-      data: res.data?.data ?? [],
-      pagination: res.data?.meta?.pagination ?? { page: 1, pageCount: 1 },
+      data: res.data.data,
+      pagination: res.data.meta.pagination,
     };
   } catch (error) {
     handleError(error, "Error al obtener noticias por categoría");
@@ -62,7 +62,7 @@ export const getAllNewsByCategory = async (page = 1, categoryId) => {
 export const getAllCategories = async () => {
   try {
     const res = await axiosClient.get("/categorias");
-    return res.data?.data ?? [];
+    return res.data.data;
   } catch (error) {
     handleError(error, "Error al obtener categorías");
     return [];
@@ -80,7 +80,7 @@ export const getOneNews = async (slug) => {
     const res = await axiosClient.get(
       `/noticias?populate=*&filters[slug][$eq]=${slug}`
     );
-    return res.data?.data ?? [];
+    return res.data.data;
   } catch (error) {
     handleError(error, `Error al obtener noticia con slug: ${slug}`);
     return [];
@@ -93,7 +93,7 @@ export const getAllOfficials = async () => {
     const res = await axiosClient.get(
       "/funcionarios?populate=imagen&populate=declaracion_jurada.archivo"
     );
-    return { data: res.data?.data ?? [], meta: res.data?.meta ?? {} };
+    return { data: res.data.data, meta: res.data.meta };
   } catch (error) {
     handleError(error, "Error al obtener funcionarios");
     return { data: [], meta: {} };
@@ -104,7 +104,7 @@ export const getAllOfficials = async () => {
 export const getAllDDJJ = async () => {
   try {
     const res = await axiosClient.get("/declaraciones-juradas?populate=*");
-    return res.data?.data ?? [];
+    return res.data.data;
   } catch (error) {
     handleError(error, "Error al obtener declaraciones juradas");
     return [];
@@ -115,7 +115,7 @@ export const getAllDDJJ = async () => {
 export const getAllOrdinances = async () => {
   try {
     const res = await axiosClient.get("/ordenanzas?populate=*");
-    return res.data?.data ?? [];
+    return res.data.data;
   } catch (error) {
     handleError(error, "Error al obtener ordenanzas");
     return [];
@@ -126,7 +126,7 @@ export const getAllOrdinances = async () => {
 export const getAllDecrees = async () => {
   try {
     const res = await axiosClient.get("/decretos?populate=*");
-    return res.data?.data ?? [];
+    return res.data.data;
   } catch (error) {
     handleError(error, "Error al obtener decretos");
     return [];
@@ -143,7 +143,7 @@ export const getAllPublication = async (start = 0) => {
         start === 0 ? 3 : 2
       }&sort=fecha:desc&populate=*`
     );
-    return res.data?.data ?? [];
+    return res.data.data;
   } catch (error) {
     handleError(error, "Error al obtener publicaciones");
     return [];
@@ -154,7 +154,7 @@ export const getAllPublication = async (start = 0) => {
 export const getAllHeritage = async () => {
   try {
     const res = await axiosClient.get("/patrimonios?populate=*");
-    return res.data?.data ?? [];
+    return res.data.data;
   } catch (error) {
     handleError(error, "Error al obtener patrimonios");
     return [];
@@ -167,7 +167,7 @@ export const getAllTransparency = async () => {
     const res = await axiosClient.get(
       "https://strapi-production-4f4b.up.railway.app/api/transparencias?populate[0]=presupuesto&populate[1]=stock_deuda.primer_trimestre&populate[2]=stock_deuda.segundo_trimestre&populate[3]=stock_deuda.tercer_trimestre&populate[4]=stock_deuda.total&populate[5]=gastos_finalidad_funcion.primer_trimestre&populate[6]=gastos_finalidad_funcion.segundo_trimestre&populate[7]=gastos_finalidad_funcion.tercer_trimestre&populate[8]=gastos_finalidad_funcion.total&populate[9]=ejecucion_presupuestaria.primer_trimestre&populate[10]=ejecucion_presupuestaria.segundo_trimestre&populate[11]=ejecucion_presupuestaria.tercer_trimestre&populate[12]=ejecucion_presupuestaria.total&populate[13]=situacion_economico_financiera.primer_trimestre&populate[14]=situacion_economico_financiera.segundo_trimestre&populate[15]=situacion_economico_financiera.tercer_trimestre&populate[16]=situacion_economico_financiera.total"
     );
-    return res.data?.data ?? [];
+    return res.data.data;
   } catch (error) {
     handleError(error, "Error al obtener transparencia");
     return [];

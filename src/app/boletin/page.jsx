@@ -3,21 +3,17 @@ import PublicacionesLey from "@/components/resources/PublicacionesLey";
 import SliderDraggable from "@/components/resources/SliderDraggable";
 import Lines from "@/components/ui/anim/Lines";
 import Words from "@/components/ui/anim/Words";
-import Button from "@/components/ui/Button";
+
 import {
   getAllDecrees,
   getAllOrdinances,
-  getAllPublication,
   getAllDDJJ,
 } from "@/utils/api/global.api";
-import { renderContent, formatDate } from "@/utils/tools";
-import Link from "next/link";
 
 const page = async ({ params }) => {
   const ordinances = await getAllOrdinances();
   const decrees = await getAllDecrees();
   const ddjj = await getAllDDJJ();
-  const publication = await getAllPublication();
 
   return (
     <main className="flex flex-col items-center w-full h-full overflow-hidden bg-white text-black white-container -mt-10">
