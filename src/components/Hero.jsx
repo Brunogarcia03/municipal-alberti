@@ -189,7 +189,6 @@ const Hero = () => {
           </h1>
         </div>
       </section>
-
       <div
         className={twMerge(
           "fixed bottom-0 left-0 w-full h-dvh flex items-center justify-center z-[9999] bg-black transition-opacity duration-300",
@@ -205,7 +204,7 @@ const Hero = () => {
           )}
         >
           <button
-            className="bg-blue border border-blue text-white rounded-md p-1 md:p-1.5 hover:bg-transparent hover:border-white transition-colors duration-300 hover:cursor-pointer z-[10000]"
+            className="relative bg-blue border border-blue text-white rounded-md p-1 md:p-1.5 hover:bg-transparent hover:border-white transition-colors duration-300 hover:cursor-pointer z-[10000]"
             onClick={(e) => {
               e.stopPropagation();
               setIsOpen(false);
@@ -222,7 +221,6 @@ const Hero = () => {
             </svg>
           </button>
         </div>
-
         <video
           src="/media/hero-alberti.mp4"
           className="w-full h-dvh object-contain"
