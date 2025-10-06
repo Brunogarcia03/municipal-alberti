@@ -7,6 +7,34 @@ import LastNews from "@/components/resources/LastNews";
 
 import Words from "@/components/ui/anim/Words";
 
+export async function generateMetadata({ params }) {
+  const news = await getOneNews(params.slug);
+  const n = news[0];
+
+  return {
+    title: `${n.titulo} | Municipalidad de Alberti`,
+    description:
+      n.descripcion ||
+      n.contenido?.[0]?.children?.[0]?.text ||
+      "Noticia publicada por la Municipalidad de Alberti.",
+    openGraph: {
+      title: n.titulo,
+      description: `Noticia publicada por la Municipalidad de Alberti. ${n.titulo}`,
+      images: n.imagen?.url
+        ? [{ url: n.imagen.url, width: 1200, height: 630, alt: n.titulo }]
+        : [],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: n.titulo,
+      description:
+        n.descripcion || "Noticia publicada por la Municipalidad de Alberti.",
+      images: n.imagen?.url ? [n.imagen.url] : [],
+    },
+  };
+}
+
 export default async function Page({ params }) {
   const news = await getOneNews(params.slug);
 
