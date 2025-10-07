@@ -177,17 +177,19 @@ const CardPerson = ({ official, meta, index }) => {
             {/* Body modal */}
             <div className="text-[1em] leading-[1.5] w-full">
               <h2 className="text-xl font-bold mt-4 mb-2">{official.cargo}</h2>
-              {renderContent(official.contenido)}
+              {official.contenido && renderContent(official.contenido)}
             </div>
 
             <div className="mt-[1em] text-[1em] leading-[1.3] w-full">
-              <Link
-                href={official.declaracion_jurada.archivo.url}
-                target="_blank"
-                className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
-              >
-                Declaración Jurada
-              </Link>
+              {official.declaracion_jurada && (
+                <Link
+                  href={official.declaracion_jurada.archivo.url}
+                  target="_blank"
+                  className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
+                >
+                  Declaración Jurada
+                </Link>
+              )}
             </div>
           </div>
         </section>
