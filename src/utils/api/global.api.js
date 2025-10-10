@@ -173,3 +173,25 @@ export const getAllTransparency = async () => {
     return [];
   }
 };
+
+// ----------------- Imagenes Hero -----------------
+export const getAllHeroImage = async () => {
+  try {
+    const res = await axiosClient.get("/imagenes-hero?populate=*");
+    return res.data.data;
+  } catch (error) {
+    handleError(error, "Error al obtener imagenes de hero");
+    return [];
+  }
+};
+
+// ----------------- Redes sociales -----------------
+export const getRedes = async () => {
+  try {
+    const res = await axiosClient.get("/red-social?populate=*");
+    return res.data.data;
+  } catch (error) {
+    handleError(error, "Error al obtener imagenes de hero");
+    return [];
+  }
+};

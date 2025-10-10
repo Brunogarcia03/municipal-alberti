@@ -6,27 +6,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { twMerge } from "tailwind-merge";
 import { useLenis } from "lenis/dist/lenis-react";
-import Image from "next/image";
 
-import HeroImage1 from "@/assets/images/hero1.webp";
-import HeroImage2 from "@/assets/images/hero2.webp";
-import HeroImage3 from "@/assets/images/hero3.webp";
-import HeroImage4 from "@/assets/images/hero4.webp";
-import HeroImage5 from "@/assets/images/hero5.webp";
+import Image from "next/image";
 
 import { wordsAnimation } from "@/utils/constants/animations";
 
+ScrollTrigger.config({ ignoreMobileResize: true });
 gsap.registerPlugin(ScrollTrigger);
 
-const HeroImageList = [
-  { image: HeroImage1, position: "70% 70%" },
-  { image: HeroImage2, position: "50% 95%" },
-  { image: HeroImage3, position: "40% 100%" },
-  { image: HeroImage4, position: "50% 50%" },
-  { image: HeroImage5, position: "50% 60%" },
-];
-
-const Hero = () => {
+const Hero = ({ imagesHero }) => {
   const [isOpen, setIsOpen] = useState(false);
   const titleRef = useRef(null);
   const Lenis = useLenis();
@@ -67,14 +55,13 @@ const Hero = () => {
       defaults: { duration: 1.5, ease: "power1.inOut" },
     });
 
-    const heroIds = ["#hero-1", "#hero-2", "#hero-3", "#hero-4"];
+    const heroIds = imagesHero.map((_, i) => `#hero-${i + 1}`);
+    tl.set(heroIds[0], { opacity: 1, scale: 1 });
+
     heroIds.forEach((id, index) => {
-      tl.fromTo(
-        id,
-        { opacity: 0, scale: 1.05 },
-        { opacity: 1, scale: 1 },
-        index === 0 ? 0 : ">1.5"
-      );
+      const next = heroIds[(index + 1) % heroIds.length];
+      tl.to(id, { opacity: 0, scale: 1.05 }, "+=3.5"); // fade out actual
+      tl.to(next, { opacity: 1, scale: 1, duration: 1.8 }, "<"); // fade in próxima
     });
 
     const button = document.querySelector("#button-hero");
@@ -139,17 +126,17 @@ const Hero = () => {
         className="relative w-screen h-screen md:h-dvh transition-all duration-700 overflow-hidden"
       >
         <div className="div-image relative w-full h-full will-change-transform">
-          {HeroImageList.map((item, index) => (
+          {imagesHero.map((item, index) => (
             <Image
               key={index}
               id={`hero-${index + 1}`}
-              loading="lazy"
-              src={item.image}
+              loading={index === 0 ? "eager" : "lazy"}
+              src={item.imagen.url}
               width={1920}
               height={1280}
               className="absolute top-0 left-0 w-full h-screen md:h-dvh object-cover opacity-0"
               style={{
-                objectPosition: item.position,
+                objectPosition: `${item.posicion_x}% ${item.posicion_y}%`,
                 willChange: "opacity, transform",
               }}
               alt={`Imagen ${index + 1} Principal`}
@@ -179,7 +166,7 @@ const Hero = () => {
           </button>
         </div>
 
-        <div className="absolute bottom-0 left-0 w-full h-auto text-white rounded-b-lg flex flex-col items-start py-[2em] px-[2em] lg:py-[4em] lg:px-[4em] z-30">
+        {/* <div className="absolute bottom-0 left-0 w-full h-auto text-white rounded-b-lg flex flex-col items-start py-[2em] px-[2em] lg:py-[4em] lg:px-[4em] z-30">
           <h1
             ref={titleRef}
             className="text-[1.5em] sm:text-[2.3em] md:text-[2.9em] lg:text-[3.7em] font-bold italic leading-[1.2] pr-2 text-white overflow-hidden"
@@ -187,7 +174,7 @@ const Hero = () => {
             Es nuestro Alberti
             <br /> Tierra de Trabajo
           </h1>
-        </div>
+        </div> */}
       </section>
       <div
         className={twMerge(
