@@ -1,13 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import Button from "../ui/Button";
 
 import { getRedes } from "@/utils/api/global.api";
 
-const Footer = async ({ dark = false }) => {
-  let redes = await getRedes();
+const Footer = ({ dark = false }) => {
+  const [redes, setRedes] = useState(null);
+
+  useEffect(() => {
+    setRedes(async () => {
+      const data = await getRedes();
+      return data;
+    });
+  }, []);
 
   return (
     <footer

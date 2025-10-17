@@ -10,11 +10,39 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useWindowScroll } from "@reactuses/core";
 
-import { NavList, categories, socials } from "@/utils/constants/constants";
+import { categories, socials } from "@/utils/constants/constants";
 import Button from "./ui/Button";
 import { getRedes } from "@/utils/api/global.api";
 
+import header_1 from "@/assets/header/header_1.jpeg";
+import header_2 from "@/assets/header/header_2.jpeg";
+import header_3 from "@/assets/header/header_3.jpeg";
+import header_4 from "@/assets/header/header_4.jpeg";
+
 gsap.registerPlugin(ScrollTrigger);
+
+const NavList = [
+  {
+    name: "Gobierno",
+    href: "/gobierno",
+    src: header_1.src,
+  },
+  {
+    name: "Ciudad",
+    href: "/ciudad",
+    src: header_2.src,
+  },
+  {
+    name: "Prensa",
+    href: "/prensa",
+    src: header_3.src,
+  },
+  {
+    name: "Transparencia",
+    href: "/transparencia",
+    src: header_4.src,
+  },
+];
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(null);
