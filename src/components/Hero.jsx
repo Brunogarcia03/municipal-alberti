@@ -60,8 +60,8 @@ const Hero = ({ imagesHero }) => {
 
     heroIds.forEach((id, index) => {
       const next = heroIds[(index + 1) % heroIds.length];
-      tl.to(id, { opacity: 0, scale: 1.05 }, "+=3.5"); // fade out actual
-      tl.to(next, { opacity: 1, scale: 1, duration: 1.8 }, "<"); // fade in próxima
+      tl.to(id, { opacity: 0, scale: 1.05 }, "+=3.5");
+      tl.to(next, { opacity: 1, scale: 1, duration: 1.8 }, "<");
     });
 
     const button = document.querySelector("#button-hero");
