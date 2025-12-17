@@ -76,7 +76,10 @@ const Footer = ({ dark = false }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group border-white p-1.5 transition-colors duration-200 hover:border-transparent"
+                className={twMerge(
+                  "flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group p-1.5 transition-colors duration-200 hover:border-transparent",
+                  dark ? "border-white" : "border-black"
+                )}
               >
                 <svg
                   className="size-full"
@@ -105,7 +108,10 @@ const Footer = ({ dark = false }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={"Instagram"}
-                className="flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group border-white p-1.5 transition-colors duration-200 hover:border-transparent"
+                className={twMerge(
+                  "flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group p-1.5 transition-colors duration-200 hover:border-transparent",
+                  dark ? "border-white" : "border-black"
+                )}
               >
                 <svg
                   className="size-full"
@@ -135,7 +141,10 @@ const Footer = ({ dark = false }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={"Youtube"}
-                className="flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group border-white p-1.5 transition-colors duration-200 hover:border-transparent"
+                className={twMerge(
+                  "flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group p-1.5 transition-colors duration-200 hover:border-transparent",
+                  dark ? "border-white" : "border-black"
+                )}
               >
                 <svg
                   className="size-full"
@@ -161,7 +170,10 @@ const Footer = ({ dark = false }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={"Twitter"}
-                className="flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group border-white p-2 transition-colors duration-200 hover:border-transparent"
+                className={twMerge(
+                  "flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group p-1.5 transition-colors duration-200 hover:border-transparent",
+                  dark ? "border-white" : "border-black"
+                )}
               >
                 <svg
                   className="size-full"
@@ -186,7 +198,10 @@ const Footer = ({ dark = false }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={"Whatsapp"}
-                className="flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group border-white p-1.5 transition-colors duration-200 hover:border-transparent"
+                className={twMerge(
+                  "flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group p-1.5 transition-colors duration-200 hover:border-transparent",
+                  dark ? "border-white" : "border-black"
+                )}
               >
                 <svg
                   className="size-full"
