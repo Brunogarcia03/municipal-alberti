@@ -2,6 +2,7 @@ import GridBento from "./resources/GridBento";
 import Link from "next/link";
 
 import NetPagosLogo from "@/assets/svgs/netpagos.svg";
+import clickMacroIcon from "@/assets/images/click-macro.png";
 
 import Words from "./ui/anim/Words";
 import Lines from "./ui/anim/Lines";
@@ -131,7 +132,7 @@ const Bulletin = () => {
             </h3>
           </Words>
           <Lines delay={0.5} yPercent={300}>
-            <p className="text-base md:text-lg lg:text-xl text-black w-full max-w-none md:max-w-3xl mx-auto mt-4 split-text">
+            <p className="text-base md:text-lg lg:text-xl text-black w-full max-w-none md:max-w-3xl mx-auto mt-4 split-text ">
               Aquí podés acceder de forma rápida a todas las publicaciones
               oficiales de la Municipalidad de Alberti. Para que siempre estés
               al día con la normativa y la gestión pública.
@@ -148,8 +149,123 @@ const Bulletin = () => {
           .
         </p>
       </section>
-      <section className="relative flex flex-col w-full pt-4 md:pt-8 px-6 md:px-24 white-container">
-        <div className="relative overflow-hidden bg-white max-w-5xl w-full mx-auto rounded-md md:col-span-2 md:row-span-3 row-start-4 p-6 flex flex-col shadow-sm shadow-blue group">
+      <section className="relative items-center justify-center w-full pt-12 px-[1vw]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:max-w-3xl lg:max-w-5xl w-full mx-auto px-5 md:px-0 lg:mx-auto">
+          <Link
+            target="_blank"
+            href={"https://app.weathercloud.net/d9791331696"}
+            className="relative bg-white rounded-md md:col-span-1 lg:h-[300px] p-6 flex flex-col justify-between shadow-sm shadow-blue group overflow-hidden"
+          >
+            <svg
+              id="visual"
+              viewBox="0 0 200 200"
+              width="200"
+              height="200"
+              xmlns="http://www.w3.org/2000/svg"
+              xlinkHref="http://www.w3.org/1999/xlink"
+              version="1.1"
+              className="absolute w-full h-full top-0 -right-10 opacity-30"
+            >
+              <g transform="translate(210.99096237540016 13.18999803912893)">
+                <path
+                  d="M88.1 -95C102.7 -73.5 95.1 -36.8 93.1 -2C91.1 32.8 94.7 65.5 80.1 82.9C65.5 100.2 32.8 102.1 5.5 96.6C-21.7 91 -43.4 78 -63.5 60.7C-83.7 43.4 -102.4 21.7 -112.1 -9.8C-121.9 -41.2 -122.8 -82.5 -102.7 -104C-82.5 -125.5 -41.2 -127.2 -2.2 -125C36.8 -122.8 73.5 -116.5 88.1 -95"
+                  fill="#00438b"
+                ></path>
+              </g>
+            </svg>
+            <div className="flex items-center overflow-hidden">
+              <div className="flex flex-none items-center justify-center w-0 group-hover:w-10 translate-0 overflow-hidden h-10 transition-discrete duration-300 font-bold">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#00438b"
+                >
+                  <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-blue z-10">
+                Estación meteorológica
+              </h3>
+            </div>
+            <div className="mt-4">
+              <div className="fill-blue">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="40px"
+                  viewBox="0 -960 960 960"
+                  width="40px"
+                  fill="#00438b"
+                >
+                  <path d="M440-760v-160h80v160h-80Zm266 110-56-56 113-114 56 57-113 113Zm54 210v-80h160v80H760Zm3 299L650-254l56-56 114 112-57 57ZM254-650 141-763l57-57 112 114-56 56Zm-14 450h180q25 0 42.5-17.5T480-260q0-25-17-42.5T421-320h-51l-20-48q-14-33-44-52.5T240-440q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T40-320q0-83 58.5-141.5T240-520q60 0 109.5 32.5T423-400q58 0 97.5 43T560-254q-2 57-42.5 95.5T420-120H240Zm320-134q-5-20-10-39t-10-39q45-19 72.5-59t27.5-89q0-66-47-113t-113-47q-60 0-105 39t-53 99q-20-5-41-9t-41-9q14-88 82.5-144T480-720q100 0 170 70t70 170q0 77-44 138.5T560-254Zm-79-226Z" />
+                </svg>
+              </div>
+              <p className="text-gray-700 mt-2">
+                Estación Meteorológica de Alberti.
+              </p>
+            </div>
+          </Link>
+          <Link
+            target="_blank"
+            href={"https://soberania-energetica.vercel.app/"}
+            className="relative bg-white rounded-md md:col-span-2 lg:h-[300px] p-6 flex flex-col justify-between shadow-sm shadow-blue group overflow-hidden"
+          >
+            <svg
+              id="visual"
+              viewBox="0 0 200 200"
+              width="200"
+              height="200"
+              xmlns="http://www.w3.org/2000/svg"
+              xlinkHref="http://www.w3.org/1999/xlink"
+              version="1.1"
+              className="absolute w-full h-full top-0 -right-10 opacity-30"
+            >
+              <g transform="translate(210.99096237540016 13.18999803912893)">
+                <path
+                  d="M88.1 -95C102.7 -73.5 95.1 -36.8 93.1 -2C91.1 32.8 94.7 65.5 80.1 82.9C65.5 100.2 32.8 102.1 5.5 96.6C-21.7 91 -43.4 78 -63.5 60.7C-83.7 43.4 -102.4 21.7 -112.1 -9.8C-121.9 -41.2 -122.8 -82.5 -102.7 -104C-82.5 -125.5 -41.2 -127.2 -2.2 -125C36.8 -122.8 73.5 -116.5 88.1 -95"
+                  fill="#00438b"
+                ></path>
+              </g>
+            </svg>
+            <div className="flex items-center overflow-hidden">
+              <div className="flex flex-none items-center justify-center w-0 group-hover:w-10 translate-0 overflow-hidden h-10 transition-discrete duration-300 font-bold">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24px"
+                  viewBox="0 -960 960 960"
+                  width="24px"
+                  fill="#00438b"
+                >
+                  <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-blue z-10">
+                Soberanía Energética
+              </h3>
+            </div>
+            <div className="mt-4">
+              <div className="fill-blue">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="40px"
+                  viewBox="0 -960 960 960"
+                  width="40px"
+                  fill="#00438b"
+                >
+                  <path d="M480-200q116.67 0 198-81.67 81.33-81.66 82-198.33v-280H480q-116.67.67-198.33 82Q200-596.67 200-480t81.67 198.33Q363.33-200 480-200Zm-51-92.33 199.33-178Q638-479 634-491q-4-12-17.33-14l-156-15.33L554-648.67q3.67-5 3.5-10.16-.17-5.17-4.17-9.84-4.66-5-11-4.83-6.33.17-11.33 4.83l-198.33 178Q323-482 327-470q4 12 17.33 14l156 15.33L406-312.33q-3.67 5-3.33 10.16.33 5.17 5 9.84 4.66 4.66 10.5 4.66 5.83 0 10.83-4.66Zm51 159q-63.33 0-119.17-20.84Q305-175 259.33-212.33l-69 69q-5.33 5.33-11.16 7.66-5.84 2.34-12.5 2.34-13.67 0-23.5-9.84-9.84-9.83-9.84-23.5 0-6.66 2.34-12.5 2.33-5.83 7.66-11.16l69-69Q175-305 154.17-360.83 133.33-416.67 133.33-480q0-144.67 101-245.67t245.67-101h346.67V-480q0 144.67-101 245.67T480-133.33ZM480-480Z" />
+                </svg>
+              </div>
+              <p className="text-gray-700 mt-2">
+                Descubre cómo los proyectos locales contribuyen a la soberanía
+                energética y al cuidado del planeta.
+              </p>
+            </div>
+          </Link>
+        </div>
+      </section>
+      <section className="relative flex items-center justify-center w-full py-6 px-5 md:px-[1vw] white-container">
+        <div className="relative overflow-hidden bg-white md:max-w-3xl lg:max-w-5xl w-full mx-auto rounded-md p-6 flex flex-col shadow-sm shadow-blue group">
           <Link
             href="/rentas"
             className="flex items-center overflow-hidden cursor-pointer"
@@ -217,18 +333,34 @@ const Bulletin = () => {
                 </a>
               </p>
             </div>
-
-            <Link
-              href="/rentas"
-              rel="noopener noreferrer"
-              className="inline-flex justify-center items-center gap-3 group shadow-[0px_4px_4px_0px_rgba(0,_0,_0,_0.1)] shadow-black bg-[#3D658A] text-white font-semibold py-3 px-[10vw] rounded-md w-full lg:w-auto transition-discrete duration-300 hover:scale-[1.02]"
-            >
-              <img
-                src={NetPagosLogo.src}
-                alt="Logo Net Pagos"
-                className="min-w-[150px] max-w-[150px] h-auto"
-              />
-            </Link>
+            <div className="flex flex-col items-center gap-2 w-full">
+              <Link
+                target="_blank"
+                href="https://pagos.macroclickpago.com.ar/SearchDeuda/796282"
+                rel="noopener noreferrer"
+                className="inline-flex justify-center items-center gap-3 group shadow-[0px_4px_4px_0px_rgba(0,_0,_0,_0.1)] shadow-black bg-[#3D658A] text-white font-semibold py-3 px-0 sm:px-[10vw] rounded-md w-full lg:w-auto transition-discrete duration-300 hover:scale-[1.02]"
+              >
+                <div className="flex items-center gap-2 min-w-[150px] max-w-[150px]">
+                  <span className="text-nowrap text-sm">Pagar con</span>
+                  <img
+                    src={clickMacroIcon.src}
+                    alt="Logo Net Pagos"
+                    className="h-[30px] w-auto object-contain"
+                  />
+                </div>
+              </Link>
+              <Link
+                href="/rentas"
+                rel="noopener noreferrer"
+                className="inline-flex justify-center items-center gap-3 group shadow-[0px_4px_4px_0px_rgba(0,_0,_0,_0.1)] shadow-black bg-[#3D658A] text-white font-semibold py-3 px-0 md:px-[10vw] rounded-md w-full lg:w-auto transition-discrete duration-300 hover:scale-[1.02]"
+              >
+                <img
+                  src={NetPagosLogo.src}
+                  alt="Logo Net Pagos"
+                  className="min-w-[150px] max-w-[150px] h-auto"
+                />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
