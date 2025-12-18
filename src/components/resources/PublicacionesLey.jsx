@@ -34,9 +34,25 @@ const PublicacionesLey = () => {
   return (
     <section className="relative w-[95vw] md:w-[90vw] max-w-full md:max-w-[1560px] mt-[1.5rem] md:mt-[5.5rem] mx-auto overflow-hidden">
       <Words>
-        <h3 className="text-base sm:text-lg md:text-[1.5rem] font-bold leading-[1.3] px-2 py-1 overflow-hidden">
-          Publicaciones de Ley
-        </h3>
+        <Link
+          href={`/boletin/publicaciones-de-ley`}
+          className="flex items-center group"
+        >
+          <h3 className="text-base sm:text-lg md:text-[1.5rem] font-bold leading-[1.3] pl-2 py-1 overflow-hidden">
+            Publicaciones de ley
+          </h3>
+          <div className="flex flex-none items-center justify-center w-0 group-hover:w-6 ml-1 translate-0 overflow-hidden h-4 transition-all duration-150 font-bold">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="32px"
+              viewBox="0 -960 960 960"
+              width="32px"
+              fill="#00438b"
+            >
+              <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
+            </svg>
+          </div>
+        </Link>
       </Words>
       <div className="w-full h-[1px] bg-gray" />
       <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center mt-[1.56em] pb-2 gap-4 w-full px-2 sm:px-4">

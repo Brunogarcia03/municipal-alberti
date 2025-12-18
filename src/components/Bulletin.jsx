@@ -13,7 +13,7 @@ const boletinItems = [
     title: "Ordenanzas",
     description:
       "Normativas locales sancionadas por el Honorable Concejo Deliberante.",
-    href: "/boletin#ordenanzas",
+    href: "/boletin/ordenanzas",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@ const boletinItems = [
     title: "Decretos",
     description:
       "Disposiciones ejecutivas del Departamento Ejecutivo Municipal.",
-    href: "/boletin#decretos",
+    href: "/boletin/decretos",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@ const boletinItems = [
     id: "publicaciones-de-ley",
     title: "Publicaciones de Ley",
     description: "Leyes provinciales y nacionales que afectan al municipio.",
-    href: "/boletin#publicaciones-de-ley",
+    href: "/boletin/publicaciones-de-ley",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +85,7 @@ const boletinItems = [
     title: "DDJJ Funcionarios",
     description:
       "Declaraciones juradas patrimoniales de funcionarios públicos.",
-    href: "/boletin#ddjj",
+    href: "/boletin/declaraciones-juradas",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"

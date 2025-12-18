@@ -11,7 +11,7 @@ export default function NewsContentRenderer({ content }) {
         paragraph: ({ children }) => <p className="max-w-prose">{children}</p>,
         heading: ({ children, level }) => {
           const Tag = `h${level}`;
-          return <Tag className="font-bold mb-2">{children}</Tag>;
+          return <Tag className="font-bold mb-1">{children}</Tag>;
         },
         link: ({ children, url }) => (
           <a
