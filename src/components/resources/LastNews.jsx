@@ -50,8 +50,15 @@ const LastNews = async ({ currentSlug }) => {
                     alt={`Imagen principal de la noticia ${item.titulo}`}
                     width={item.imagen.width}
                     height={item.imagen.height}
+                    sizes="
+                    (max-width: 768px) 100vw,
+                    (max-width: 1280px) 38vw,
+                    20vw
+                    "
                     className="object-cover rounded-md"
+                    loading="lazy"
                   />
+
                   <div className="hidden absolute md:flex items-center justify-center gap-2 inset-0 w-full h-full bg-black/0 group-hover:bg-black/40 text-white backdrop-blur-none group-hover:backdrop-blur-[1px] z-10 transition-all duration-300 rounded-md">
                     <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <p className="text-[1.375rem] leading-[1.4]">Leer</p>

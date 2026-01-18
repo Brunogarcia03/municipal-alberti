@@ -6,6 +6,7 @@ import clickMacroIcon from "@/assets/images/click-macro.png";
 
 import Words from "./ui/anim/Words";
 import Lines from "./ui/anim/Lines";
+import Image from "next/image";
 
 const boletinItems = [
   {
@@ -342,10 +343,12 @@ const Bulletin = () => {
               >
                 <div className="flex items-center gap-2 min-w-[150px] max-w-[150px]">
                   <span className="text-nowrap text-sm">Pagar con</span>
-                  <img
+                  <Image
                     src={clickMacroIcon.src}
                     alt="Logo Net Pagos"
-                    className="h-[30px] w-auto object-contain"
+                    width={76}
+                    height={30}
+                    sizes="76px"
                   />
                 </div>
               </Link>
