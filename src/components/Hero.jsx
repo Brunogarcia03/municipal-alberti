@@ -201,11 +201,12 @@ const Hero = ({ imagesHero }) => {
         </div>
         <video
           src="/media/hero-alberti.mp4"
-          className="w-full h-svh object-contain"
-          preload="metadata"
-          playsInline
-          controls
+          class="w-full h-svh object-cover"
+          muted
+          autoplay
           loop
+          playsinline
+          aria-hidden="true"
         />
       </div>
     </>

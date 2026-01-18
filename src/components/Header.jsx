@@ -234,17 +234,27 @@ const Header = () => {
           </h1>
         </Link>
         <button
+          type="button"
+          aria-label={
+            isOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"
+          }
+          aria-expanded={isOpen}
+          aria-controls="menu-wrapper"
           className="md:absolute md:left-1/2 md:top-1/2 md:-translate-y-1/2 md:-translate-x-1/2 flex flex-col items-center justify-center size-[48px] cursor-pointer group"
           onClick={() => setIsOpen(!isOpen)}
         >
+          <span className="sr-only">
+            {isOpen ? "Cerrar menú" : "Abrir menú"}
+          </span>
+
           <div
-            className={`absolute h-0.5 w-8 md:w-10 bg-white menu-line transition-all duration-300 group-hover:w-5 md:group-hover:w-8 origin-center ${
-              isOpen ? "rotate-45" : "-translate-y-1 "
+            className={`absolute h-0.5 w-8 md:w-10 bg-white menu-line transition-all duration-300 ${
+              isOpen ? "rotate-45" : "-translate-y-1"
             }`}
           />
           <div
-            className={`absolute h-0.5 w-8 md:w-10 bg-white menu-line transition-all duration-300 group-hover:w-5 md:group-hover:w-8 origin-center ${
-              isOpen ? "-rotate-45" : "translate-y-1 "
+            className={`absolute h-0.5 w-8 md:w-10 bg-white menu-line transition-all duration-300 ${
+              isOpen ? "-rotate-45" : "translate-y-1"
             }`}
           />
         </button>
@@ -291,7 +301,7 @@ const Header = () => {
               <div className="relative mt-2 pt-[56.25%] rounded-md overflow-hidden">
                 <img
                   src={item.src}
-                  alt={item.name}
+                  alt=""
                   className="absolute inset-0 scale-110 group-hover:scale-105 transition-transform duration-300 object-cover"
                 />
               </div>

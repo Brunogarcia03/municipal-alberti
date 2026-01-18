@@ -128,12 +128,12 @@ const Bulletin = () => {
       >
         <div className="px-8 text-center">
           <Words>
-            <h3 className="text-[1.3em] md:text-[1.9em] lg:text-[2.7em] text-blue font-bold italic leading-[1.2] z-0 split-text">
+            <h1 className="text-[1.3em] md:text-[1.9em] lg:text-[2.7em] text-blue font-bold italic leading-[1.2] z-0 split-text">
               Boletín Oficial Municipal
-            </h3>
+            </h1>
           </Words>
           <Lines delay={0.5} yPercent={300}>
-            <p className="text-base md:text-lg lg:text-xl text-black w-full max-w-none md:max-w-3xl mx-auto mt-4 split-text ">
+            <p className="text-base md:text-lg lg:text-xl text-black w-full max-w-none md:max-w-3xl mx-auto mt-4 split-text">
               Aquí podés acceder de forma rápida a todas las publicaciones
               oficiales de la Municipalidad de Alberti. Para que siempre estés
               al día con la normativa y la gestión pública.
