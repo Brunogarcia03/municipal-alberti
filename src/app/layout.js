@@ -63,9 +63,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
       </head>
-      <body
-        className={`${montserrat.className} antialiased text-white overflow-x-hidden bg-white`}
-      >
+      <body className={`${montserrat.className} antialiased overflow-x-hidden`}>
         <Script
           id="structured-data"
           type="application/ld+json"
