@@ -1,24 +1,14 @@
 "use client";
 
-import { cloneElement, useEffect, useRef } from "react";
+import { wordsAnimation } from "@/utils/constants/animations";
+import { cloneElement, useRef } from "react";
 
 const Words = ({ yPercent = 150, delay = 0, children }) => {
-  const ref = useRef(null);
+  const wordsRef = useRef(null);
 
-  useEffect(() => {
-    if (!ref.current) return;
+  wordsAnimation(wordsRef, yPercent, delay);
 
-    let ctx;
-
-    (async () => {
-      const { wordsAnimation } = await import("@/utils/constants/animations");
-      ctx = wordsAnimation(ref, yPercent, delay);
-    })();
-
-    return () => ctx?.revert?.();
-  }, [yPercent, delay]);
-
-  return cloneElement(children, { ref });
+  return cloneElement(children, { ref: wordsRef });
 };
 
 export default Words;
