@@ -363,6 +363,8 @@ const Bulletin = () => {
                 <img
                   src={NetPagosLogo.src}
                   alt="Logo Net Pagos"
+                  height={NetPagosLogo.height}
+                  width={NetPagosLogo.width}
                   className="min-w-[150px] max-w-[150px] h-auto"
                 />
               </Link>

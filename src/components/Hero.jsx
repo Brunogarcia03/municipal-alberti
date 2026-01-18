@@ -203,6 +203,7 @@ const Hero = ({ imagesHero }) => {
         <video
           src="/media/hero-alberti.mp4"
           className="w-full h-screen object-cover"
+          preload="none"
           muted
           autoPlay
           controls

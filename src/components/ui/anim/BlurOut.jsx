@@ -1,16 +1,23 @@
 "use client";
 
-import { articleAnimation } from "@/utils/constants/animations";
 import { cloneElement, useEffect, useRef } from "react";
 
 const BlurOut = ({ yPercent = 20, delay = 0.5, children }) => {
-  const ref = useRef();
+  const ref = useRef(null);
 
   useEffect(() => {
     if (!ref.current) return;
 
-    articleAnimation("blur-out", yPercent, delay);
-  }, []);
+    let ctx;
+
+    (async () => {
+      const { articleAnimation } = await import("@/utils/constants/animations");
+
+      ctx = articleAnimation("blur-out", yPercent, delay, ref);
+    })();
+
+    return () => ctx?.revert?.();
+  }, [yPercent, delay]);
 
   return cloneElement(children, {
     ref,

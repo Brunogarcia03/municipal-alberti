@@ -1,11 +1,10 @@
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
-
 import { Montserrat } from "next/font/google";
 
 import Header from "@/components/Header";
-import LenisScrollProvider from "@/providers/lenis-provider";
+import Providers from "@/providers/Providers";
 
 const montserrat = Montserrat({
   style: ["normal", "italic"],
@@ -81,10 +80,10 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
-        <LenisScrollProvider>
+        <Providers>
           <Header />
           {children}
-        </LenisScrollProvider>
+        </Providers>
         <Analytics />
       </body>
     </html>
