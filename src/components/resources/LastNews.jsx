@@ -44,18 +44,18 @@ const LastNews = async ({ currentSlug }) => {
                   i === 0 ? "md:w-[38%]" : "md:w-[20%]",
                 )}
               >
-                <picture className="relative w-full aspect-[16/9] rounded-md overflow-hidden mb-2">
+                <picture className="relative w-full rounded-md overflow-hidden mb-2">
                   <Image
                     src={item.imagen.url}
                     alt={`Imagen principal de la noticia ${item.titulo}`}
                     width={item.imagen.width}
                     height={item.imagen.height}
                     sizes="
-                    (max-width: 768px) 100vw,
+                    (max-width: 768px) 70vw,
                     (max-width: 1280px) 38vw,
                     20vw
                     "
-                    className="object-cover rounded-md"
+                    className="object-cover rounded-md aspect-video md:aspect-auto"
                     loading="lazy"
                   />
 
