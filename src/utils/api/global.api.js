@@ -24,7 +24,7 @@ const handleError = (error, message) => {
 export const getAllNews = async (page = 1) => {
   try {
     const res = await axiosClient.get(
-      `/noticias?populate=*&pagination[page]=${page}&pagination[pageSize]=8`
+      `/noticias?populate=*&pagination[page]=${page}&pagination[pageSize]=8`,
     );
 
     return {
@@ -45,7 +45,7 @@ export const getAllNewsByCategory = async (page = 1, categoryId) => {
 
   try {
     const res = await axiosClient.get(
-      `/noticias?populate=*&pagination[page]=${page}&pagination[pageSize]=8&filters[categoria][id][$eq]=${categoryId}`
+      `/noticias?populate=*&pagination[page]=${page}&pagination[pageSize]=8&filters[categoria][id][$eq]=${categoryId}`,
     );
 
     return {
@@ -78,7 +78,7 @@ export const getOneNews = async (slug) => {
 
   try {
     const res = await axiosClient.get(
-      `/noticias?populate=*&filters[slug][$eq]=${slug}`
+      `/noticias?populate=*&filters[slug][$eq]=${slug}`,
     );
     return res.data.data;
   } catch (error) {
@@ -91,7 +91,7 @@ export const getOneNews = async (slug) => {
 export const getAllOfficials = async () => {
   try {
     const res = await axiosClient.get(
-      "/funcionarios?populate=imagen&populate=declaracion_jurada.archivo"
+      "/funcionarios?populate=imagen&populate=declaracion_jurada.archivo",
     );
     return { data: res.data.data, meta: res.data.meta };
   } catch (error) {
@@ -137,11 +137,9 @@ export const getAllDecrees = async () => {
 export const getAllPublication = async (start = 0) => {
   try {
     const res = await axiosClient.get(
-      `${
-        process.env.NEXT_PUBLIC_BACKEND_URL
-      }/api/publicacion-de-leys?pagination[start]=${start}&pagination[limit]=${
+      `/api/publicacion-de-leys?pagination[start]=${start}&pagination[limit]=${
         start === 0 ? 3 : 2
-      }&sort=fecha:desc&populate=*`
+      }&sort=fecha:desc&populate=*`,
     );
     return res.data.data;
   } catch (error) {
@@ -165,7 +163,7 @@ export const getAllHeritage = async () => {
 export const getAllTransparency = async () => {
   try {
     const res = await axiosClient.get(
-      "https://strapi-production-4f4b.up.railway.app/api/transparencias?populate[0]=presupuesto&populate[1]=stock_deuda.primer_trimestre&populate[2]=stock_deuda.segundo_trimestre&populate[3]=stock_deuda.tercer_trimestre&populate[4]=stock_deuda.total&populate[5]=gastos_finalidad_funcion.primer_trimestre&populate[6]=gastos_finalidad_funcion.segundo_trimestre&populate[7]=gastos_finalidad_funcion.tercer_trimestre&populate[8]=gastos_finalidad_funcion.total&populate[9]=ejecucion_presupuestaria.primer_trimestre&populate[10]=ejecucion_presupuestaria.segundo_trimestre&populate[11]=ejecucion_presupuestaria.tercer_trimestre&populate[12]=ejecucion_presupuestaria.total&populate[13]=situacion_economico_financiera.primer_trimestre&populate[14]=situacion_economico_financiera.segundo_trimestre&populate[15]=situacion_economico_financiera.tercer_trimestre&populate[16]=situacion_economico_financiera.total"
+      "https://strapi-production-4f4b.up.railway.app/api/transparencias?populate[0]=presupuesto&populate[1]=stock_deuda.primer_trimestre&populate[2]=stock_deuda.segundo_trimestre&populate[3]=stock_deuda.tercer_trimestre&populate[4]=stock_deuda.total&populate[5]=gastos_finalidad_funcion.primer_trimestre&populate[6]=gastos_finalidad_funcion.segundo_trimestre&populate[7]=gastos_finalidad_funcion.tercer_trimestre&populate[8]=gastos_finalidad_funcion.total&populate[9]=ejecucion_presupuestaria.primer_trimestre&populate[10]=ejecucion_presupuestaria.segundo_trimestre&populate[11]=ejecucion_presupuestaria.tercer_trimestre&populate[12]=ejecucion_presupuestaria.total&populate[13]=situacion_economico_financiera.primer_trimestre&populate[14]=situacion_economico_financiera.segundo_trimestre&populate[15]=situacion_economico_financiera.tercer_trimestre&populate[16]=situacion_economico_financiera.total",
     );
     return res.data.data;
   } catch (error) {

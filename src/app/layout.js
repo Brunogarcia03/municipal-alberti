@@ -52,6 +52,16 @@ export default function RootLayout({ children }) {
           href="https://res.cloudinary.com/dshbxjhtw/image/upload/v1759754224/ICON_f25199ec4c.png"
           type="image/png"
         />
+        <link
+          rel="preconnect"
+          href="https://strapi-production-4f4b.up.railway.app"
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://strapi-production-4f4b.up.railway.app"
+        />
+        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
       </head>
       <body
         className={`${montserrat.className} antialiased text-white overflow-x-hidden bg-white`}

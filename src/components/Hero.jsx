@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { twMerge } from "tailwind-merge";
 import { useLenis } from "lenis/dist/lenis-react";
@@ -10,9 +9,6 @@ import { useLenis } from "lenis/dist/lenis-react";
 import Image from "next/image";
 
 import { wordsAnimation } from "@/utils/constants/animations";
-
-ScrollTrigger.config({ ignoreMobileResize: true });
-gsap.registerPlugin(ScrollTrigger);
 
 const Hero = ({ imagesHero }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,29 +22,6 @@ const Hero = ({ imagesHero }) => {
   }, [isOpen]);
 
   useGSAP(() => {
-    gsap.to("#hero-container", {
-      ease: "power1.inOut",
-      borderBottomLeftRadius: "2.5em",
-      borderBottomRightRadius: "2.5em",
-      scrollTrigger: {
-        trigger: "#hero-container",
-        scrub: 0.5,
-        start: "center center",
-        end: "bottom top",
-      },
-    });
-
-    gsap.to(".div-image", {
-      ease: "power1.inOut",
-      top: "8%",
-      scrollTrigger: {
-        trigger: "#hero-container",
-        scrub: 0.5,
-        start: "center center",
-        end: "bottom top",
-      },
-    });
-
     const tl = gsap.timeline({
       repeat: -1,
       repeatDelay: 1.2,
@@ -64,8 +37,19 @@ const Hero = ({ imagesHero }) => {
       tl.to(next, { opacity: 1, scale: 1, duration: 1.8 }, "<");
     });
 
-    const button = document.querySelector("#button-hero");
     const container = document.querySelector("#hero-container");
+    const button = document.querySelector("#button-hero");
+
+    if (!container || !button) return;
+
+    let bounds = null;
+
+    const updateBounds = () => {
+      bounds = container.getBoundingClientRect();
+    };
+
+    updateBounds();
+    window.addEventListener("resize", updateBounds);
 
     const showButton = () =>
       gsap.to(button, {
@@ -83,17 +67,21 @@ const Hero = ({ imagesHero }) => {
         ease: "power1.out",
       });
 
-    const moveButton = (e) => {
-      const rect = container.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
+    /* ⚡ quick setters (no reflow, no GC) */
+    const moveX = gsap.quickTo(button, "x", {
+      duration: 0.15,
+      ease: "sine.out",
+    });
 
-      gsap.to(button, {
-        x,
-        y,
-        duration: 0.15,
-        ease: "sine.out",
-      });
+    const moveY = gsap.quickTo(button, "y", {
+      duration: 0.15,
+      ease: "sine.out",
+    });
+
+    const moveButton = (e) => {
+      if (!bounds) return;
+      moveX(e.clientX - bounds.left - bounds.width / 2);
+      moveY(e.clientY - bounds.top - bounds.height / 2);
     };
 
     if (window.innerWidth >= 768) {
@@ -111,6 +99,7 @@ const Hero = ({ imagesHero }) => {
     }
 
     return () => {
+      window.removeEventListener("resize", updateBounds);
       container.removeEventListener("mouseenter", showButton);
       container.removeEventListener("mouseleave", hideButton);
       container.removeEventListener("mousemove", moveButton);
@@ -123,26 +112,28 @@ const Hero = ({ imagesHero }) => {
     <>
       <section
         id="hero-container"
-        className="relative w-screen h-screen md:h-dvh transition-all duration-700 overflow-hidden"
+        className="relative w-screen h-svh overflow-hidden"
       >
         <div className="div-image relative w-full h-full will-change-transform">
           {imagesHero.map((item, index) => (
             <Image
               key={index}
               id={`hero-${index + 1}`}
-              loading={index === 0 ? "eager" : "lazy"}
               src={item.imagen.url}
-              width={1920}
-              height={1280}
-              className="absolute top-0 left-0 w-full h-screen md:h-dvh object-cover opacity-0"
+              alt={`Imagen ${index + 1} Principal`}
+              fill
+              priority={index === 0}
+              sizes="(max-width: 640px) 100vw,
+         (max-width: 1024px) 100vw,
+         100vw"
+              className="absolute top-0 left-0 object-cover opacity-0"
               style={{
                 objectPosition: `${item.posicion_x}% ${item.posicion_y}%`,
                 willChange: "opacity, transform",
               }}
-              alt={`Imagen ${index + 1} Principal`}
             />
           ))}
-          <div className="absolute top-0 left-0 w-full h-screen md:h-dvh bg-black/25 z-10" />
+          <div className="absolute top-0 left-0 w-full h-svh bg-black/25 z-10" />
         </div>
 
         <div
@@ -151,7 +142,7 @@ const Hero = ({ imagesHero }) => {
         >
           <button
             id="button-hero"
-            className="bg-blue border border-blue text-white rounded-md p-2 md:p-2.5 scale-0 opacity-0 z-10 will-change-transform"
+            className="bg-blue border border-blue text-white rounded-md p-2 md:p-2.5 scale-0 opacity-0 z-10 will-change-transform cursor-pointer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -181,13 +172,13 @@ const Hero = ({ imagesHero }) => {
           "fixed bottom-0 left-0 w-full h-dvh flex items-center justify-center z-[9999] bg-black transition-opacity duration-300",
           isOpen
             ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+            : "opacity-0 pointer-events-none",
         )}
       >
         <div
           className={twMerge(
             "absolute top-5 right-5 pointer-events-auto",
-            isOpen ? "block" : "hidden"
+            isOpen ? "block" : "hidden",
           )}
         >
           <button
@@ -210,11 +201,11 @@ const Hero = ({ imagesHero }) => {
         </div>
         <video
           src="/media/hero-alberti.mp4"
-          className="w-full h-dvh object-contain"
+          className="w-full h-svh object-contain"
+          preload="metadata"
+          playsInline
           controls
           loop
-          autoPlay
-          playsInline
         />
       </div>
     </>

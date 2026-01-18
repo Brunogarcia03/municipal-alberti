@@ -8,7 +8,9 @@ import LastNews from "@/components/resources/LastNews";
 import Words from "@/components/ui/anim/Words";
 
 export async function generateMetadata({ params }) {
-  const news = await getOneNews(params.slug);
+  const { slug } = await params;
+
+  const news = await getOneNews(slug);
   const n = news[0];
 
   return {
@@ -36,7 +38,9 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Page({ params }) {
-  const news = await getOneNews(params.slug);
+  const { slug } = await params;
+
+  const news = await getOneNews(slug);
 
   const fecha = formatDate(news[0].createdAt);
 
@@ -74,7 +78,7 @@ export default async function Page({ params }) {
       </section>
 
       <section className="w-[90vw] sm:w-[95vw] md:max-w-[1560px] mx-auto my-12 md:my-16">
-        <LastNews currentSlug={params.slug} />
+        <LastNews currentSlug={slug} />
       </section>
 
       <Footer dark />

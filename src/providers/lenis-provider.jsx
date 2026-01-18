@@ -2,24 +2,37 @@
 
 import "lenis/dist/lenis.css";
 import { ReactLenis, useLenis } from "lenis/dist/lenis-react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const LenisScrollProvider = ({ children }) => {
   const lenisRef = useRef(null);
+  const [isDesktop, setIsDesktop] = useState(false);
 
-  const Lenis = useLenis();
+  const lenis = useLenis();
 
   useEffect(() => {
-    if (!Lenis) return;
+    const media = window.matchMedia("(min-width: 1024px) and (pointer: fine)");
 
-    const scrollToTop = () => {
-      Lenis.scrollTo(0, {
-        offset: 0,
-      });
-    };
-    scrollToTop();
-  }, [Lenis]);
+    const update = () => setIsDesktop(media.matches);
 
+    update();
+    media.addEventListener("change", update);
+
+    return () => media.removeEventListener("change", update);
+  }, []);
+
+  useEffect(() => {
+    if (!lenis || !isDesktop) return;
+
+    lenis.scrollTo(0, { immediate: true });
+  }, [lenis, isDesktop]);
+
+  // ⛔️ Mobile / Tablet: NO Lenis
+  if (!isDesktop) {
+    return <>{children}</>;
+  }
+
+  // ✅ Desktop: Lenis activo
   return (
     <ReactLenis
       ref={lenisRef}
@@ -28,6 +41,7 @@ const LenisScrollProvider = ({ children }) => {
         lerp: 0.5,
         duration: 1.5,
         smoothWheel: true,
+        smoothTouch: false, // clave
         prevent: (node) => node.id === "scroller-modal",
       }}
     >

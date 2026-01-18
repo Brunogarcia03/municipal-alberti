@@ -72,7 +72,7 @@ const Header = () => {
 
     if (isOpen) {
       tl.add(() => {
-        lenis.stop();
+        if (lenis) lenis.stop();
 
         const textIcon = document.querySelector("#text-icon");
         const menuLines = document.querySelectorAll(".menu-line");
@@ -96,25 +96,25 @@ const Header = () => {
             duration: 0.4,
             ease: "power2.out",
           },
-          "<0.3"
+          "<0.3",
         )
         .fromTo(
           "#categories",
           { opacity: 0, y: 20 },
           { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
-          "-=0.3"
+          "-=0.3",
         )
         .fromTo(
           "#socials",
           { opacity: 0, y: 20 },
           { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
-          "<"
+          "<",
         )
         .fromTo(
           "#contact-button",
           { opacity: 0, y: 20 },
           { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
-          "<"
+          "<",
         );
     } else {
       tl.to(["#menu-item", "#categories", "#socials", "#contact-button"], {
@@ -131,7 +131,7 @@ const Header = () => {
           ease: "power2.inOut",
         })
         .add(() => {
-          lenis.start();
+          if (lenis) lenis.start();
 
           gsap.utils.toArray(".white-container").forEach((section) => {
             ScrollTrigger.create({

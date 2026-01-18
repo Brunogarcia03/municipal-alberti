@@ -13,7 +13,10 @@ const LastNews = async ({ currentSlug }) => {
   return (
     <div className="w-full">
       <div className="flex flex-col md:flex-row items-center justify-between w-full h-full">
-        <div className="flex flex-row md:flex-col items-center md:items-start justify-between w-full md:w-[22%] mb-4 md:mb-0 h-full">
+        <Link
+          href={"/prensa"}
+          className="flex flex-row md:flex-col items-center md:items-start justify-between w-full md:w-[22%] mb-4 md:mb-0 h-full"
+        >
           <h2 className="text-[2.5rem] md:text-[4.5rem] leading-[.93] tracking-[-1.5px] w-full">
             Descrubrí más
           </h2>
@@ -29,7 +32,7 @@ const LastNews = async ({ currentSlug }) => {
               <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
             </svg>
           </div>
-        </div>
+        </Link>
 
         <div className="flex flex-col md:flex-row justify-center md:justify-end gap-8 md:gap-4">
           {filtered.map((item, i) => (
@@ -38,7 +41,7 @@ const LastNews = async ({ currentSlug }) => {
                 href={`/prensa/${item.slug}`}
                 className={twMerge(
                   "relative w-full group overflow-hidden",
-                  i === 0 ? "md:w-[38%]" : "md:w-[20%]"
+                  i === 0 ? "md:w-[38%]" : "md:w-[20%]",
                 )}
               >
                 <picture className="relative w-full aspect-[16/9] rounded-md overflow-hidden mb-2">
