@@ -123,9 +123,11 @@ const Hero = ({ imagesHero }) => {
               alt={`Imagen ${index + 1} Principal`}
               fill
               priority={index === 0}
-              sizes="(max-width: 640px) 150vw,
-         (max-width: 1024px) 60vw,
-         100vw"
+              sizes="
+    (max-width: 640px) 100vw,
+    (max-width: 1024px) 100vw,
+    1400px
+  "
               className="absolute top-0 left-0 object-cover opacity-0"
               style={{
                 objectPosition: `${item.posicion_x}% ${item.posicion_y}%`,

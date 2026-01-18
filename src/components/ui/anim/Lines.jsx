@@ -1,14 +1,24 @@
 "use client";
 
-import { linesAnimation } from "@/utils/constants/animations";
-import { useRef, cloneElement } from "react";
+import { cloneElement, useEffect, useRef } from "react";
 
 const Lines = ({ yPercent = 150, delay = 0, children }) => {
-  const linesRef = useRef(null);
+  const ref = useRef(null);
 
-  linesAnimation(linesRef, yPercent, delay);
+  useEffect(() => {
+    if (!ref.current) return;
 
-  return cloneElement(children, { ref: linesRef });
+    let ctx;
+
+    (async () => {
+      const { linesAnimation } = await import("@/utils/constants/animations");
+      ctx = linesAnimation(ref, yPercent, delay);
+    })();
+
+    return () => ctx?.revert?.();
+  }, [yPercent, delay]);
+
+  return cloneElement(children, { ref });
 };
 
 export default Lines;

@@ -4,7 +4,7 @@ import Script from "next/script";
 import { Montserrat } from "next/font/google";
 
 import Header from "@/components/Header";
-import Providers from "@/providers/Providers";
+import LenisScrollProvider from "@/providers/lenis-provider";
 
 const montserrat = Montserrat({
   style: ["normal", "italic"],
@@ -80,10 +80,10 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
-        <Providers>
+        <LenisScrollProvider>
           <Header />
           {children}
-        </Providers>
+        </LenisScrollProvider>
         <Analytics />
       </body>
     </html>
