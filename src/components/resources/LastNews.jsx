@@ -40,7 +40,7 @@ const LastNews = async ({ currentSlug }) => {
               <Link
                 href={`/prensa/${item.slug}`}
                 className={twMerge(
-                  "relative max-w-md w-full group overflow-hidden",
+                  "relative max-w-md w-full group overflow-hidden text-neutral-900",
                   i === 0 ? "md:w-[38%]" : "md:w-[20%]",
                 )}
               >
@@ -74,12 +74,16 @@ const LastNews = async ({ currentSlug }) => {
                     </div>
                   </div>
                 </picture>
-                <h3 className="text-[1.375rem] leading-[1.4]">{item.titulo}</h3>
-                <div className="flex flex-row md:flex-col items-center md:items-start justify-between border-t-black mt-2 md:mt-4">
-                  <p className="text-neutral-700 text-[.8rem]">
+                <h3 className="text-[1.375rem] leading-[1.4] text-neutral-900">
+                  {item.titulo}
+                </h3>
+                <div className="flex flex-row md:flex-col mt-2 md:mt-4">
+                  <p className="text-neutral-600 text-[.8rem]">
                     {formatDate(item.createdAt)}
                   </p>
-                  <p className="text-neutral-950">{item.categoria.nombre}</p>
+                  <p className="text-neutral-900 font-medium">
+                    {item.categoria.nombre}
+                  </p>
                 </div>
               </Link>
             </BlurOut>

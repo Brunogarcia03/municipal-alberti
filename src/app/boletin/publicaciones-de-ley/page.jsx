@@ -19,7 +19,10 @@ const page = async () => {
           </Words>
 
           <Lines yPercent={300}>
-            <p className="leading-[1.1] text-base md:text-base lg:text-lg max-w-3xl text-center mt-4 overflow-hidden">
+            <p
+              className="leading-[1.1] text-base md:text-base lg:text-lg max-w-3xl text-center mt-4 overflow-hidden"
+              aria-hidden="true"
+            >
               Aquí podés acceder de forma rápida a todas las publicaciones
               oficiales de la Municipalidad de Alberti. Para que siempre estés
               al día con la normativa y la gestión pública.

@@ -135,7 +135,7 @@ const Bulletin = () => {
           <Lines delay={0.5} yPercent={300}>
             <p
               className="text-base md:text-lg lg:text-xl text-black w-full max-w-none md:max-w-3xl mx-auto mt-4 split-text"
-              aria-label="hidden"
+              aria-hidden="true"
             >
               Aquí podés acceder de forma rápida a todas las publicaciones
               oficiales de la Municipalidad de Alberti. Para que siempre estés
@@ -189,9 +189,9 @@ const Bulletin = () => {
                   <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-blue z-10">
+              <h1 className="text-2xl font-bold text-blue z-10">
                 Estación meteorológica
-              </h3>
+              </h1>
             </div>
             <div className="mt-4">
               <div className="fill-blue">

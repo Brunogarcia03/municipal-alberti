@@ -142,6 +142,7 @@ const Hero = ({ imagesHero }) => {
         >
           <button
             id="button-hero"
+            aria-label="Reproducir video institucional"
             className="bg-blue border border-blue text-white rounded-md p-2 md:p-2.5 scale-0 opacity-0 z-10 will-change-transform cursor-pointer"
           >
             <svg
@@ -201,11 +202,12 @@ const Hero = ({ imagesHero }) => {
         </div>
         <video
           src="/media/hero-alberti.mp4"
-          className="w-full h-svh object-cover"
+          className="w-full h-screen object-cover"
           muted
-          autoplay
+          autoPlay
+          controls
           loop
-          playsinline
+          playsInline
           aria-hidden="true"
         />
       </div>
