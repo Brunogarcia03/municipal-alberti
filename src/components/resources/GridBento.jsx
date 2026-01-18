@@ -37,9 +37,9 @@ const GridBento = ({ itemsList }) => {
                 <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-blue z-10">
+            <h1 className="text-2xl font-bold text-blue z-10">
               {itemsList[0].title}
-            </h3>
+            </h1>
           </div>
           <div className="mt-4">
             <div className="fill-blue">{itemsList[0].icon}</div>
@@ -122,9 +122,9 @@ const GridBento = ({ itemsList }) => {
                 <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-blue z-10">
+            <h1 className="text-2xl font-bold text-blue z-10">
               {itemsList[2].title}
-            </h3>
+            </h1>
           </div>
           <div className="mt-4">
             <div className="fill-blue">{itemsList[2].icon}</div>
@@ -164,9 +164,9 @@ const GridBento = ({ itemsList }) => {
                 <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-blue z-10">
+            <h1 className="text-2xl font-bold text-blue z-10">
               {itemsList[5].title}
-            </h3>
+            </h1>
           </div>
           <div className="mt-4">
             <div className="fill-blue">{itemsList[5].icon}</div>
@@ -207,9 +207,9 @@ const GridBento = ({ itemsList }) => {
                 <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-blue z-10">
+            <h1 className="text-2xl font-bold text-blue z-10">
               {itemsList[4].title}
-            </h3>
+            </h1>
           </div>
           <div className="mt-4">
             <div className="fill-blue">{itemsList[4].icon}</div>
@@ -249,9 +249,9 @@ const GridBento = ({ itemsList }) => {
                 <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-blue z-10">
+            <h1 className="text-2xl font-bold text-blue z-10">
               {itemsList[3].title}
-            </h3>
+            </h1>
           </div>
 
           <div className="mt-4 z-10">

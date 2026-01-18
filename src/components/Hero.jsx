@@ -201,7 +201,7 @@ const Hero = ({ imagesHero }) => {
         </div>
         <video
           src="/media/hero-alberti.mp4"
-          class="w-full h-svh object-cover"
+          className="w-full h-svh object-cover"
           muted
           autoplay
           loop

@@ -76,10 +76,10 @@ const LastNews = async ({ currentSlug }) => {
                 </picture>
                 <h3 className="text-[1.375rem] leading-[1.4]">{item.titulo}</h3>
                 <div className="flex flex-row md:flex-col items-center md:items-start justify-between border-t-black mt-2 md:mt-4">
-                  <p className="text-gray text-[.8rem]">
+                  <p className="text-neutral-700 text-[.8rem]">
                     {formatDate(item.createdAt)}
                   </p>
-                  <p className="text-black">{item.categoria.nombre}</p>
+                  <p className="text-neutral-950">{item.categoria.nombre}</p>
                 </div>
               </Link>
             </BlurOut>
