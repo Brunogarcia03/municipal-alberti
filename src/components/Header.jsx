@@ -172,16 +172,6 @@ const Header = () => {
     };
   }, []);
 
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      gsap.fromTo(
-        "#header-fixed",
-        { y: -100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-      );
-    });
-  }, []);
-
   useGSAP(() => {
     if (scrollY < 88) {
       gsap.to("header", {
@@ -209,11 +199,11 @@ const Header = () => {
   return (
     <header
       id="main-header"
-      className="fixed flex justify-center w-dvw inset-0 z-[999] min-h-[88px] max-h-[88px] bg-black/10 backdrop-blur-xs sm:backdrop-blur-sm md:backdrop-blur-2xl translate-y-[-100%]"
+      className="fixed flex justify-center w-dvw inset-0 z-[999] min-h-[88px] max-h-[88px] bg-black/10 backdrop-blur-xs sm:backdrop-blur-sm md:backdrop-blur-2xl"
     >
       <nav
         id="header-fixed"
-        className="relative flex items-center justify-between opacity-0 w-full h-full mx-auto py-[1em] px-[1rem] sm:px-[2rem] z-10"
+        className="relative flex items-center justify-between w-full h-full mx-auto py-[1em] px-[1rem] sm:px-[2rem] z-10"
       >
         <Link
           href="/"
