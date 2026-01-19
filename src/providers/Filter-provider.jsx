@@ -38,7 +38,7 @@ const FilterProvider = ({ news = [], categories = [] }) => {
       } else {
         const { data, pagination } = await getAllNewsByCategory(
           indexPag,
-          selected
+          selected,
         );
         setNewsPag(data);
         setPageCount(pagination.pageCount);
@@ -71,7 +71,7 @@ const FilterProvider = ({ news = [], categories = [] }) => {
       {loading ? (
         <p className="text-center py-10 text-gray text-lg">Cargando...</p>
       ) : (
-        <div className="pt-[1.5em] px-[1rem] sm:px-[1.75rem] grid grid-cols-1 auto-cols-fr">
+        <div className="pt-[1.5em] px-[.3rem] sm:px-[5em] md:px-[1.75rem] grid grid-cols-1 auto-cols-fr">
           {newsPag.length > 0 ? (
             newsPag.map((n, index) => <Article key={index} news={n} />)
           ) : (

@@ -13,22 +13,23 @@ function Article({ news = "" }) {
     <BlurOut>
       <Link
         href={`/prensa/${news.slug}`}
-        className="relative flex flex-col md:flex-row items-stretch justify-between w-full pb-[2.5em] mb-[2.5em] border-b border-gray group"
+        className="relative flex flex-col md:flex-row items-stretch justify-between w-full pb-[1em] sm:pb-[1.7em] md:pb-[2em] mb-[2.5em] border-b border-gray group"
       >
         <div className="flex flex-col items-stretch justify-between w-full md:w-[50%]">
-          <h2 className="font-bold text-[1.3em] sm:text-[2.25rem] leading-[1.1] tracking-[-.5px]">
+          <h2 className="font-bold text-[1em] sm:text-[1.3em] md:text-[2.25rem] leading-[1.1] tracking-[-.5px]">
             {news.titulo}
           </h2>
-          <div className="flex items-center mt-2">
-            <p className="text-base sm:text-[1rem] text-gray">{fecha}</p>
-            <div className="w-1.5 h-1.5 mx-2 rounded-full bg-blue" />
-            <p className="text-base sm:text-[1rem] text-gray">
-              {tiempoLectura} Min
-            </p>
+          <div className="flex w-full justify-between items-center mt-1 sm:mt-2">
+            <p className="text-sm sm:text-[1rem] text-gray">{fecha}</p>
+
+            <div className="flex items-center gap-0.5 text-sm sm:text-[1rem] text-gray">
+              <div className="w-1.5 h-1.5 mx-2 rounded-full bg-blue" />
+              <p>{tiempoLectura} Min</p>
+            </div>
           </div>
         </div>
 
-        <div className="w-full md:w-[32%] lg:w-[35%] h-auto md:h-[230px] my-[1.5em] md:my-0">
+        <div className="w-full md:w-[32%] lg:w-[35%] h-auto md:h-[230px] my-[.8em] sm:my-[1.5em] md:my-0">
           <div className="relative w-full h-[100%] overflow-hidden rounded-md group-hover:rounded-2xl transition-discrete duration-500">
             <Image
               width={1000}
@@ -36,7 +37,7 @@ function Article({ news = "" }) {
               priority
               src={news.imagen.url}
               alt="Imagen de ejemplo"
-              className="w-full h-full md:scale-105 group-hover:scale-100 transition-discrete duration-500 object-cover"
+              className="w-full h-full sm:aspect-video md:aspect-auto md:scale-105 group-hover:scale-100 transition-discrete duration-500 object-cover"
             />
             <div className="hidden absolute md:flex items-center justify-center gap-2 inset-0 w-full h-full bg-black/0 group-hover:bg-black/40 text-white backdrop-blur-none group-hover:backdrop-blur-[1px] z-10 transition-all duration-300">
               <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
