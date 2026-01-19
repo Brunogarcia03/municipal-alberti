@@ -49,7 +49,7 @@ const Page = async () => {
     .sort((a, b) => Number(b.fecha) - Number(a.fecha));
 
   return (
-    <main className="flex flex-col items-center justify-center w-full h-full overflow-hidden bg-black/90">
+    <main className="flex flex-col items-center justify-center w-full h-full overflow-hidden bg-black/90 text-white">
       <section className="pt-[10rem] md:pt-[13rem] w-[95vw] md:max-w-[1560px] mx-auto">
         <div className="flex flex-col items-center justify-center w-full h-full">
           <Words yPercent={110}>
@@ -71,48 +71,30 @@ const Page = async () => {
       </section>
 
       <section className="max-w-[97vw] w-full mx-auto rounded-3xl bg-white text-black overflow-hidden">
-        <div className="flex flex-col gap-10 w-full py-16">
+        <div className="flex flex-col gap-5 w-full">
           {data.map((item, index) => (
-            <div
-              key={index}
-              className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-8"
-            >
-              <div className="flex flex-col gap-8 items-start w-full">
-                <h2 className="text-[2rem] md:text-[3.25rem] leading-[1] tracking-[-1px] font-bold">
-                  Año {item.fecha}
-                </h2>
-                {item.stock_deuda && (
-                  <CardTransparency
-                    title="Stock de deuda"
-                    item={item.stock_deuda}
-                  />
-                )}
-                {item.gastos_finalidad_funcion && (
-                  <CardTransparency
-                    title="Gastos por finalidad - función"
-                    item={item.gastos_finalidad_funcion}
-                  />
-                )}
-              </div>
-              <div className="flex flex-col gap-8 items-start w-full md:pt-10">
-                {item.presupuesto && (
-                  <CardTransparency
-                    title="Presupuesto"
-                    item={item.presupuesto}
-                  />
-                )}
-                {item.ejecucion_presupuestaria && (
-                  <CardTransparency
-                    title="Ejecución presupuestaria"
-                    item={item.ejecucion_presupuestaria}
-                  />
-                )}
-                {item.situacion_economico_financiera && (
-                  <CardTransparency
-                    title="Situación económico - financiera"
-                    item={item.situacion_economico_financiera}
-                  />
-                )}
+            <div key={index} className="max-w-7xl mx-auto px-4 py-10">
+              <h2 className="text-4xl font-bold mb-10">Año {item.fecha}</h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <CardTransparency title="Presupuesto" item={item.presupuesto} />
+                <CardTransparency
+                  title="Stock de deuda"
+                  item={item.stock_deuda}
+                />
+                <CardTransparency
+                  title="Gastos por finalidad y función"
+                  item={item.gastos_finalidad_funcion}
+                />
+                <CardTransparency
+                  title="Ejecución presupuestaria"
+                  item={item.ejecucion_presupuestaria}
+                />
+
+                <CardTransparency
+                  title="Situación económico-financiera"
+                  item={item.situacion_economico_financiera}
+                />
               </div>
             </div>
           ))}
