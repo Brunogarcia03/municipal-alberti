@@ -137,7 +137,7 @@ export const getAllDecrees = async () => {
 export const getAllPublication = async (start = 0) => {
   try {
     const res = await axiosClient.get(
-      `/api/publicacion-de-leys?pagination[start]=${start}&pagination[limit]=${
+      `/publicacion-de-leys?pagination[start]=${start}&pagination[limit]=${
         start === 0 ? 3 : 2
       }&sort=fecha:desc&populate=*`,
     );
