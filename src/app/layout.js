@@ -51,8 +51,15 @@ export default function RootLayout({ children }) {
           href="https://res.cloudinary.com/dshbxjhtw/image/upload/v1759754224/ICON_f25199ec4c.png"
           type="image/png"
         />
-        <link rel="preconnect" href={process.env.NEXT_PUBLIC_BACKEND_URL} />
-        <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_BACKEND_URL} />
+        {process.env.NEXT_PUBLIC_BACKEND_URL && (
+          <>
+            <link rel="preconnect" href={process.env.NEXT_PUBLIC_BACKEND_URL} />
+            <link
+              rel="dns-prefetch"
+              href={process.env.NEXT_PUBLIC_BACKEND_URL}
+            />
+          </>
+        )}
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
       </head>
