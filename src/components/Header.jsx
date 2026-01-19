@@ -149,13 +149,6 @@ const Header = () => {
   }, [isOpen]);
 
   useGSAP(() => {
-    gsap.to("#header-fixed", {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      delay: 0.2,
-    });
-
     if (typeof window === "undefined") return;
 
     const sections = gsap.utils.toArray(".white-container");
@@ -177,6 +170,16 @@ const Header = () => {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
+  }, []);
+
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      gsap.fromTo(
+        "#header-fixed",
+        { y: -100, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
+      );
+    });
   }, []);
 
   useGSAP(() => {
@@ -228,6 +231,7 @@ const Header = () => {
           <h1
             id="text-icon"
             className="text-white font-bold text-[1rem] sm:text-[1.1rem] leading-[1] ml-2 transition-colors duration-300"
+            style={{ willChange: "auto" }}
           >
             Municipalidad <br />
             de Alberti
