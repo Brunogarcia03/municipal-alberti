@@ -18,7 +18,7 @@ const page = () => {
           </Words>
 
           <Lines yPercent={300}>
-            <p className="leading-[1.1] text-base md:text-base lg:text-lg max-w-2xl text-center mt-4 overflow-hidden">
+            <p className="leading-[1.1] text-base md:text-base lg:text-lg max-w-2xl text-center mt-4 overflow-hidden text-white">
               Estamos para ayudarte podes visitarnos, comunicarte vía teléfono o
               con nuestro formulario online
             </p>

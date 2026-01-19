@@ -144,9 +144,9 @@ const Bulletin = () => {
           </Lines>
         </div>
         <GridBento itemsList={boletinItems} />
-        <p className="text-center text-base md:text-lg lg:text-xl text-balance text-black w-full max-w-full md:max-w-3xl px-2 md:p-2 md:mx-auto md:my-4 opacity-70">
-          Este boletín se actualiza periódicamente. <br />
-          Para consultas específicas, contactanos a través de nuestra sección de{" "}
+        <p className="text-center text-base md:text-lg lg:text-xl text-black w-full max-w-full md:max-w-3xl px-2 md:p-2 md:mx-auto md:my-4 opacity-70">
+          Este boletín se actualiza periódicamente. Para consultas específicas,
+          contactanos a través de nuestra sección de{" "}
           <Link href="/contacto" className="underline text-blue">
             Contacto
           </Link>

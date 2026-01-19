@@ -8,7 +8,7 @@ gsap.registerPlugin(CustomEase, SplitText, ScrollTrigger);
 
 const osmoEase = CustomEase.create("osmo-ease", "0.625, 0.05, 0, 1");
 
-function wordsAnimation(ref, yPercent = 200, delay = 0) {
+function wordsAnimation(ref, yPercent = 200, opacity = 0, delay = 0) {
   useGSAP(
     () => {
       let split = new SplitText(ref.current, {
@@ -17,22 +17,23 @@ function wordsAnimation(ref, yPercent = 200, delay = 0) {
 
       gsap.fromTo(
         split.words,
-        { yPercent },
+        { yPercent, opacity: opacity },
         {
           yPercent: 0,
           duration: 0.6,
+          opacity: 1,
           delay,
           stagger: 0.06,
           scrollTrigger: ref.current,
           ease: "osmo-ease",
-        }
+        },
       );
     },
-    { scope: ref }
+    { scope: ref },
   );
 }
 
-function linesAnimation(ref, yPercent = 200, delay = 0) {
+function linesAnimation(ref, yPercent = 200, opacity = 0, delay = 0) {
   useGSAP(
     () => {
       let split = new SplitText(ref.current, {
@@ -41,18 +42,19 @@ function linesAnimation(ref, yPercent = 200, delay = 0) {
 
       gsap.fromTo(
         split.lines,
-        { yPercent },
+        { yPercent, opacity: opacity },
         {
           yPercent: 0,
+          opacity: 1,
           duration: 0.6,
           delay,
           stagger: 0.06,
           scrollTrigger: ref.current,
           ease: "osmo-ease",
-        }
+        },
       );
     },
-    { scope: ref }
+    { scope: ref },
   );
 }
 
@@ -79,7 +81,7 @@ function articleAnimation(selectorOrElement, yPercent = 20, delay = 0.5) {
         start: "top 80%",
       },
       ease: "power2.out",
-    }
+    },
   );
 }
 

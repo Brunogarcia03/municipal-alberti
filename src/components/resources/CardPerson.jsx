@@ -36,7 +36,7 @@ const CardPerson = ({ official, meta, index }) => {
     <>
       <div className="relative w-full cursor-pointer group">
         <picture
-          className={`${open ? "pointer-events-none" : "pointer-events-auto"}`}
+          className={`text-white ${open ? "pointer-events-none" : "pointer-events-auto"}`}
           onClick={() => setOpen(true)}
         >
           <Image
@@ -46,12 +46,14 @@ const CardPerson = ({ official, meta, index }) => {
             alt="Imagen de: "
             className="w-full h-full object-cover rounded-md md:grayscale-75 group-hover:grayscale-0 transition-discrete duration-500 md:min-h-[200px] lg:min-h-[300px]"
           />
-          <div className="mt-[1vw] flex items-center justify-between">
+          <div className="mt-[1rem] flex items-center justify-between">
             <div>
-              <h6 className="font-bold text-base md:text-[1.25rem] leading-[1.3]">
+              <h6 className="font-bold text-base md:text-[1rem] lg:text-[1.25rem] leading-[1.3]">
                 {official.nombre}
               </h6>
-              <span className="uppercase text-sm">{official.cargo}</span>
+              <span className="uppercase block text-xs leading-[1.25] text-balance">
+                {official.cargo}
+              </span>
             </div>
             <span className="p-2 border-2 border-white group-hover:bg-white transition-colors duration-300 rounded-md">
               <svg
@@ -70,7 +72,7 @@ const CardPerson = ({ official, meta, index }) => {
       {open && (
         <section
           className={
-            "fixed top-0 left-0 flex items-center justify-center md:justify-end w-full h-full z-[999] transition-all duration-500 p-[2.5vw] md:p-2"
+            "fixed top-0 left-0 flex items-center justify-center md:justify-end w-full h-full z-[999] transition-all duration-500 p-[2.5vw] md:p-2 text-white"
           }
           onClick={() => setOpen(false)}
         >
@@ -80,7 +82,7 @@ const CardPerson = ({ official, meta, index }) => {
             onClick={(e) => e.stopPropagation()}
             className={twMerge(
               "relative w-full max-h-[95vh] md:w-[65vw] lg:w-[50vw] rounded-md bg-black p-[5vw] md:p-[2vw] overflow-y-auto overscroll-y-auto z-[1000]",
-              open ? "opacity-100 scale-100" : "opacity-0 scale-90"
+              open ? "opacity-100 scale-100" : "opacity-0 scale-90",
             )}
           >
             {/* Header modal */}
@@ -120,7 +122,7 @@ const CardPerson = ({ official, meta, index }) => {
             </div>
 
             {/* Hero modal */}
-            <div className="flex flex-col md:flex-row gap-[10vw] md:gap-[2vw] my-[10vw] md:my-[2.5vw] pb-[2vw] border-b border-white overflow-hidden">
+            <div className="flex flex-col md:flex-row gap-[5vw] md:gap-[2vw] my-[5vw] md:my-[2.5vw] pb-[2vw] border-b border-white overflow-hidden">
               <div className="flex flex-col items-center justify-between md:gap-y-[5vw] md:w-1/2">
                 <h4 className="text-[10vw] md:text-[2.5vw] text-center md:text-start w-full font-bold leading-[1.1]">
                   {official.nombre}
@@ -145,7 +147,7 @@ const CardPerson = ({ official, meta, index }) => {
                 </div>
               </div>
 
-              <picture className="flex flex-col items-center justify-center w-full h-full">
+              <picture className="flex flex-col items-center justify-center w-full md:w-1/2 h-full">
                 <Image
                   src={official.imagen.url}
                   width={1000}

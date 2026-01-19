@@ -41,7 +41,7 @@ const page = () => {
           </Words>
 
           <Lines yPercent={300}>
-            <p className="leading-[1.1] text-base md:text-base lg:text-lg max-w-2xl text-center mt-4 overflow-hidden">
+            <p className="leading-[1.1] text-base md:text-base lg:text-lg max-w-2xl text-center mt-4 overflow-hidden text-white">
               Conoce las diferentes caras detrás del municipio de Alberti
             </p>
           </Lines>
@@ -49,7 +49,7 @@ const page = () => {
       </section>
       <section className="relative w-[95vw] md:w-[90vw] max-w-full md:max-w-[1560px] mt-[3.5rem] md:mt-[7.5rem] mx-auto">
         <div className="relative">
-          <div className="flex items-center gap-3 pb-1 relative overflow-x-scroll sm:overflow-hidden overflow-y-hidden">
+          <div className="flex items-center gap-3 pb-1 mx-2 relative overflow-x-scroll sm:overflow-hidden overflow-y-hidden">
             <Button
               className={`text-base sm:text-lg md:text-[1.5rem] leading-[1.3] px-2 py-1 rounded-md ${
                 selected === 0 && "bg-white text-black border-black"
@@ -93,7 +93,7 @@ const page = () => {
             </div>
           ) : (
             <div className="pt-[1.5em]">
-              <div className="grid gap-5 w-[80vw] mx-auto sm:w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-cols-fr content-start items-start">
+              <div className="grid gap-5 w-[80vw] mx-auto sm:w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-cols-fr content-start items-start">
                 {officials.length > 0 &&
                   officials
                     .filter((official) => {

@@ -74,11 +74,18 @@ const LastNews = async ({ currentSlug }) => {
                     </div>
                   </div>
                 </picture>
-                <h3 className="text-[1.375rem] leading-[1.4] text-neutral-900">
+                <h3 className="text-[1.075rem] md:text-[1.375rem] leading-[1.4] mt-0.5 sm:mt-1 md:mt-2 text-neutral-900">
                   {item.titulo}
                 </h3>
-                <div className="flex flex-row md:flex-col mt-2 md:mt-4">
-                  <p className="text-neutral-600 text-[.8rem]">
+                <div
+                  className={twMerge(
+                    "flex flex-row justify-between items-center mt-1 sm:mt-2 md:mt-3 w-full",
+                    i === 0
+                      ? "md:flex-row"
+                      : "md:flex-col md:justify-start md:items-start",
+                  )}
+                >
+                  <p className="text-neutral-600 text-[.8rem] max-w-32 md:max-w-none">
                     {formatDate(item.createdAt)}
                   </p>
                   <p className="text-neutral-900 font-medium">

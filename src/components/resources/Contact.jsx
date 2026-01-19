@@ -27,7 +27,7 @@ const Contact = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(message),
-      }
+      },
     );
 
     if (res.ok) {
