@@ -73,6 +73,8 @@ const Header = () => {
     if (isOpen) {
       tl.add(() => {
         if (lenis) lenis.stop();
+        document.documentElement.style.overflow = "hidden";
+        document.body.style.overflow = "hidden";
 
         const textIcon = document.querySelector("#text-icon");
         const menuLines = document.querySelectorAll(".menu-line");
@@ -132,6 +134,8 @@ const Header = () => {
         })
         .add(() => {
           if (lenis) lenis.start();
+          document.documentElement.style.overflow = "";
+          document.body.style.overflow = "";
 
           gsap.utils.toArray(".white-container").forEach((section) => {
             ScrollTrigger.create({

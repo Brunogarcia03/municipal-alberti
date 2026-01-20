@@ -167,8 +167,11 @@ const Bulletin = () => {
               height="200"
               xmlns="http://www.w3.org/2000/svg"
               xlinkHref="http://www.w3.org/1999/xlink"
+              aria-hidden="true"
+              focusable="false"
               version="1.1"
-              className="absolute w-full h-full top-0 -right-10 opacity-30"
+              className="absolute w-full h-full top-0 -right-10
+              opacity-30"
             >
               <g transform="translate(210.99096237540016 13.18999803912893)">
                 <path
@@ -185,6 +188,8 @@ const Bulletin = () => {
                   viewBox="0 -960 960 960"
                   width="24px"
                   fill="#00438b"
+                  aria-hidden="true"
+                  focusable="false"
                 >
                   <path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z" />
                 </svg>
@@ -199,6 +204,8 @@ const Bulletin = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   height="40px"
                   viewBox="0 -960 960 960"
+                  aria-hidden="true"
+                  focusable="false"
                   width="40px"
                   fill="#00438b"
                 >
@@ -220,6 +227,8 @@ const Bulletin = () => {
               viewBox="0 0 200 200"
               width="200"
               height="200"
+              aria-hidden="true"
+              focusable="false"
               xmlns="http://www.w3.org/2000/svg"
               xlinkHref="http://www.w3.org/1999/xlink"
               version="1.1"
@@ -238,6 +247,8 @@ const Bulletin = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   height="24px"
                   viewBox="0 -960 960 960"
+                  aria-hidden="true"
+                  focusable="false"
                   width="24px"
                   fill="#00438b"
                 >
@@ -254,6 +265,8 @@ const Bulletin = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   height="40px"
                   viewBox="0 -960 960 960"
+                  aria-hidden="true"
+                  focusable="false"
                   width="40px"
                   fill="#00438b"
                 >
@@ -279,6 +292,8 @@ const Bulletin = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 height="24px"
                 viewBox="0 -960 960 960"
+                aria-hidden="true"
+                focusable="false"
                 width="24px"
                 fill="#00438b"
               >
@@ -312,6 +327,8 @@ const Bulletin = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   height="24px"
                   viewBox="0 -960 960 960"
+                  aria-hidden="true"
+                  focusable="false"
                   width="24px"
                   fill="#00438b "
                 >
@@ -324,6 +341,8 @@ const Bulletin = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   height="24px"
                   viewBox="0 -960 960 960"
+                  aria-hidden="true"
+                  focusable="false"
                   width="24px"
                   fill="#00438b "
                 >
