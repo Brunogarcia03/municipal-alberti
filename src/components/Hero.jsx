@@ -12,6 +12,7 @@ import { wordsAnimation } from "@/utils/constants/animations";
 
 const Hero = ({ imagesHero }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const videoRef = useRef(null);
   const titleRef = useRef(null);
   const Lenis = useLenis();
 
@@ -19,6 +20,20 @@ const Hero = ({ imagesHero }) => {
     if (Lenis)
       if (isOpen) Lenis.stop();
       else Lenis.start();
+  }, [isOpen]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isOpen) {
+      video.currentTime = 0; // opcional: arranca desde el inicio
+      video.play().catch(() => {
+        // Safari / mobile puede bloquear autoplay
+      });
+    } else {
+      video.pause();
+    }
   }, [isOpen]);
 
   useGSAP(() => {
@@ -69,12 +84,12 @@ const Hero = ({ imagesHero }) => {
 
     /* ⚡ quick setters (no reflow, no GC) */
     const moveX = gsap.quickTo(button, "x", {
-      duration: 0.15,
+      duration: 0.25,
       ease: "sine.out",
     });
 
     const moveY = gsap.quickTo(button, "y", {
-      duration: 0.15,
+      duration: 0.2,
       ease: "sine.out",
     });
 
@@ -145,7 +160,7 @@ const Hero = ({ imagesHero }) => {
           <button
             id="button-hero"
             aria-label="Reproducir video institucional"
-            className="bg-blue border border-blue text-white rounded-md p-2 md:p-2.5 scale-0 opacity-0 z-10 will-change-transform cursor-pointer"
+            className="bg-blue border border-blue text-white rounded-md p-1.5 md:p-2 scale-0 opacity-0 z-10 will-change-transform cursor-pointer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -203,13 +218,11 @@ const Hero = ({ imagesHero }) => {
           </button>
         </div>
         <video
+          ref={videoRef}
           src="/media/hero-alberti.mp4"
           className="w-full h-screen object-cover"
-          preload="none"
-          muted
-          autoPlay
+          preload="metadata"
           controls
-          loop
           playsInline
           aria-hidden="true"
         />
