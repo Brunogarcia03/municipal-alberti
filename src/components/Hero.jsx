@@ -225,6 +225,10 @@ const Hero = ({ imagesHero }) => {
           controls
           playsInline
           aria-hidden="true"
+          onEnded={(e) => {
+            e.stopPropagation();
+            setIsOpen(false);
+          }}
         />
       </div>
     </>
