@@ -190,7 +190,7 @@ export const getRedes = async () => {
     console.log(res.data);
     return res.data.data ?? null;
   } catch (error) {
-    handleError(error, "Error al obtener redes sociales");
+    console.log(error, "Error al obtener redes sociales");
     return null;
   }
 };

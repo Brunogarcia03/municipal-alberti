@@ -43,8 +43,8 @@ const CardPerson = ({ official, meta, index }) => {
             src={official.imagen.url}
             width={1000}
             height={500}
-            alt="Imagen de: "
-            className="w-full h-full object-cover rounded-md md:grayscale-75 group-hover:grayscale-0 transition-discrete duration-500 md:min-h-[200px] lg:min-h-[300px]"
+            alt={`Imagen de: ${official.nombre}`}
+            className="w-full h-full object-cover rounded-md md:grayscale-75 group-hover:grayscale-0 transition-discrete duration-500 sm:min-h-[50px] md:min-h-[100px] lg:min-h-[250px] aspect-square"
           />
           <div className="mt-[1rem] flex items-center justify-between">
             <div>

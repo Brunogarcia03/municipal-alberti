@@ -47,7 +47,7 @@ const page = () => {
           </Lines>
         </div>
       </section>
-      <section className="relative w-[95vw] md:w-[90vw] max-w-full md:max-w-[1560px] mt-[3.5rem] md:mt-[7.5rem] mx-auto">
+      <section className="relative w-[95vw] max-w-full lg:max-w-[1560px] mt-[3.5rem] md:mt-[7.5rem] mx-auto">
         <div className="relative">
           <div className="flex items-center gap-3 pb-1 mx-2 relative overflow-x-scroll sm:overflow-hidden overflow-y-hidden">
             <Button
@@ -93,7 +93,7 @@ const page = () => {
             </div>
           ) : (
             <div className="pt-[1.5em]">
-              <div className="grid gap-5 w-[80vw] mx-auto sm:w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-cols-fr content-start items-start">
+              <div className="grid gap-5 w-[90vw] mx-auto sm:w-full grid-cols-1 min-[500px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 auto-cols-fr content-start items-start">
                 {officials.length > 0 &&
                   officials
                     .filter((official) => {
