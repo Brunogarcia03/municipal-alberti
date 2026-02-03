@@ -55,7 +55,7 @@ const LastNews = async ({ currentSlug }) => {
                     (max-width: 1280px) 38vw,
                     20vw
                     "
-                    className="object-cover rounded-md aspect-video md:aspect-auto"
+                    className="object-cover rounded-md aspect-[16/10]"
                     loading="lazy"
                   />
 
@@ -89,7 +89,7 @@ const LastNews = async ({ currentSlug }) => {
                     {formatDate(item.createdAt)}
                   </p>
                   <p className="text-neutral-900 font-medium">
-                    {item.categoria.nombre}
+                    {item.categoria?.nombre ?? "Sin categoría"}
                   </p>
                 </div>
               </Link>

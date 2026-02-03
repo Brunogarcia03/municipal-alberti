@@ -7,7 +7,7 @@ import BlurOut from "./anim/BlurOut";
 function Article({ news = "" }) {
   const tiempoLectura = getReadingTime(news.contenido);
   const fecha = formatDate(news.createdAt);
-  const categoria = news.categoria.nombre || "Sin categoría";
+  const categoria = news.categoria?.nombre ?? "Sin categoría";
 
   return (
     <BlurOut>
