@@ -187,6 +187,7 @@ export const getAllHeroImage = async () => {
 export const getRedes = async () => {
   try {
     const res = await axiosClient.get("/red-social");
+    console.log(res.data);
     return res.data.data ?? null;
   } catch (error) {
     handleError(error, "Error al obtener redes sociales");
