@@ -57,6 +57,8 @@ const Header = () => {
     const getDataRedes = async () => {
       const data = await getRedes();
 
+      console.log("Redes sociales:", data);
+
       setRedes(data);
     };
 
