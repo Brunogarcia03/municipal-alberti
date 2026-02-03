@@ -338,7 +338,7 @@ const Header = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between w-full">
           <div
             id="categories"
-            className="flex flex-col items-start w-full sm:w-[50%] md:w-[25%] overflow-hidden mb-4 md:mb-0"
+            className="flex flex-col items-start w-full sm:w-[50%] lg:w-[25%] overflow-hidden mb-4 md:mb-0"
           >
             <p className="text-[1rem] leading-[1.4] font-normal">Categorias</p>
             <address className="mt-1">
@@ -365,7 +365,7 @@ const Header = () => {
           </div>
           <div
             id="socials"
-            className="flex flex-col md:items-end justify-end w-full md:w-[25%] overflow-hidden"
+            className="flex flex-col md:items-end justify-end w-full overflow-hidden"
           >
             <p className="text-[1rem] leading-[1.4] font-normal">
               Redes Sociales
@@ -470,7 +470,7 @@ const Header = () => {
                 </div>
 
                 {/* Whatsapp */}
-                <div className="flex items-center text-[1rem] pr-1.5">
+                <div className="flex items-center text-[1rem]">
                   <a
                     href={
                       redes?.whatsapp ||
