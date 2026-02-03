@@ -37,7 +37,7 @@ function Article({ news = "" }) {
               priority
               src={news.imagen.url}
               alt="Imagen de ejemplo"
-              className="w-full h-full sm:aspect-video md:aspect-auto md:scale-105 group-hover:scale-100 transition-discrete duration-500 object-cover"
+              className="w-full h-full aspect-video md:aspect-auto md:scale-105 group-hover:scale-100 transition-discrete duration-500 object-cover"
             />
             <div className="hidden absolute md:flex items-center justify-center gap-2 inset-0 w-full h-full bg-black/0 group-hover:bg-black/40 text-white backdrop-blur-none group-hover:backdrop-blur-[1px] z-10 transition-all duration-300">
               <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
