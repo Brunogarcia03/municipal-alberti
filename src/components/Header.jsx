@@ -110,7 +110,6 @@ const Header = () => {
           "#socials",
           { opacity: 0, y: 20 },
           { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
-          "<",
         )
         .fromTo(
           "#contact-button",
@@ -361,10 +360,7 @@ const Header = () => {
               </div>
             </address>
           </div>
-          <div
-            id="socials"
-            className="flex flex-col md:items-end justify-end w-full overflow-hidden"
-          >
+          <div className="flex flex-col md:items-end justify-end w-full overflow-hidden">
             <p className="text-[1rem] leading-[1.4] font-normal">
               Redes Sociales
             </p>
