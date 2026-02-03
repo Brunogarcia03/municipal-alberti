@@ -45,7 +45,7 @@ const NavList = [
 ];
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(null);
   const [redes, setRedes] = useState(null);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -64,6 +64,8 @@ const Header = () => {
   }, []);
 
   useGSAP(() => {
+    if (isOpen === null) return;
+
     const tl = gsap.timeline({
       clearProps: "all",
     });
@@ -81,9 +83,9 @@ const Header = () => {
         menuLines?.forEach((el) => el.classList.remove("header--light"));
       })
         .to("#menu-wrapper", {
-          maxHeight: 1000,
+          duration: 0.8,
+          height: "auto",
           y: 0,
-          duration: 1,
           ease: "power2.out",
         })
         .fromTo(
@@ -124,12 +126,11 @@ const Header = () => {
         ease: "power2.in",
       })
         .to("#menu-wrapper", {
-          maxHeight: 0,
+          height: 0,
           y: -88,
-          duration: 0.8,
+          duration: 0.4,
           ease: "power2.inOut",
         })
-
         .add(() => {
           if (lenis) lenis.start();
           document.documentElement.style.overflow = "";
@@ -267,7 +268,7 @@ const Header = () => {
       </nav>
       <div
         id="menu-wrapper"
-        className="absolute top-0 left-0 max-h-0 w-full overflow-hidden text-white bg-black rounded-b-lg flex flex-col items-start pt-[3em] md:pt-[4em] px-[2em] pb-[1em] translate-y-[-88px]"
+        className="absolute top-0 left-0 w-full h-0 overflow-hidden text-white bg-black rounded-b-lg flex flex-col items-start pt-[3em] md:pt-[4em] px-[2em] pb-[1em] translate-y-[-88px]"
       >
         <div className="overscroll-contain flex flex-col md:flex-row items-center justify-between overflow-hidden w-full mt-[4em]">
           {NavList.map((item, index) => (
@@ -360,13 +361,13 @@ const Header = () => {
             </address>
           </div>
           <div
-            id="socials"
-            className="flex flex-col md:items-end justify-end w-full will-change-transform overflow-hidden"
+            id="categories"
+            className="flex flex-col md:items-end justify-end w-full overflow-hidden"
           >
             <p className="text-[1rem] leading-[1.4] font-normal">
               Redes Sociales
             </p>
-            <address className="mt-2">
+            <address className="mt-1">
               <div className="flex flex-wrap items-center">
                 {/* Facebook */}
                 <div className="flex items-center text-[1rem] pr-1.5">
