@@ -14,10 +14,10 @@ import { categories, socials } from "@/utils/constants/constants";
 import Button from "./ui/Button";
 import { getRedes } from "@/utils/api/global.api";
 
-import header_1 from "@/assets/header/header_1.jpeg";
-import header_2 from "@/assets/header/header_2.jpeg";
-import header_3 from "@/assets/header/header_3.jpeg";
-import header_4 from "@/assets/header/header_4.jpeg";
+import header_1 from "@/assets/header/gobierno-link.webp";
+import header_2 from "@/assets/header/ciudad-link.webp";
+import header_3 from "@/assets/header/prensa.webp";
+import header_4 from "@/assets/header/transparencia-link.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -296,9 +296,11 @@ const Header = () => {
                 </span>
               </div>
               <div className="relative mt-2 pt-[56.25%] rounded-md overflow-hidden">
-                <img
+                <Image
                   src={item.src}
-                  alt=""
+                  alt={item.name}
+                  width={350}
+                  height={100}
                   className="absolute inset-0 scale-110 group-hover:scale-105 transition-transform duration-300 object-cover"
                 />
               </div>

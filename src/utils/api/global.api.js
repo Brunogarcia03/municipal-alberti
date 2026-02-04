@@ -24,7 +24,7 @@ const handleError = (error, message) => {
 export const getAllNews = async (page = 1) => {
   try {
     const res = await axiosClient.get(
-      `/noticias?populate=*&sort=publishedAt:desc&pagination[page]=${page}&pagination[pageSize]=8`,
+      `/noticias?populate=*&sort=createdAt:desc&pagination[page]=${page}&pagination[pageSize]=8`,
     );
 
     return {
@@ -45,7 +45,7 @@ export const getAllNewsByCategory = async (page = 1, categoryId) => {
 
   try {
     const res = await axiosClient.get(
-      `/noticias?populate=*&pagination[page]=${page}&pagination[pageSize]=8&filters[categoria][id][$eq]=${categoryId}&sort=publishedAt:desc`,
+      `/noticias?populate=*&pagination[page]=${page}&pagination[pageSize]=8&filters[categoria][id][$eq]=${categoryId}&sort=createdAt:desc`,
     );
 
     return {
