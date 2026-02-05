@@ -6,6 +6,7 @@ import Footer from "@/components/resources/Footer";
 import LastNews from "@/components/resources/LastNews";
 
 import Words from "@/components/ui/anim/Words";
+import ButtonShare from "@/components/resources/ButtonShare";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -50,7 +51,7 @@ export default async function Page({ params }) {
         <div className="flex flex-col items-start">
           <div className="flex items-center justify-between w-full text-gray mb-4">
             <p>{fecha}</p>
-            <span className="inline-flex gap-x-2">Compartir</span>
+            <ButtonShare news={news} />
           </div>
           <Words yPercent={110}>
             <h1 className="font-light leading-[1.15] relative w-full md:w-[80vw] mb-4 text-2xl md:text-4xl lg:text-5xl italic uppercase text-blue overflow-hidden">
