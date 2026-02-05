@@ -11,8 +11,8 @@ const page = async () => {
       <section className="pt-[calc(10rem+40px)] md:pt-[calc(13rem+40px)] w-[90vw] sm:w-[95vw] md:max-w-[1560px] mx-auto">
         <div className="flex flex-col items-center justify-center w-full h-full">
           <Words yPercent={110}>
-            <h1 className="font-bold leading-[1.15] text-center relative overflow-hidden max-w-5xl">
-              <span className="md:blocvk w-full text-3xl md:text-5xl lg:text-6xl italic uppercase text-blue">
+            <h1 className="font-bold text-center relative overflow-hidden max-w-5xl">
+              <span className="md:block w-full text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-[1] italic uppercase text-blue">
                 Boletín Municipal - Publicaciones de ley
               </span>
             </h1>
@@ -20,7 +20,7 @@ const page = async () => {
 
           <Lines yPercent={300}>
             <p
-              className="leading-[1.1] text-base md:text-base lg:text-lg max-w-3xl text-center mt-4 overflow-hidden"
+              className="leading-[1.1] text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl text-center mt-4 w-full text-pretty overflow-hidden"
               aria-hidden="true"
             >
               Aquí podés acceder de forma rápida a todas las publicaciones
