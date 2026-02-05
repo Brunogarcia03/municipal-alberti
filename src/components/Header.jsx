@@ -14,10 +14,10 @@ import { categories, socials } from "@/utils/constants/constants";
 import Button from "./ui/Button";
 import { getRedes } from "@/utils/api/global.api";
 
-import header_1 from "@/assets/header/gobierno-link.webp";
-import header_2 from "@/assets/header/ciudad-link.webp";
-import header_3 from "@/assets/header/prensa.webp";
-import header_4 from "@/assets/header/transparencia-link.webp";
+import header_1 from "@/assets/header/raul-lozza-418.webp";
+import header_2 from "@/assets/header/raul-lozza-153.webp";
+import header_3 from "@/assets/header/raul-lozza-158.webp";
+import header_4 from "@/assets/header/raul-lozza-308.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -301,7 +301,7 @@ const Header = () => {
                   alt={item.name}
                   width={350}
                   height={100}
-                  className="absolute inset-0 scale-110 group-hover:scale-105 transition-transform duration-300 object-cover"
+                  className="absolute inset-0 scale-110 group-hover:scale-105 transition-transform duration-300 object-cover h-full w-full"
                 />
               </div>
             </Link>
