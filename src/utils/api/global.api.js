@@ -189,7 +189,7 @@ export const getRedes = async () => {
     const res = await axiosClient.get("/red-social");
     return res.data.data ?? null;
   } catch (error) {
-    handleError(error, "Error al obtener redes sociales");
+    console.error(error, "Error al obtener redes sociales");
     return null;
   }
 };
