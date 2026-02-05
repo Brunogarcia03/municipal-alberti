@@ -484,7 +484,7 @@ const Header = () => {
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 512 512"
                       className="w-8 h-8"
-                      fill="#fff"
+                      fill="currentColor"
                     >
                       <title>Whatsapp</title>
                       <path

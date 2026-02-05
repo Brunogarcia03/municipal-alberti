@@ -22,7 +22,7 @@ const Footer = ({ dark = false }) => {
     <footer
       className={twMerge(
         "max-w-[97vw] w-full mx-auto my-[1rem] p-[1.5em] rounded-3xl relative flex flex-col items-center justify-between",
-        dark ? "bg-black text-white" : "bg-white text-black"
+        dark ? "bg-black text-white" : "bg-white text-black",
       )}
     >
       <div className="flex flex-col items-start w-full">
@@ -78,7 +78,7 @@ const Footer = ({ dark = false }) => {
                 aria-label="Facebook"
                 className={twMerge(
                   "flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group p-1.5 transition-colors duration-200 hover:border-transparent",
-                  dark ? "border-white" : "border-black"
+                  dark ? "border-white" : "border-black",
                 )}
               >
                 <svg
@@ -110,7 +110,7 @@ const Footer = ({ dark = false }) => {
                 aria-label={"Instagram"}
                 className={twMerge(
                   "flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group p-1.5 transition-colors duration-200 hover:border-transparent",
-                  dark ? "border-white" : "border-black"
+                  dark ? "border-white" : "border-black",
                 )}
               >
                 <svg
@@ -143,7 +143,7 @@ const Footer = ({ dark = false }) => {
                 aria-label={"Youtube"}
                 className={twMerge(
                   "flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group p-1.5 transition-colors duration-200 hover:border-transparent",
-                  dark ? "border-white" : "border-black"
+                  dark ? "border-white" : "border-black",
                 )}
               >
                 <svg
@@ -172,7 +172,7 @@ const Footer = ({ dark = false }) => {
                 aria-label={"Twitter"}
                 className={twMerge(
                   "flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group p-1.5 transition-colors duration-200 hover:border-transparent",
-                  dark ? "border-white" : "border-black"
+                  dark ? "border-white" : "border-black",
                 )}
               >
                 <svg
@@ -200,14 +200,14 @@ const Footer = ({ dark = false }) => {
                 aria-label={"Whatsapp"}
                 className={twMerge(
                   "flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group p-1.5 transition-colors duration-200 hover:border-transparent",
-                  dark ? "border-white" : "border-black"
+                  dark ? "border-white" : "border-black",
                 )}
               >
                 <svg
                   className="size-full"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
+                  fill="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <title>Whatsapp</title>
