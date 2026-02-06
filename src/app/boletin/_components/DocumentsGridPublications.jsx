@@ -13,7 +13,7 @@ export default function DocumentsGridPublications({
 }) {
   const years = useMemo(() => {
     const uniqueYears = new Set(
-      items.map((i) => new Date(i.fecha).getFullYear())
+      items.map((i) => new Date(i.fecha).getFullYear()),
     );
     return Array.from(uniqueYears).sort((a, b) => b - a);
   }, [items]);
@@ -23,7 +23,7 @@ export default function DocumentsGridPublications({
   const filteredItems = useMemo(() => {
     if (!selectedYear) return items;
     return items.filter(
-      (i) => new Date(i.fecha).getFullYear() === selectedYear
+      (i) => new Date(i.fecha).getFullYear() === selectedYear,
     );
   }, [items, selectedYear]);
 
@@ -93,10 +93,10 @@ export default function DocumentsGridPublications({
                   <NewsContentRenderer content={item.contenido} />
                 </div>
               </div>
-              {item.archivo && (
+              {(item.archivo?.url || item.url_pdf) && (
                 <Link
                   className="w-full mt-4"
-                  href={item.archivo.url}
+                  href={d.archivo?.url || d.url_pdf}
                   target="_blank"
                 >
                   <Button className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300">

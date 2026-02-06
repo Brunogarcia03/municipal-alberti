@@ -77,12 +77,17 @@ export default function DocumentsGrid({
               <h6 className="text-sm sm:text-base md:text-lg font-bold">
                 {item.titulo || item.nombre}
               </h6>
-
-              <Link className="w-full mt-5" href={item.url_pdf} target="_blank">
-                <Button className="w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors">
-                  Ver archivo
-                </Button>
-              </Link>
+              {(item.archivo?.url || item.url_pdf) && (
+                <Link
+                  className="w-full mt-5"
+                  href={item.archivo?.url || item.url_pdf}
+                  target="_blank"
+                >
+                  <Button className="w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors">
+                    Ver archivo
+                  </Button>
+                </Link>
+              )}
             </div>
           ))}
         </div>
