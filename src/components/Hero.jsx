@@ -82,24 +82,31 @@ const Hero = ({ imagesHero }) => {
         ease: "power1.out",
       });
 
-    /* ⚡ quick setters (no reflow, no GC) */
     const moveX = gsap.quickTo(button, "x", {
-      duration: 0.25,
-      ease: "sine.out",
+      duration: 1,
+      ease: "elastic.out(1, 0.4)",
     });
 
     const moveY = gsap.quickTo(button, "y", {
-      duration: 0.2,
-      ease: "sine.out",
+      duration: 1,
+      ease: "elastic.out(1, 0.4)",
     });
 
     const moveButton = (e) => {
       if (!bounds) return;
-      moveX(e.clientX - bounds.left - bounds.width / 2);
-      moveY(e.clientY - bounds.top - bounds.height / 2);
+
+      const relativeX = e.clientX - bounds.left;
+      const relativeY = e.clientY - bounds.top;
+
+      const centeredX = relativeX - bounds.width / 2;
+      const centeredY = relativeY - bounds.height / 2;
+
+      moveX(centeredX);
+      moveY(centeredY);
     };
 
     if (window.innerWidth >= 768) {
+      window.addEventListener("scroll", updateBounds, { passive: true });
       container.addEventListener("mouseenter", showButton);
       container.addEventListener("mouseleave", hideButton);
       container.addEventListener("mousemove", moveButton);
