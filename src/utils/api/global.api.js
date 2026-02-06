@@ -115,7 +115,6 @@ export const getAllDDJJ = async () => {
 export const getAllOrdinances = async () => {
   try {
     const res = await axiosClient.get("/ordenanzas?populate=*");
-    console.log(res.data.data);
     return res.data.data;
   } catch (error) {
     handleError(error, "Error al obtener ordenanzas");
