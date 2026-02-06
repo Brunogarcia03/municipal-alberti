@@ -115,6 +115,7 @@ export const getAllDDJJ = async () => {
 export const getAllOrdinances = async () => {
   try {
     const res = await axiosClient.get("/ordenanzas?populate=*");
+    console.log(res.data.data);
     return res.data.data;
   } catch (error) {
     handleError(error, "Error al obtener ordenanzas");
@@ -165,6 +166,7 @@ export const getAllTransparency = async () => {
     const res = await axiosClient.get(
       "https://strapi-production-4f4b.up.railway.app/api/transparencias?populate[0]=presupuesto&populate[1]=stock_deuda.primer_trimestre&populate[2]=stock_deuda.segundo_trimestre&populate[3]=stock_deuda.tercer_trimestre&populate[4]=stock_deuda.total&populate[5]=gastos_finalidad_funcion.primer_trimestre&populate[6]=gastos_finalidad_funcion.segundo_trimestre&populate[7]=gastos_finalidad_funcion.tercer_trimestre&populate[8]=gastos_finalidad_funcion.total&populate[9]=ejecucion_presupuestaria.primer_trimestre&populate[10]=ejecucion_presupuestaria.segundo_trimestre&populate[11]=ejecucion_presupuestaria.tercer_trimestre&populate[12]=ejecucion_presupuestaria.total&populate[13]=situacion_economico_financiera.primer_trimestre&populate[14]=situacion_economico_financiera.segundo_trimestre&populate[15]=situacion_economico_financiera.tercer_trimestre&populate[16]=situacion_economico_financiera.total",
     );
+    console.log(res.data.data);
     return res.data.data;
   } catch (error) {
     handleError(error, "Error al obtener transparencia");

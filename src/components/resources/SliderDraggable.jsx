@@ -14,12 +14,7 @@ import { twMerge } from "tailwind-merge";
 
 gsap.registerPlugin(Draggable);
 
-const SliderDraggable = ({
-  title,
-  icon,
-  data,
-  classNameCard = "min-h-[14rem] md:min-h-[16rem] lg:min-h-[18rem] max-w-[85vw] md:max-w-[50vw] lg:max-w-[35vw]",
-}) => {
+const SliderDraggable = ({ title, icon, data, classNameCard = "" }) => {
   const containerRef = useRef(null);
 
   const slug = title
@@ -72,29 +67,30 @@ const SliderDraggable = ({
           <div
             key={index}
             className={twMerge(
-              "relative flex flex-col p-[1.5em] items-start justify-between gap-4 bg-white rounded-md shadow-sm shadow-blue group w-full overflow-hidden",
-              classNameCard
+              "relative flex flex-col p-[1.5em] items-start gap-4 bg-white rounded-md shadow-sm shadow-blue group w-full overflow-hidden",
+              classNameCard,
             )}
           >
-            <div className="flex items-center justify-between w-full mb-[1.5em]">
+            <div className="flex items-center w-full gap-x-2 mb-[.1em]">
               {icon}
               <p className="italic text-xs md:text-sm lg:text-base">
                 {formatDate(d.fecha)}
               </p>
             </div>
-            <h6 className="text-base sm:text-lg md:text-[1.25rem] font-bold mb-[1em] w-full">
+            <h6 className="text-base sm:text-lg md:text-[1.25rem] font-bold w-full">
               {d.titulo || d.nombre}
             </h6>
-            <Link
-              className="w-full mt-auto"
-              href={d.archivo.url}
-              target="_blank"
-            >
-              <Button
-                className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300"
-                children="Ver archivo"
-              />
-            </Link>
+            {(d.archivo?.url || d.url_pdf) && (
+              <Link
+                className="w-full mt-10"
+                href={d.archivo?.url || d.url_pdf}
+                target="_blank"
+              >
+                <Button className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300">
+                  Ver archivo
+                </Button>
+              </Link>
+            )}
           </div>
         ))}
       </div>

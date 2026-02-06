@@ -55,7 +55,6 @@ const page = async ({ params }) => {
             </svg>
           }
           data={ordinances}
-          classNameCard="min-h-[18rem] md:min-h-[20rem] lg:min-h-[22rem] max-w-[65vw] md:max-w-[50vw] lg:max-w-[35vw]"
         />
       </section>
       <section className="relative w-[95vw] md:w-[90vw] max-w-full md:max-w-[1560px] mt-[1.5rem] md:mt-[5.5rem] mx-auto overflow-hidden">
@@ -91,7 +90,6 @@ const page = async ({ params }) => {
             </svg>
           }
           data={ddjj}
-          classNameCard="min-h-[14rem] md:min-h-[16rem] lg:min-h-[18rem] min-w-[45vw] md:min-w-[50vw] lg:min-w-[35vw]"
         />
       </section>
 

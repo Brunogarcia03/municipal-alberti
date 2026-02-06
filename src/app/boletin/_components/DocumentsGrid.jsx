@@ -12,7 +12,7 @@ export default function DocumentsGrid({
 }) {
   const years = useMemo(() => {
     const uniqueYears = new Set(
-      items.map((i) => new Date(i.fecha).getFullYear())
+      items.map((i) => new Date(i.fecha).getFullYear()),
     );
     return Array.from(uniqueYears).sort((a, b) => b - a);
   }, [items]);
@@ -22,7 +22,7 @@ export default function DocumentsGrid({
   const filteredItems = useMemo(() => {
     if (!selectedYear) return items;
     return items.filter(
-      (i) => new Date(i.fecha).getFullYear() === selectedYear
+      (i) => new Date(i.fecha).getFullYear() === selectedYear,
     );
   }, [items, selectedYear]);
 
@@ -78,11 +78,7 @@ export default function DocumentsGrid({
                 {item.titulo || item.nombre}
               </h6>
 
-              <Link
-                className="w-full mt-5"
-                href={item.archivo.url}
-                target="_blank"
-              >
+              <Link className="w-full mt-5" href={item.url_pdf} target="_blank">
                 <Button className="w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors">
                   Ver archivo
                 </Button>
