@@ -21,12 +21,12 @@ const Footer = ({ dark = false }) => {
   return (
     <footer
       className={twMerge(
-        "max-w-[97vw] w-full mx-auto my-[1rem] p-[1.5em] rounded-3xl relative flex flex-col items-center justify-between",
+        "max-w-[97vw] w-full mx-auto my-[1rem] p-[1em] sm:p-[1.5em] rounded-3xl relative flex flex-col items-center justify-between",
         dark ? "bg-black text-white" : "bg-white text-black",
       )}
     >
       <div className="flex flex-col items-start w-full">
-        <div className="flex flex-col sm:flex-row gap-3 w-full items-center md:items-center justify-between">
+        <div className="flex flex-row gap-3 w-full items-center md:items-center justify-between">
           <Link href="/" className="flex items-center justify-center">
             <Image
               src="/ICON.png"
@@ -35,9 +35,10 @@ const Footer = ({ dark = false }) => {
               width={32}
               height={32}
               style={{ height: "auto" }}
+              className="size-7 sm:size-8"
             />
 
-            <h1 className="font-bold text-[1.2rem] leading-[1] ml-2">
+            <h1 className="hidden sm:inline-block font-bold text-[1.2rem] leading-[1] ml-2">
               Municipalidad <br />
               de Alberti
             </h1>
@@ -52,22 +53,22 @@ const Footer = ({ dark = false }) => {
           </Link>
         </div>
         <div
-          className={`w-full h-[1px] my-[1.5em] ${
+          className={`w-full h-[1px] my-[1em] sm:my-[1.5em] ${
             dark ? "bg-white" : "bg-black"
           }`}
         />
-        <div className="flex flex-col md:flex-row text-center md:text-start md:items-center justify-between gap-1 w-full">
+        <div className="flex flex-row items-center justify-between gap-1 w-full">
           <Link
             href={"https://maps.app.goo.gl/MxQAi8oDLW6cV9oN6"}
             target="_blank"
             className=""
           >
-            <p className="text-[.8rem]">
+            <p className="text-[.6rem] md:text-[.8rem]">
               Municipalidad de Alberti <br /> L N Alem Y 9 de Julio
             </p>
           </Link>
-          <div className="flex flex-col-reverse md:flex-col items-center md:justify-end gap-1.5">
-            <div className="flex items-center md:justify-end gap-2">
+          <div className="flex flex-col items-center justify-end gap-1.5">
+            <div className="flex items-center justify-end gap-1.5 md:gap-2">
               {/* Facebook */}
               <div className="flex items-center text-[1rem]">
                 <Link
@@ -79,7 +80,7 @@ const Footer = ({ dark = false }) => {
                   rel="noopener noreferrer"
                   aria-label="Facebook"
                   className={twMerge(
-                    "flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group p-1.5 transition-colors duration-200 hover:border-transparent",
+                    "flex items-center justify-center size-[1.75rem] sm:size-[2.25rem] rounded-md bg-transparent border group p-1 md:p-1.5 transition-colors duration-200 hover:border-transparent",
                     dark ? "border-white" : "border-black",
                   )}
                 >
@@ -111,7 +112,7 @@ const Footer = ({ dark = false }) => {
                   rel="noopener noreferrer"
                   aria-label={"Instagram"}
                   className={twMerge(
-                    "flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group p-1.5 transition-colors duration-200 hover:border-transparent",
+                    "flex items-center justify-center size-[1.75rem] sm:size-[2.25rem] rounded-md bg-transparent border group p-1 md:p-1.5 transition-colors duration-200 hover:border-transparent",
                     dark ? "border-white" : "border-black",
                   )}
                 >
@@ -144,7 +145,7 @@ const Footer = ({ dark = false }) => {
                   rel="noopener noreferrer"
                   aria-label={"Youtube"}
                   className={twMerge(
-                    "flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group p-1.5 transition-colors duration-200 hover:border-transparent",
+                    "flex items-center justify-center size-[1.75rem] sm:size-[2.25rem] rounded-md bg-transparent border group p-1 md:p-1.5 transition-colors duration-200 hover:border-transparent",
                     dark ? "border-white" : "border-black",
                   )}
                 >
@@ -173,7 +174,7 @@ const Footer = ({ dark = false }) => {
                   rel="noopener noreferrer"
                   aria-label={"Twitter"}
                   className={twMerge(
-                    "flex items-center justify-center size-[2.25rem] rounded-md bg-transparent border group p-1.5 transition-colors duration-200 hover:border-transparent",
+                    "flex items-center justify-center size-[1.75rem] sm:size-[2.25rem] rounded-md bg-transparent border group p-1 md:p-1.5 transition-colors duration-200 hover:border-transparent",
                     dark ? "border-white" : "border-black",
                   )}
                 >
@@ -192,7 +193,7 @@ const Footer = ({ dark = false }) => {
             </div>
             <Link
               href={"https://brunog.com.ar/"}
-              className="text-[.8rem] text-center md:text-end w-full"
+              className="text-[.6rem] sm:text-[.8rem] text-end w-full"
             >
               Hecho por{" "}
               <span className="text-blue relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-bottom-right md:after:scale-x-0 after:bg-blue after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100">
