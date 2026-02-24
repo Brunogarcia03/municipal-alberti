@@ -26,7 +26,6 @@ export const getAllNews = async (page = 1) => {
     const res = await axiosClient.get(
       `/noticias?populate=*&sort=createdAt:desc&pagination[page]=${page}&pagination[pageSize]=8`,
     );
-
     return {
       data: res.data.data,
       pagination: res.data.meta.pagination,
@@ -35,6 +34,27 @@ export const getAllNews = async (page = 1) => {
     handleError(error, "Error al obtener noticias paginadas");
     return { data: [], pagination: { page: 1, pageCount: 1 } };
   }
+};
+
+export const getLastNews = async (excludeSlug) => {
+  const query = new URLSearchParams({
+    populate: "*",
+    sort: "createdAt:desc",
+    "pagination[page]": "1",
+    "pagination[pageSize]": "3",
+  });
+
+  if (excludeSlug) {
+    query.append("filters[slug][$ne]", excludeSlug);
+  }
+
+  const res = await fetch(`${baseURL}/noticias?${query.toString()}`, {
+    cache: "no-store",
+  });
+
+  const data = await res.json();
+
+  return { data: data.data };
 };
 
 export const getAllNewsByCategory = async (page = 1, categoryId) => {

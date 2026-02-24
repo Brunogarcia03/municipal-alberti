@@ -1,4 +1,4 @@
-import { getAllNews } from "@/utils/api/global.api";
+import { getLastNews } from "@/utils/api/global.api";
 import { formatDate } from "@/utils/tools";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,7 +6,7 @@ import { twMerge } from "tailwind-merge";
 import BlurOut from "../ui/anim/BlurOut";
 
 const LastNews = async ({ currentSlug }) => {
-  const { data } = await getAllNews();
+  const { data } = await getLastNews();
 
   const filtered = data.filter((n) => n.slug !== currentSlug).slice(0, 3);
 
