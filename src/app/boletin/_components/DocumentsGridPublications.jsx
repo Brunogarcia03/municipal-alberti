@@ -96,7 +96,7 @@ export default function DocumentsGridPublications({
               {(item.archivo?.url || item.url_pdf) && (
                 <Link
                   className="w-full mt-4"
-                  href={d.archivo?.url || d.url_pdf}
+                  href={item.archivo?.url || item.url_pdf}
                   target="_blank"
                 >
                   <Button className="inline-flex items-center justify-center w-full uppercase border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors duration-300">
