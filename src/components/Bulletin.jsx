@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import NetPagosLogo from "@/assets/svgs/netpagos.svg";
 import clickMacroIcon from "@/assets/images/click-macro.png";
+import btnpagomacro from "@/assets/images/macrobtn.png";
 
 import Words from "./ui/anim/Words";
 import Lines from "./ui/anim/Lines";
@@ -361,16 +362,16 @@ const Bulletin = () => {
                 target="_blank"
                 href="https://pagos.macroclickpago.com.ar/SearchDeuda/796282"
                 rel="noopener noreferrer"
-                className="inline-flex justify-center items-center gap-3 group shadow-[0px_4px_4px_0px_rgba(0,_0,_0,_0.1)] shadow-black bg-[#3D658A] text-white font-semibold py-3 px-0 sm:px-[10vw] rounded-md w-full lg:w-auto transition-discrete duration-300 hover:scale-[1.02]"
+                className="inline-flex justify-center items-center gap-3 group shadow-[0px_1px_1px_1px_rgba(0,_0,_0,_0.1)] shadow-black bg-white text-[#3D658A] font-semibold py-3 px-0 sm:px-[10vw] rounded-md w-full lg:w-auto transition-discrete duration-300 hover:scale-[1.02]"
               >
-                <div className="flex items-center gap-2 min-w-[150px] max-w-[150px]">
-                  <span className="text-nowrap text-sm">Pagar con</span>
+                <div className="flex items-center justify-center gap-2">
+                  {/* <span className="text-nowrap text-sm">Pagar con</span> */}
                   <Image
-                    src={clickMacroIcon.src}
+                    src={btnpagomacro.src}
                     alt="Logo Net Pagos"
-                    width={76}
+                    width={84}
                     height={30}
-                    sizes="76px"
+                    className="w-full object-cover"
                   />
                 </div>
               </Link>

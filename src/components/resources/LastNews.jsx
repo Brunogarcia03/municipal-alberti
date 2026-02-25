@@ -6,9 +6,9 @@ import { twMerge } from "tailwind-merge";
 import BlurOut from "../ui/anim/BlurOut";
 
 const LastNews = async ({ currentSlug }) => {
-  const { data } = await getLastNews();
+  const { data } = await getLastNews(currentSlug);
 
-  const filtered = data.filter((n) => n.slug !== currentSlug).slice(0, 3);
+  const filtered = data;
 
   return (
     <div className="w-full">
