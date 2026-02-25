@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import NetPagosLogo from "@/assets/svgs/netpagos.svg";
 import clickMacroIcon from "@/assets/images/click-macro.png";
-import btnpagomacro from "@/assets/images/macrobtn.png";
+import btnpagomacro from "@/assets/images/macrobtnbg.png";
 
 import Words from "./ui/anim/Words";
 import Lines from "./ui/anim/Lines";
