@@ -134,8 +134,11 @@ export const getAllDDJJ = async () => {
 // ----------------- Ordenanzas -----------------
 export const getAllOrdinances = async () => {
   try {
-    const res = await axiosClient.get("/ordenanzas?populate=*");
-    return res.data.data;
+    const res = await fetch(`${baseURL}/ordenanzas?populate=*`, {
+      cache: "no-store",
+    });
+    const data = await res.json();
+    return data.data;
   } catch (error) {
     handleError(error, "Error al obtener ordenanzas");
     return [];
@@ -145,8 +148,11 @@ export const getAllOrdinances = async () => {
 // ----------------- Decretos -----------------
 export const getAllDecrees = async () => {
   try {
-    const res = await axiosClient.get("/decretos?populate=*");
-    return res.data.data;
+    const res = await fetch(`${baseURL}/decretos?populate=*`, {
+      cache: "no-store",
+    });
+    const data = await res.json();
+    return data.data;
   } catch (error) {
     handleError(error, "Error al obtener decretos");
     return [];
@@ -156,12 +162,16 @@ export const getAllDecrees = async () => {
 // ----------------- Publicaciones -----------------
 export const getAllPublication = async (start = 0) => {
   try {
-    const res = await axiosClient.get(
-      `/publicacion-de-leys?pagination[start]=${start}&pagination[limit]=${
+    const res = await fetch(
+      `${baseURL}/publicacion-de-leys?pagination[start]=${start}&pagination[limit]=${
         start === 0 ? 3 : 2
       }&sort=fecha:desc&populate=*`,
+      {
+        cache: "no-store",
+      },
     );
-    return res.data.data;
+    const data = await res.json();
+    return data.data;
   } catch (error) {
     handleError(error, "Error al obtener publicaciones");
     return [];
@@ -171,8 +181,11 @@ export const getAllPublication = async (start = 0) => {
 // ----------------- Patrimonios -----------------
 export const getAllHeritage = async () => {
   try {
-    const res = await axiosClient.get("/patrimonios?populate=*");
-    return res.data.data;
+    const res = await fetch(`${baseURL}/patrimonios?populate=*`, {
+      cache: "no-store",
+    });
+    const data = await res.json();
+    return data.data;
   } catch (error) {
     handleError(error, "Error al obtener patrimonios");
     return [];
@@ -185,7 +198,6 @@ export const getAllTransparency = async () => {
     const res = await axiosClient.get(
       "https://strapi-production-4f4b.up.railway.app/api/transparencias?populate[0]=presupuesto&populate[1]=stock_deuda.primer_trimestre&populate[2]=stock_deuda.segundo_trimestre&populate[3]=stock_deuda.tercer_trimestre&populate[4]=stock_deuda.total&populate[5]=gastos_finalidad_funcion.primer_trimestre&populate[6]=gastos_finalidad_funcion.segundo_trimestre&populate[7]=gastos_finalidad_funcion.tercer_trimestre&populate[8]=gastos_finalidad_funcion.total&populate[9]=ejecucion_presupuestaria.primer_trimestre&populate[10]=ejecucion_presupuestaria.segundo_trimestre&populate[11]=ejecucion_presupuestaria.tercer_trimestre&populate[12]=ejecucion_presupuestaria.total&populate[13]=situacion_economico_financiera.primer_trimestre&populate[14]=situacion_economico_financiera.segundo_trimestre&populate[15]=situacion_economico_financiera.tercer_trimestre&populate[16]=situacion_economico_financiera.total",
     );
-    console.log(res.data.data);
     return res.data.data;
   } catch (error) {
     handleError(error, "Error al obtener transparencia");
