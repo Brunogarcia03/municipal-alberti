@@ -68,7 +68,7 @@ export default function DocumentsGrid({
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className="relative flex flex-col p-[1.5em] items-start gap-4 bg-white rounded-md shadow-sm shadow-blue w-full"
+              className="relative flex flex-col p-[1.5em] items-start gap-4 h-full bg-white rounded-md shadow-sm shadow-blue w-full"
             >
               <p className="italic text-xs md:text-sm">
                 {formatDate(item.fecha)}
@@ -79,7 +79,7 @@ export default function DocumentsGrid({
               </h6>
               {(item.archivo?.url || item.url_pdf) && (
                 <Link
-                  className="w-full mt-5"
+                  className="w-full mt-auto"
                   href={item.archivo?.url || item.url_pdf}
                   target="_blank"
                 >
