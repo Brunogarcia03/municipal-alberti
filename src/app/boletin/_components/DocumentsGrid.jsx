@@ -122,7 +122,9 @@ export default function DocumentsGrid({
           {hasMore && !selectedYear && (
             <div className="flex justify-center mt-10">
               <Button
-                className={"rounded-lg"}
+                className={
+                  "w-full max-w-sm border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors"
+                }
                 onClick={loadMore}
                 disabled={loading}
               >
