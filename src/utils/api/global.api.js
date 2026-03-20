@@ -49,7 +49,7 @@ export const getLastNews = async (excludeSlug) => {
   }
 
   const res = await fetch(`${baseURL}/noticias?${query.toString()}`, {
-    cache: "no-store",
+    next: { revalidate: 60 },
   });
 
   const data = await res.json();
@@ -125,7 +125,7 @@ export const getAllDDJJ = async (page = 1, pageSize = 12) => {
   try {
     const res = await fetch(
       `${baseURL}/declaraciones-juradas?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=fecha:desc`,
-      { cache: "no-store" },
+      { next: { revalidate: 60 } },
     );
 
     return await res.json();
@@ -140,7 +140,7 @@ export const getAllOrdinances = async (page = 1, pageSize = 12) => {
   try {
     const res = await fetch(
       `${baseURL}/ordenanzas?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=fecha:desc`,
-      { cache: "no-store" },
+      { next: { revalidate: 60 } },
     );
 
     return await res.json();
@@ -155,7 +155,7 @@ export const getAllDecrees = async (page = 1, pageSize = 12) => {
   try {
     const res = await fetch(
       `${baseURL}/decretos?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=fecha:desc`,
-      { cache: "no-store" },
+      { next: { revalidate: 60 } },
     );
 
     return await res.json();
@@ -173,7 +173,7 @@ export const getAllPublication = async (start = 0) => {
         start === 0 ? 3 : 2
       }&sort=fecha:desc&populate=*`,
       {
-        cache: "no-store",
+        next: { revalidate: 60 },
       },
     );
     const data = await res.json();
@@ -188,7 +188,7 @@ export const getAllPublication = async (start = 0) => {
 export const getAllHeritage = async () => {
   try {
     const res = await fetch(`${baseURL}/patrimonios?populate=*`, {
-      cache: "no-store",
+      next: { revalidate: 60 },
     });
     const data = await res.json();
     return await res.json();
