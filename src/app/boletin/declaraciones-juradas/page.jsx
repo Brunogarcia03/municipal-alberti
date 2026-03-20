@@ -33,7 +33,9 @@ const page = async () => {
       </section>
       <section className="relative w-[95vw] md:w-[90vw] max-w-full md:max-w-[1560px] my-[3.5rem] md:my-[7.5rem] mx-auto">
         <DocumentsGrid
-          items={ddjj}
+          initialItems={ddjj.data}
+          initialPage={1}
+          pageCount={ddjj.meta.pagination.pageCount}
           emptyText="No hay declaraciones juradas para este período"
         />
       </section>

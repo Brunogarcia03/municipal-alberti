@@ -121,41 +121,47 @@ export const getAllOfficials = async () => {
 };
 
 // ----------------- Declaraciones juradas -----------------
-export const getAllDDJJ = async () => {
+export const getAllDDJJ = async (page = 1, pageSize = 12) => {
   try {
-    const res = await axiosClient.get("/declaraciones-juradas?populate=*");
-    return res.data.data;
+    const res = await fetch(
+      `${baseURL}/declaraciones-juradas?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=fecha:desc`,
+      { cache: "no-store" },
+    );
+
+    return await res.json();
   } catch (error) {
-    handleError(error, "Error al obtener declaraciones juradas");
-    return [];
+    handleError(error, "Error al obtener DDJJ");
+    return { data: [], meta: { pagination: {} } };
   }
 };
 
 // ----------------- Ordenanzas -----------------
-export const getAllOrdinances = async () => {
+export const getAllOrdinances = async (page = 1, pageSize = 12) => {
   try {
-    const res = await fetch(`${baseURL}/ordenanzas?populate=*`, {
-      cache: "no-store",
-    });
-    const data = await res.json();
-    return data.data;
+    const res = await fetch(
+      `${baseURL}/ordenanzas?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=fecha:desc`,
+      { cache: "no-store" },
+    );
+
+    return await res.json();
   } catch (error) {
     handleError(error, "Error al obtener ordenanzas");
-    return [];
+    return { data: [], meta: { pagination: {} } };
   }
 };
 
 // ----------------- Decretos -----------------
-export const getAllDecrees = async () => {
+export const getAllDecrees = async (page = 1, pageSize = 12) => {
   try {
-    const res = await fetch(`${baseURL}/decretos?populate=*`, {
-      cache: "no-store",
-    });
-    const data = await res.json();
-    return data.data;
+    const res = await fetch(
+      `${baseURL}/decretos?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=fecha:desc`,
+      { cache: "no-store" },
+    );
+
+    return await res.json();
   } catch (error) {
     handleError(error, "Error al obtener decretos");
-    return [];
+    return { data: [], meta: { pagination: {} } };
   }
 };
 
@@ -185,10 +191,10 @@ export const getAllHeritage = async () => {
       cache: "no-store",
     });
     const data = await res.json();
-    return data.data;
+    return await res.json();
   } catch (error) {
-    handleError(error, "Error al obtener patrimonios");
-    return [];
+    handleError(error, "Error al obtener ordenanzas");
+    return { data: [], meta: { pagination: {} } };
   }
 };
 

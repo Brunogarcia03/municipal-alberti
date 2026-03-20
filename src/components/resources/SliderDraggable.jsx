@@ -63,17 +63,17 @@ const SliderDraggable = ({ title, icon, data, classNameCard = "" }) => {
         ref={containerRef}
         className="flex items-start justify-center mt-[1.56em] pb-2 gap-4 w-max px-4 h-full"
       >
-        {data?.map((d, index) => (
+        {data.data?.map((d, index) => (
           <div
             key={index}
             className={twMerge(
-              "relative flex flex-col p-[1.5em] items-start gap-4 bg-white rounded-md shadow-sm shadow-blue group w-full overflow-hidden",
+              "relative flex flex-col h-full min-h-[220px] p-[1.5em] items-start gap-4 bg-white rounded-md shadow-sm shadow-blue group w-full overflow-hidden",
               classNameCard,
             )}
           >
-            <div className="flex items-center w-full gap-x-2 mb-[.1em]">
+            <div className="flex items-center w-full gap-x-2 mb-[.1em] text-nowrap overflow-x-hidden">
               {icon}
-              <p className="italic text-xs md:text-sm lg:text-base">
+              <p className="italic text-xs md:text-sm lg:text-base text-ellipsis">
                 {formatDate(d.fecha)}
               </p>
             </div>
@@ -82,7 +82,7 @@ const SliderDraggable = ({ title, icon, data, classNameCard = "" }) => {
             </h6>
             {(d.archivo?.url || d.url_pdf) && (
               <Link
-                className="w-full mt-10"
+                className="w-full mt-auto"
                 href={d.archivo?.url || d.url_pdf}
                 target="_blank"
               >

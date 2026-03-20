@@ -6,7 +6,7 @@ import { getAllOrdinances } from "@/utils/api/global.api";
 import DocumentsGrid from "../_components/DocumentsGrid";
 
 const page = async () => {
-  const ordinances = await getAllOrdinances();
+  const res = await getAllOrdinances();
 
   return (
     <main className="flex flex-col items-center w-full h-full overflow-hidden bg-white text-black white-container -mt-10">
@@ -34,8 +34,10 @@ const page = async () => {
       </section>
       <section className="relative w-[95vw] md:w-[90vw] max-w-full md:max-w-[1560px] my-[3.5rem] md:my-[7.5rem] mx-auto">
         <DocumentsGrid
-          items={ordinances}
-          emptyText="No hay ordenanzas disponibles"
+          initialItems={res.data}
+          initialPage={1}
+          pageCount={res.meta.pagination.pageCount}
+          emptyText="No hay decretos para este período"
         />
       </section>
       <Footer dark />
