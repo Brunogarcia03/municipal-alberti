@@ -190,7 +190,6 @@ export const getAllHeritage = async () => {
     const res = await fetch(`${baseURL}/patrimonios?populate=*`, {
       next: { revalidate: 60 },
     });
-    const data = await res.json();
     return await res.json();
   } catch (error) {
     handleError(error, "Error al obtener ordenanzas");

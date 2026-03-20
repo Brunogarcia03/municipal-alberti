@@ -34,7 +34,7 @@ export default async function page() {
       <section className="relative flex flex-col justify-start gap-8 mt-[8vh] md:mt-[10vh] py-[5vh] before:absolute before:left-[10%] md:before:left-[calc(50%-1px)] before:top-0 before:content-[''] before:w-0.5 before:bg-black/50 before:rounded-md before:h-full before:z-0 white-container">
         <div className="py-8 md:py-24" />
         <div className="flex flex-col gap-y-5 px-5 items-center z-10">
-          {patrimonies.map((patrimony, index) => (
+          {patrimonies.data.map((patrimony, index) => (
             <HistoryCard
               key={index}
               left={index % 2 === 0 ? false : true}
