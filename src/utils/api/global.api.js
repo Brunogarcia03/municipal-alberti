@@ -231,3 +231,14 @@ export const getRedes = async () => {
     return null;
   }
 };
+
+// ----------------- Publicidad -----------------
+export const getPublicidad = async () => {
+  try {
+    const res = await axiosClient.get("/publicidad?populate=*");
+    return res.data.data ?? null;
+  } catch (error) {
+    console.error(error, "Error al obtener publicidad");
+    return null;
+  }
+};

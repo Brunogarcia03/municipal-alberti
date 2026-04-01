@@ -2,13 +2,17 @@ import Bulletin from "@/components/Bulletin";
 import Hero from "@/components/Hero";
 import Footer from "@/components/resources/Footer";
 import LastNews from "@/components/resources/LastNews";
-import { getAllHeroImage } from "@/utils/api/global.api";
+import PubliModal from "@/components/resources/PubliModal";
+import { getAllHeroImage, getPublicidad } from "@/utils/api/global.api";
 
 const page = async () => {
   const imagesHero = await getAllHeroImage();
+  const publicidad = await getPublicidad();
 
   return (
     <>
+      <PubliModal publicidad={publicidad} />
+
       <main className="flex flex-col items-center justify-center w-full overflow-hidden">
         <Hero imagesHero={imagesHero} />
         <Bulletin />
