@@ -16,25 +16,22 @@ export default function DocumentsGrid({
   const [items, setItems] = useState(initialItems);
   const [page, setPage] = useState(initialPage);
   const [loading, setLoading] = useState(false);
+  const [selectedYear, setSelectedYear] = useState(null);
+  const [search, setSearch] = useState("");
 
   const hasMore = page < pageCount;
 
   // 🔽 LOAD MORE
   const loadMore = async () => {
     if (loading || !hasMore) return;
-
     setLoading(true);
-
     const nextPage = page + 1;
     const res = await getAllDecrees(nextPage, 12);
-
     setItems((prev) => [...prev, ...res.data]);
     setPage(nextPage);
-
     setLoading(false);
   };
 
-  // 🔽 FILTROS (igual que antes)
   const years = useMemo(() => {
     const uniqueYears = new Set(
       items.map((i) => new Date(i.fecha).getFullYear()),
@@ -42,18 +39,42 @@ export default function DocumentsGrid({
     return Array.from(uniqueYears).sort((a, b) => b - a);
   }, [items]);
 
-  const [selectedYear, setSelectedYear] = useState(null);
-
   const filteredItems = useMemo(() => {
-    if (!selectedYear) return items;
-    return items.filter(
-      (i) => new Date(i.fecha).getFullYear() === selectedYear,
-    );
-  }, [items, selectedYear]);
+    let result = items;
+
+    if (selectedYear) {
+      result = result.filter(
+        (i) => new Date(i.fecha).getFullYear() === selectedYear,
+      );
+    }
+
+    if (search.trim()) {
+      const q = search.trim().toLowerCase();
+      result = result.filter((i) =>
+        (i.titulo || i.nombre || "").toLowerCase().includes(q),
+      );
+    }
+
+    return result;
+  }, [items, selectedYear, search]);
+
+  // Ocultar "Cargar más" si hay búsqueda o filtro activo
+  const showLoadMore = hasMore && !selectedYear && !search.trim();
 
   return (
     <>
-      {/* FILTROS */}
+      {/* BUSCADOR */}
+      <div className="flex justify-center mb-6">
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Buscar..."
+          className="w-full max-w-xl px-4 py-2 border border-blue rounded-md text-sm focus:outline-none focus:ring-2"
+        />
+      </div>
+
+      {/* FILTROS POR AÑO */}
       {showYearFilter && (
         <div className="flex flex-wrap gap-3 justify-center mb-10">
           <button
@@ -99,7 +120,6 @@ export default function DocumentsGrid({
                 <p className="italic text-xs md:text-sm">
                   {formatDate(item.fecha)}
                 </p>
-
                 <h6 className="text-sm sm:text-base md:text-lg font-bold">
                   {item.titulo || item.nombre}
                 </h6>
@@ -118,13 +138,11 @@ export default function DocumentsGrid({
             ))}
           </div>
 
-          {/* 🔥 LOAD MORE */}
-          {hasMore && !selectedYear && (
+          {/* LOAD MORE */}
+          {showLoadMore && (
             <div className="flex justify-center mt-10">
               <Button
-                className={
-                  "w-full max-w-sm border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors"
-                }
+                className="w-full max-w-sm border border-blue rounded-md px-5 py-2 bg-blue hover:text-blue hover:bg-transparent transition-colors"
                 onClick={loadMore}
                 disabled={loading}
               >

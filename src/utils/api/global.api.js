@@ -142,7 +142,6 @@ export const getAllOrdinances = async (page = 1, pageSize = 12) => {
       `${baseURL}/ordenanzas?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=fecha:desc`,
       { next: { revalidate: 60 } },
     );
-
     return await res.json();
   } catch (error) {
     handleError(error, "Error al obtener ordenanzas");
@@ -157,7 +156,6 @@ export const getAllDecrees = async (page = 1, pageSize = 12) => {
       `${baseURL}/decretos?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=fecha:desc`,
       { next: { revalidate: 60 } },
     );
-
     return await res.json();
   } catch (error) {
     handleError(error, "Error al obtener decretos");
