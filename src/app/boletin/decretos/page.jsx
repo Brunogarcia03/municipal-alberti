@@ -35,7 +35,7 @@ const page = async () => {
         <DocumentsGrid
           initialItems={res.data}
           initialPage={1}
-          pageCount={res.meta.pagination.pageCount}
+          // pageCount={res.meta.pagination.pageCount}
           emptyText="No hay decretos para este período"
         />
       </section>

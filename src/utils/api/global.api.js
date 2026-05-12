@@ -124,7 +124,7 @@ export const getAllOfficials = async () => {
 export const getAllDDJJ = async (page = 1, pageSize = 12) => {
   try {
     const res = await fetch(
-      `${baseURL}/declaraciones-juradas?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=fecha:desc`,
+      `${baseURL}/declaraciones-juradas?populate=*&sort=fecha:desc`,
       { next: { revalidate: 60 } },
     );
 
@@ -139,8 +139,10 @@ export const getAllDDJJ = async (page = 1, pageSize = 12) => {
 export const getAllOrdinances = async (page = 1, pageSize = 12) => {
   try {
     const res = await fetch(
-      `${baseURL}/ordenanzas?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=fecha:desc`,
-      { next: { revalidate: 60 } },
+      `${baseURL}/ordenanzas?populate=*&sort=fecha:desc`,
+      {
+        next: { revalidate: 60 },
+      },
     );
     return await res.json();
   } catch (error) {
@@ -152,10 +154,9 @@ export const getAllOrdinances = async (page = 1, pageSize = 12) => {
 // ----------------- Decretos -----------------
 export const getAllDecrees = async (page = 1, pageSize = 12) => {
   try {
-    const res = await fetch(
-      `${baseURL}/decretos?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort=fecha:desc`,
-      { next: { revalidate: 60 } },
-    );
+    const res = await fetch(`${baseURL}/decretos?populate=*&sort=fecha:desc`, {
+      next: { revalidate: 60 },
+    });
     return await res.json();
   } catch (error) {
     handleError(error, "Error al obtener decretos");

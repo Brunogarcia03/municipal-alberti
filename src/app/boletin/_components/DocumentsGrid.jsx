@@ -76,7 +76,7 @@ export default function DocumentsGrid({
 
       {/* FILTROS POR AÑO */}
       {showYearFilter && (
-        <div className="flex flex-wrap gap-3 justify-center mb-10">
+        <div className="flex flex-wrap gap-3 justify-center mb-10 max-w-5xl mx-auto">
           <button
             onClick={() => setSelectedYear(null)}
             className={`px-4 py-2 rounded-md border font-medium transition
@@ -138,7 +138,7 @@ export default function DocumentsGrid({
             ))}
           </div>
 
-          {/* LOAD MORE */}
+          {/* LOAD MORE
           {showLoadMore && (
             <div className="flex justify-center mt-10">
               <Button
@@ -149,7 +149,7 @@ export default function DocumentsGrid({
                 {loading ? "Cargando..." : "Cargar más"}
               </Button>
             </div>
-          )}
+          )} */}
         </>
       )}
     </>
